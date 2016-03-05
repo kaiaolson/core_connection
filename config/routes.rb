@@ -1,4 +1,22 @@
 Rails.application.routes.draw do
+  #root # set this to a home page for employers to see on first arrival
+
+  root "profiles#index"
+
+  resources :sessions, only: [:new, :create, :destroy]
+
+  resources :users
+
+  resources :profiles do
+    resources :projects
+    resources :links
+    resources :skills
+    resources :educations
+    resources :experiences
+  end
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
