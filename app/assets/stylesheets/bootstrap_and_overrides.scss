@@ -1,2 +1,31 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+header {
+  background-color: #CB0D0F;
+  padding-top: 15px;
+  padding-bottom: 15px
+}
+header img {
+  margin-left: 80px;
+  height: 45px;
+}
+
+.navbar {
+  background-color: #CB0D0F;
+}
+#logo {
+ width: 50%
+}
+#signup li {
+ list-style-type: none;
+ display: inline-block;
+ color: #FFF;
+ float: right;
+ margin-right: 10px;
+}
+nav.hack-rightside {
+  margin-right: 150px;
+}
+.navbar-header, .navbar-default {
+  border: none !important;
+}
