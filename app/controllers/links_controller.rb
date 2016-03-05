@@ -10,7 +10,6 @@ class LinksController < ApplicationController
   def create
     # @profile = Profile.find params[:profile_id]
     @profile = current_user_profile
-
     if @link = Link.create link_params
       redirect_to profile_path(@profile), notice: "Link added"
     else

@@ -14,6 +14,7 @@
     <%= render "form" %>
   </div>
   <div id="links">
+    <% if @profile.links %>
     <div class="col-sm-9">
       <p><%= @profile.links.linkedin_url%></p>
     </div>
@@ -32,12 +33,14 @@
     <div class="col-sm-3">
       <p><%= link_to "Edit Link", edit_profile_link_path(@profile, @profile.links) %></p>
     </div>
+    <% end %>
   </div>
   <div id="skills">
     <% @profile.skills.each do |skill| %>
       <p><%= skill.name %>: <%= skill.proficiency(@profile) %></p>
       <% if user_signed_in? %>
         <%= link_to "Edit", edit_profile_skill_path(@profile, skill) %>
+        <%= link_to "Delete", profile_skill_path(@profile, skill), method: :delete, data: {confirm: "Are you sure?"} %>
       <% end %>
     <% end %>
   </div>
@@ -52,6 +55,7 @@
         <p><%= link_to project.github_url %></p>
         <% if user_signed_in? %>
           <%= link_to "Edit", edit_profile_project_path(@profile, project) %>
+          <%= link_to "Delete", profile_project_path(@profile, project), method: :delete, data: {confirm: "Are you sure?"} %>
         <% end %>
       </div>
       <hr>
@@ -71,6 +75,7 @@
         <p><%= link_to education.school_url %></p>
         <% if user_signed_in? %>
           <%= link_to "Edit", edit_profile_education_path(@profile, education) %>
+          <%= link_to "Delete", profile_education_path(@profile, education), method: :delete, data: {confirm: "Are you sure?"} %>
         <% end %>
       </div>
       <hr>
@@ -87,6 +92,7 @@
         <p><%= experience.description %></p>
         <% if user_signed_in? %>
           <%= link_to "Edit", edit_profile_experience_path(@profile, experience) %>
+          <%= link_to "Delete", profile_experience_path(@profile, experience), method: :delete, data: {confirm: "Are you sure?"} %>
         <% end %>
       </div>
       <hr>
