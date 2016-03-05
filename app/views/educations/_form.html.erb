@@ -1,0 +1,8 @@
+<%= simple_form_for @education do |f| %>
+  <%= f.input :school %>
+  <%= f.input :degree %>
+  <%= f.input :description %>
+  <%= f.input :school_url %>
+  <%= f.input :image, as: :file %>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>
