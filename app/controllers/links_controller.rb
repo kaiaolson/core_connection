@@ -1,10 +1,11 @@
 class LinksController < ApplicationController
 
-  def new
-    # @profile = Profile.find params[:profile_id]
-    @profile = current_user_profile
-    @link = Link.new(profile_id: @profile)
-  end
+  # new links will be created in profiles#new
+  # def new
+  #   # @profile = Profile.find params[:profile_id]
+  #   @profile = current_user_profile
+  #   @link = Link.new (profile_id: @profile)
+  # end
 
   def create
     # @profile = Profile.find params[:profile_id]
@@ -33,7 +34,7 @@ class LinksController < ApplicationController
 
   end
 
-  # We won't destroy a link, we'll set its url to nil/emptry string instead
+  # Each link can have a url or be blank, but links cannot be destroyed as a whole.
   # def destroy
   # end
 

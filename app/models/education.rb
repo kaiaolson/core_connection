@@ -3,5 +3,5 @@ class Education < ActiveRecord::Base
 
   validates :school, presence: true
   validates :degree, presence: true
-  validates :school_url, :format => URI::regexp(%w(http https))
+  validates :school_url, :url => {:allow_blank => true}
 end

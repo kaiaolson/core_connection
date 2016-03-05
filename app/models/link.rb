@@ -1,7 +1,7 @@
 class Link < ActiveRecord::Base
   belongs_to :profile
 
-  validates :github_url, :format => URI::regexp(%w(http https))
-  validates :twitter_url, :format => URI::regexp(%w(http https))
-  validates :linkedin_url, :format => URI::regexp(%w(http https))
+  validates :github_url, :url => {:allow_blank => true}
+  validates :twitter_url, :url => {:allow_blank => true}
+  validates :linkedin_url, :url => {:allow_blank => true}
 end

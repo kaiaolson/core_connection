@@ -40,6 +40,7 @@ gem 'bootstrap-kaminari-views'
 gem 'mini_magick'
 gem 'simple_form'
 gem 'jquery-ui-rails'
+gem 'validate_url'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
