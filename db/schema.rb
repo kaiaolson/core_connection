@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305182931) do
+ActiveRecord::Schema.define(version: 20160305212156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,16 +61,6 @@ ActiveRecord::Schema.define(version: 20160305182931) do
 
   add_index "links", ["profile_id"], name: "index_links_on_profile_id", using: :btree
 
-  create_table "memberships", force: :cascade do |t|
-    t.integer  "profile_id"
-    t.integer  "project_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "memberships", ["profile_id"], name: "index_memberships_on_profile_id", using: :btree
-  add_index "memberships", ["project_id"], name: "index_memberships_on_project_id", using: :btree
-
   create_table "profiles", force: :cascade do |t|
     t.string   "tagline"
     t.text     "description"
@@ -91,7 +81,10 @@ ActiveRecord::Schema.define(version: 20160305182931) do
     t.string   "github_url"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "profile_id"
   end
+
+  add_index "projects", ["profile_id"], name: "index_projects_on_profile_id", using: :btree
 
   create_table "skills", force: :cascade do |t|
     t.string   "name"
@@ -129,9 +122,8 @@ ActiveRecord::Schema.define(version: 20160305182931) do
   add_foreign_key "educations", "profiles"
   add_foreign_key "experiences", "profiles"
   add_foreign_key "links", "profiles"
-  add_foreign_key "memberships", "profiles"
-  add_foreign_key "memberships", "projects"
   add_foreign_key "profiles", "users"
+  add_foreign_key "projects", "profiles"
   add_foreign_key "skills", "categories"
   add_foreign_key "skillsets", "profiles"
   add_foreign_key "skillsets", "skills"
