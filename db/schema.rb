@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305073740) do
+ActiveRecord::Schema.define(version: 20160305182931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,8 +43,9 @@ ActiveRecord::Schema.define(version: 20160305073740) do
     t.date     "from_date"
     t.date     "to_date"
     t.integer  "profile_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "company_name"
   end
 
   add_index "experiences", ["profile_id"], name: "index_experiences_on_profile_id", using: :btree
