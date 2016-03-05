@@ -6,8 +6,7 @@ class Profile < ActiveRecord::Base
   has_many :skills, through: :skillsets
 
   # associations for projects
-  has_many :memberships, dependent: :destroy
-  has_many :projects, through: :memberships
+  has_many :projects, dependent: :destroy
 
   # associations for experience
   has_many :experiences, dependent: :destroy
