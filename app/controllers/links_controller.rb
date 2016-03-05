@@ -3,7 +3,7 @@ class LinksController < ApplicationController
   def new
     # @profile = Profile.find params[:profile_id]
     @profile = current_user_profile
-    @link = Link.new (profile_id: @profile)
+    @link = Link.new(profile_id: @profile)
   end
 
   def create
