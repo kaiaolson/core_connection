@@ -4,4 +4,8 @@ class Skill < ActiveRecord::Base
   has_many :profiles, through: :skillsets
 
   validates :name, presence: true, uniqueness: true
+
+  def proficiency(profile)
+    Skillset.where(skill_id: id, profile_id: profile.id)[0].proficiency
+  end
 end

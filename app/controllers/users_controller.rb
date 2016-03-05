@@ -10,10 +10,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new user_params
-    if @user.save
-      redirect_to user_path(@user), notice: "User created"
-    else
-      render :new
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to root_path, notice: "User created" }
+        format.js   { render :create_pending }
+      else
+        format.html { render :new }
+        format.js   { render :create_failure }
+      end
     end
   end
 

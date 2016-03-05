@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   root "profiles#index"
 
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy] do
+    delete :destroy, on: :collection
+  end
 
   resources :users
 

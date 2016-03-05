@@ -6,4 +6,8 @@ class Membership < ActiveRecord::Base
   validates :project_id, :profile_id, presence: true
   # Validates that each profile can only have a particular project listed once.
   validates :project_id, uniqueness: {scope: :profile_id}
+
+  def project
+    Project.where(id: project_id)[0]
+  end
 end

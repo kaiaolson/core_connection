@@ -43,4 +43,5 @@ class EducationsController < ApplicationController
 
   def education_params
     params.require(:education).permit(:school, :image, :description, :school_url, :degree, :profile_id)
+  end
 end

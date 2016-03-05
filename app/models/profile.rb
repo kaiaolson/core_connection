@@ -25,4 +25,12 @@ class Profile < ActiveRecord::Base
   validates :description, presence: true, length: {maximum: 500}
   validates_inclusion_of :availability, in: [true, false]
 
+  # def user_full_name
+  #   user.full_name
+  # end
+
+  def links
+    Link.where(profile_id: id)[0]
+  end
+
 end

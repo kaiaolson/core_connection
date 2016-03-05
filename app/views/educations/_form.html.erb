@@ -1,4 +1,4 @@
-<%= simple_form_for @education do |f| %>
+<%= simple_form_for [current_user_profile, @education] do |f| %>
   <%= f.input :school %>
   <%= f.input :degree %>
   <%= f.input :description %>
