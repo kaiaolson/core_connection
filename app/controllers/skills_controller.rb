@@ -11,8 +11,9 @@ class SkillsController < ApplicationController
 
   def create
     @skill = Skill.new skill_params
-    @skill.user = current_user_profile
+    @profile = current_user_profile
     if @skill.save
+      skillset = Skillset.create(profile_id: @skill.user, skill_id: @profile)
       flash[:notice] = "Skill created successfully"
       redirect_to new_profile_skill_path(@skill), notice: "Skill has been created!"
     else
