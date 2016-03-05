@@ -1,8 +1,10 @@
 class EducationsController < ApplicationController
   def create
     @profile = current_user_profile
+    @education = Education.new education_params
+    @education.profile_id = @profile
 
-    if @education = Education.create education_params
+    if @education.save
       redirect_to profile_path(@profile), notice: "Education added!"
     else
       flash[:alert] = "Error adding education!"
