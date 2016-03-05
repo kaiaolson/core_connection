@@ -12,6 +12,11 @@ class ExperiencesController < ApplicationController
     end
   end
 
+  def edit
+    @profile = current_user_profile
+    @experience = Experience.find params[:id]
+  end
+
   def update
     @profile = current_user_profile
     @experience = Experience.find params[:id]
