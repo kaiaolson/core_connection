@@ -15,11 +15,13 @@
     <div class="collapse navbar-collapse" id="profile-navbar">
       <ul class="nav navbar-nav">
         <li><%= link_to "Basic Information", new_profile_path(@profile) %></li>
+        <% if @profile.id %>
         <li><%= link_to "Links", new_profile_link_path(@profile) %></li>
         <li><%= link_to "Projects", new_profile_project_path(@profile) %></li>
         <li><%= link_to "Education", new_profile_education_path(@profile) %></li>
         <li><%= link_to "Experience", new_profile_experience_path(@profile) %></li>
         <li><%= link_to "Skills", new_profile_skill_path(@profile) %></li>
+        <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
