@@ -6,4 +6,20 @@ class ApplicationController < ActionController::Base
   def sign_in(user)
     session[:user_id] = user.id
   end
+
+  def user_signed_in?
+    session[:user_id].present?
+  end
+  helper_method :user_signed_in?
+
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if user_signed_in?
+  end
+  helper_method :current_user
+
+  def current_user_profile
+    @current_user_profile = Profile.find_by_user_id(current_user)
+  end
+  helper_method :current_user_profile
+
 end
