@@ -1,4 +1,10 @@
 class Project < ActiveRecord::Base
+
+  has_many :memberships, dependent: :nullify
+  has_many :profiles, through: :memberships
+
+
+  # MODEL VALIDATIONS
   validates :title, presence: true, uniqueness: true
   validates :description, presence: true, uniqueness:true
   
