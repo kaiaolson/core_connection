@@ -1,8 +1,10 @@
 class ExperiencesController < ApplicationController
   def create
+    @experience = Experience.new experience_params
     @profile = current_user_profile
+    @experience.profile_id = @profile
 
-    if @experience = Experience.create experience_params
+    if @experience = Experience.save
       redirect_to profile_path(@profile), notice: "Work experience added!"
     else
       flash[:alert] = "Error adding work experience!"
