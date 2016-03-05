@@ -20,6 +20,11 @@ class LinksController < ApplicationController
 
   end
 
+  def edit
+    @profile = current_user_profile
+    @link = Link.find params[:id]
+  end
+
   def update
     # @profile = Profile.find params[:profile_id]
     @profile = current_user_profile
@@ -37,6 +42,7 @@ class LinksController < ApplicationController
   # Each link can have a url or be blank, but links cannot be destroyed as a whole.
   # def destroy
   # end
+  private
 
   def link_params
     params.require(:link).permit(:github_url, :linkedin_url, :twitter_url, :profile_id)

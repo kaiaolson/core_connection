@@ -13,6 +13,11 @@ class EducationsController < ApplicationController
 
   end
 
+  def edit
+    @profile = current_user_profile
+    @education = Education.find params[:id]
+  end
+
   def update
     @profile = current_user_profile
     @education = Education.find params[:id]
