@@ -1,4 +1,4 @@
-<%= simple_form_for @experience do |f| %>
+<%= simple_form_for [current_user_profile, @experience] do |f| %>
   <%= f.input :job_title %>
   <%= f.input :company_name %>
   <%= f.input :description %>
