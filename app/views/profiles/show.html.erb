@@ -1,0 +1,90 @@
+<div class="row">
+  <div class="col-sm-4">
+    <div>
+      <!-- need to set up photo sizes in carrierwave -->
+      <%= image_tag @profile.photo.file.url(:large) %>
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          <!-- need to set up this method in the models -->
+          <h1><%= @profile.user_full_name %></h1>
+          <p><%= @profile.description %></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-10">
+          <%= link_to @profile.links.linkedin_url %>
+          <%= link_to @profile.links.twitter_url %>
+          <%= link_to @profile.links.github_url %>
+          <%= link_to @profile.resume.url %>
+        </div>
+        <div class="col-sm-2">
+          <%= link_to "Contact", contact_profile_path(@profile.id), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div id="profile-tabs">
+      <ul>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
+      </ul>
+      <div id="skills">
+        <%= @profile.skills.each do |skill| %>
+          <p><%= skill.name %>: <%= skill.proficiency %></p>
+        <% end %>
+      </div>
+      <div id="projects">
+        <%= @profile.projects.each do |project| %>
+          <div class="col-sm-9">
+            <p><%= project.name %></p>
+            <p><%= project.description %></p>
+          </div>
+          <div class="col-sm-3">
+            <p><%= link_to project.project_url %></p>
+            <p><%= link_to project.github_url %></p>
+          </div>
+          <hr>
+        <% end %>
+      </div>
+      <div id="education">
+        <%= @profile.educations.each do |education| %>
+          <div class="col-sm-9">
+            <div class="logo-thumb">
+              <%= image_tag education.image.url(:logo_thumb) %>
+            </div>
+            <p><%= education.school %></p>
+            <p><%= education.degree %></p>
+            <p><%= education.description %></p>
+          </div>
+          <div class="col-sm-3">
+            <p><%= link_to education.school_url %></p>
+          </div>
+          <hr>
+        <% end %>
+      </div>
+      <div id="experience">
+        <%= @profile.experiences.each do |experience| %>
+          <div class="col-sm-12">
+            <div class="logo-thumb">
+              <%= image_tag experience.image.url(:logo_thumb) %>
+            </div>
+            <p><%= experience.job_title %> at <%= link_to "#{experience.company_name}", experience.company_url%></p>
+            <p>From: <%= experience.from_date %> to: <%= experience.to_date %></p>
+            <p><%= experience.description %></p>
+          </div>
+          <hr>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
