@@ -21,7 +21,7 @@ class Profile < ActiveRecord::Base
 
   # MODEL VALIDATIONS
   # limit max to 140 characters for tag_line
-  validates :tag_line, presence: true, length: {maximum: 140}
+  validates :tagline, presence: true, length: {maximum: 140}
   # limit max to 500 characters for description
   validates :description, presence: true, length: {maximum: 500}
   validates_inclusion_of :availability, in: [true, false]
