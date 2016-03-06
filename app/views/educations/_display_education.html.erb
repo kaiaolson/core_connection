@@ -11,7 +11,7 @@
       <p><%= education.description %></p>
     </div>
     <div class="col-sm-3">
-      <p><%= link_to education.school_url %></p>
+      <p><%= link_to "Visit School", education.school_url, class: "btn btn-primary tabs-button" %></p>
       <% if user_signed_in? %>
         <%= link_to "Edit", edit_profile_education_path(@profile, education) %>
         <%= link_to "Delete", profile_education_path(@profile, education), method: :delete, data: {confirm: "Are you sure?"} %>

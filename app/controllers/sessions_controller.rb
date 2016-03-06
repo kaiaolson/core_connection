@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
         redirect_to users_path, notice: "Welcome back mighty admin!"
       # else they are just a regular use and redirect to the normal homepage
       else
-        redirect_to root_path, notice: "Sign in successful!"
+        redirect_to profile_path(current_user_profile), notice: "Sign in successful!"
       end
     else
       flash[:alert] = "Wrong credentials!"

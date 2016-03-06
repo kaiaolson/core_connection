@@ -1,13 +1,13 @@
 <div class="row">
-  <div class="col-sm-12">
+  <div class="col-sm-4">
     <div>
-      <!-- need to set up photo sizes in carrierwave -->
-      <%#= image_tag @profile.photo.file.url(:large) %>
+      <%= image_tag @profile.photo.url(:large) %>
     </div>
+  </div>
+  <div class="col-sm-8">
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12">
-          <!-- need to set up this method in the models -->
           <h1 class="get-connected"><%= @profile.user_full_name %></h1>
           <p><%= @profile.description %></p>
         </div>
@@ -17,34 +17,34 @@
           <%= link_to fa_icon("linkedin-square"), @profile.linkedin_url, class: "social-media-links" %>
           <%= link_to fa_icon("twitter"), @profile.twitter_url, class: "social-media-links" %>
           <%= link_to fa_icon("github"), @profile.github_url, class: "social-media-links" %>
-          <% if @profile.resume %>
-            <%= link_to fa_icon("download"), @profile.resume_url %>
-          <% end %>
+          <%= link_to fa_icon("download"), @profile.resume_url %>
         </div>
         <div class="col-sm-2">
-            <%= link_to "Edit Profile", edit_profile_path(@profile), class: "breadcrumb" %>
-            <%#= link_to "Contact", contact_profile_path(@profile.id), class: "btn btn-primary" %>
+          <%= link_to "Edit Profile", edit_profile_path(@profile), class: "btn btn-primary" %>
+          <%= link_to "Contact", contact_profile_path(@profile.id), class: "btn btn-info" %>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-sm-3">
-    <h4 align="center">Projects</h4>
+<div id="profile-tabs">
+  <ul>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+  </ul>
+  <div id="projects">
     <%= render "/projects/display_projects" %>
   </div>
-  <div class="col-sm-3">
-    <h4 align="center">Education</h4>
+  <div id="education">
     <%= render "/educations/display_education" %>
   </div>
-  <div class="col-sm-3">
-    <h4 align="center">Experience</h4>
+  <div id="experience">
     <%= render "/experiences/display_experiences" %>
   </div>
-  <div class="col-sm-3">
-    <h4 align="center">Skills</h4>
+  <div id="skills">
     <%= render "/skills/display_skills" %>
   </div>
 </div>

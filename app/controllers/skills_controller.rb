@@ -1,26 +1,22 @@
 class SkillsController < ApplicationController
-  before_action :find_skill, only: [:show, :edit, :update, :destroy]
+  before_action :find_skill, only: [:edit, :update, :destroy]
+  before_action :find_profile, only: [:edit, :update, :destroy]
+  before_action :authenticate_user
+  before_action :authorize_user, only: [:edit, :update, :destroy]
 
   def new
     @skill = Skill.new
-  end
-
-  def index
-    @skills = Skill.order("order by created_at DESC")
   end
 
   def create
     @skill = Skill.new skill_params
     @profile = current_user_profile
     if @skill.save
-      # @skill.id
-      # puts @skill.id
-      # puts @profile.id
-      @skillset = Skillset.new(profile_id: @profile.id, skill_id: @skill.id)
+      @proficiency=params["skillset"]["proficiency"].to_i
+      @skillset = Skillset.new(profile_id: @profile.id, skill_id: @skill.id, proficiency: @proficiency)
       @skillset.save
-      puts @skillset.errors.full_messages
       flash[:notice] = "Skillset created successfully"
-      redirect_to new_profile_skill_path(@skill), notice: "Skill has been created!"
+      redirect_to profile_path(current_user_profile), notice: "Skill has been created!"
     else
       flash.now[:alert] = "Skill wasn't created. Check errors below"
       render :new
@@ -28,15 +24,12 @@ class SkillsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-    # debugger
-    @profile = current_user_profile
     if @skill.update skill_params
       @skill.skillsets.first.update("proficiency"=>params["skillset"]["proficiency"])
-      redirect_to root_path, notice: "Skill has been updated!"
+      redirect_to profile_path(@profile), notice: "Skill has been updated!"
     else
       flash.now[:alert] = "Skill could not be updated!"
       render :edit
@@ -45,7 +38,7 @@ class SkillsController < ApplicationController
 
   def destroy
     @skill.destroy
-    redirect_to profile_skills_path, alert: "Skill has been removed!"
+    redirect_to profile_path(@profile), alert: "Skill has been removed!"
   end
 
   private
@@ -59,5 +52,14 @@ class SkillsController < ApplicationController
     params.require(:skill).permit(:name, :category_id, :skillsets_attributes => ["proficiency"])
   end
 
+  def user_from_request
+    Profile.find_by_id(params[:profile_id]).user
+  end
+
+  def authorize_user
+    if !(can? :manage, @skill) || !((user_from_request == current_user) || (current_user.admin))
+      redirect_to root_path, alert: "ACCESS DENIED"
+    end
+  end
 
 end

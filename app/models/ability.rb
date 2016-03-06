@@ -15,9 +15,12 @@ class Ability
       profile.user == user
     end
 
-    # if current_user_profile.user == user
-    #   byebug
-    #   can :manage, Education
-    # end
+    # If the user exists they can manage education
+    if user.persisted?
+      can :manage, Education
+      can :manage, Experience
+      can :manage, Project
+      can :manage, Skill
+    end
   end
 end

@@ -43,6 +43,7 @@ gem 'jquery-ui-rails'
 gem 'validate_url'
 gem 'quiet_assets'
 
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
