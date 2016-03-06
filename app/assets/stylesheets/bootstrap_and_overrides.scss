@@ -75,3 +75,48 @@ nav.hack-rightside {
   padding-left:0px;
   padding-right:0px;
 }
+
+/*****************************************************************
+      Headlines for multiple pages
+******************************************************************/
+.page-headline {
+  text-align: center;
+  font-family: 'Righteous', cursive;
+    color:#CB0D0F;
+    font-size: 700%;
+    margin-top: 12%;
+}
+.get-connected {
+  text-align: left;
+  font-family: 'Righteous', cursive;
+    color:#CB0D0F;
+    font-size: 40px;
+    margin-top: 12%;
+}
+.navbar-default .navbar-brand {
+  color: #FFF;
+  font-weight: bold;
+}
+/*****************************************************************
+    Index Styling
+******************************************************************/
+.index-students {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-family: 'Righteous', cursive;
+  font-size: 25px
+  }
+.breadcrumb {
+  display: inline-block;
+  font-weight: bold;
+}
+
+/*****************************************************************
+    Social-media-link
+******************************************************************/
+.social-media-links {
+    display: list-item;
+    list-style-type: none;
+    background-color: #F5F5F5;
+}
