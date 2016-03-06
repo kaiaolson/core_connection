@@ -11,7 +11,6 @@ Rails.application.routes.draw do
 
   resources :profiles do
     resources :projects
-    resources :links
     resources :skills
     resources :educations
     resources :experiences
