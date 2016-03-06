@@ -1,13 +1,14 @@
-<h1 class="page-headline">CoreConnection&trade;</h1>
 <div id="home-buttons">
+  <h1 class="page-headline">CoreConnection &trade;</h1>
   <div class="col-sm-6 text-center">
-    <%= link_to "Available Students", root_path(available: true), class: "index-students"%>
+    <%= link_to "Available Students", root_path(available: true), remote: true, class: "index-students"%>
   </div>
   <div class="col-sm-6 text-center">
-    <%= link_to "All Students", root_path(all: true), class: "index-students" %>
+    <%= link_to "All Students", root_path(all: true), remote: true, class: "index-students" %>
   </div>
 </div>
-<div id="profiles">
+
+<div id="profiles" style="display:none;">
  <% @profiles.each do |profile| %>
   <div class="col-xs-12 col-sm-6 col-md-3 text-center">
     <% if profile.photo %>
