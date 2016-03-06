@@ -13,12 +13,9 @@ class SkillsController < ApplicationController
     @skill = Skill.new skill_params
     @profile = current_user_profile
     if @skill.save
-      # @skill.id
-      # puts @skill.id
-      # puts @profile.id
-      @skillset = Skillset.new(profile_id: @profile.id, skill_id: @skill.id)
+      @proficiency=params["skillset"]["proficiency"].to_i
+      @skillset = Skillset.new(profile_id: @profile.id, skill_id: @skill.id, proficiency: @proficiency)
       @skillset.save
-      puts @skillset.errors.full_messages
       flash[:notice] = "Skillset created successfully"
       redirect_to new_profile_skill_path(@skill), notice: "Skill has been created!"
     else
