@@ -39,4 +39,15 @@ $(document).ready(function(){
     });
   });
 
+  $("#skills").click(function() {
+    $('.progress_bar').each(function() {
+      var progressvalue = $(this).attr('value');
+      $(this).progressbar({
+        value: progressvalue
+      });
+      console.log(progressvalue);
+    });
+
+  });
+
 });
