@@ -27,6 +27,10 @@ class Profile < ActiveRecord::Base
             :linkedin_url,
             :github_url, uniqueness: true, allow_blank: true, :url => {:allow_blank => true}
 
+  # Resume & Photo uploaders
+  mount_uploader :resume, ResumeUploader
+  mount_uploader :photo, PhotoUploader
+
   # def user_full_name
   #   user.full_name
   # end
