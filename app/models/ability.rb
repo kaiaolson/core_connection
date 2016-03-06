@@ -2,7 +2,6 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-
     user ||= User.new # guest user (not logged in)
 
     if user.admin?
@@ -12,9 +11,8 @@ class Ability
     end
 
     # If you own the profile you can manage it
-    can :manage, Profile
-    # can :manage, Profile do |profile|
-    #   profile.user == user
-    # end
+    can :manage, Profile do |profile|
+      profile.user == user
+    end
   end
 end
