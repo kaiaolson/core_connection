@@ -1,10 +1,8 @@
 <div class="row">
-  <div class="col-sm-4">
-    <div>
-      <%= image_tag @profile.photo.url(:large) %>
-    </div>
+  <div class="col-sm-3 text-center">
+    <%= image_tag @profile.photo.url(:large) %>
   </div>
-  <div class="col-sm-8">
+  <div class="col-sm-9">
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12">
@@ -13,15 +11,17 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-10">
+        <div class="col-sm-6">
           <%= link_to fa_icon("linkedin-square"), @profile.linkedin_url, class: "social-media-links" %>
           <%= link_to fa_icon("twitter"), @profile.twitter_url, class: "social-media-links" %>
           <%= link_to fa_icon("github"), @profile.github_url, class: "social-media-links" %>
-          <%= link_to fa_icon("download"), @profile.resume_url %>
+          <%= link_to fa_icon("download"), @profile.resume_url, class: "social-media-links" %>
         </div>
-        <div class="col-sm-2">
-          <%= link_to "Edit Profile", edit_profile_path(@profile), class: "btn btn-primary" %>
-          <%= link_to "Contact", contact_profile_path(@profile.id), class: "btn btn-info" %>
+        <div class="col-sm-6 text-right">
+          <% if can? :manage, @profile %>
+            <%= link_to "Edit Profile", edit_profile_path(@profile), class: "btn btn-primary" %>
+          <% end %>
+          <%= link_to "Contact #{@profile.user_full_name}", new_contact_path, class: "btn btn-info" %>
         </div>
       </div>
     </div>

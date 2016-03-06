@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   resources :password_resets
 
+  resources :contacts, only: [:new, :create]
 
 
   # The priority is based upon order of creation: first created -> highest priority.
