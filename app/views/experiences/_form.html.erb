@@ -1,10 +1,12 @@
-<%= simple_form_for [current_user_profile, @experience] do |f| %>
-  <%= f.input :job_title %>
-  <%= f.input :company_name %>
-  <%= f.input :description %>
-  <%= f.input :from_date %>
-  <%= f.input :to_date %>
-  <%= f.input :company_url %>
-  <%= f.input :image, as: :file %>
-  <%= f.submit class: "btn btn-primary" %>
+<%= simple_form_for @profile do |e| %>
+  <%= e.simple_fields_for :skill do |f| %>
+    <%= f.input :job_title %>
+    <%= f.input :company_name %>
+    <%= f.input :description %>
+    <%= f.input :from_date %>
+    <%= f.input :to_date %>
+    <%= f.input :company_url %>
+    <%= f.input :image, as: :file %>
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
 <% end %>
