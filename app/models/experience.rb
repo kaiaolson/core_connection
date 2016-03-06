@@ -7,4 +7,7 @@ class Experience < ActiveRecord::Base
   validates :company_url, :url => {:allow_blank => true}
   validates :from_date, presence: true
   validates :to_date, presence: true
+
+  mount_uploader :image, ExperienceImageUploader
+
 end

@@ -22,4 +22,16 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user_profile
 
+  def authenticate_user
+    redirect_to new_session_path, notice: "Please Sign in." unless user_signed_in?
+  end
+
+  def find_profile
+    if current_user.admin
+      @profile = Profile.find params[:profile_id]
+    else
+      @profile = current_user_profile
+    end
+  end
+  
 end
