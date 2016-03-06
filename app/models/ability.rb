@@ -14,5 +14,10 @@ class Ability
     can :manage, Profile do |profile|
       profile.user == user
     end
+
+    # if current_user_profile.user == user
+    #   byebug
+    #   can :manage, Education
+    # end
   end
 end
