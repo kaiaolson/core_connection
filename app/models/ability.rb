@@ -19,8 +19,8 @@ class Ability
     if user.persisted?
       can :manage, Education
       can :manage, Experience
-      can :mangae, Project
-      # can :manage, Skill --- add back in when forms are corrected
+      can :manage, Project
+      can :manage, Skill
     end
   end
 end
