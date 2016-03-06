@@ -59,4 +59,4 @@ Profile.all.each do |profile|
   end
 end
 
-Skillset.create(profile_id: 23, skill_id: Skill.all.sample.id, proficiency: (1..10).to_a.sample)
+# Skillset.create(profile_id: 23, skill_id: Skill.all.sample.id, proficiency: (1..10).to_a.sample)
