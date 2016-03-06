@@ -1,6 +1,6 @@
 <h1>Contact Form</h1>
-<% if @user%>
-<h3> Contact <%=@user.full_name%></h3>
+<% if current_user%>
+<h3> Contact <%=current_user.full_name%></h3>
 <% end %>
 <%= form_tag('/contacts', class: 'form-horizontal') do %>
   <%= label_tag :name, "Name", class: "control-label" %>
