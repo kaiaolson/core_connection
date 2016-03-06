@@ -11,12 +11,4 @@ class SkillsetsController < ApplicationController
     end
   end
 
-# We will need to add destroy later if we need to
-
-  # def destory
-  #   skillset = current_user.skillsets.find params[:id]
-  #   @profile = Profile.find params[:profile_id]
-  #   skillset.destroy
-  # end
-
 end

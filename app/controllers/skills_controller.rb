@@ -13,8 +13,9 @@ class SkillsController < ApplicationController
     @skill = Skill.new skill_params
     @profile = current_user_profile
     if @skill.save
-      skillset = Skillset.create(profile_id: @skill.user, skill_id: @profile)
-      flash[:notice] = "Skill created successfully"
+      @skillset = Skillset.new(profile_id: @skill.user, skill_id: @profile)
+      @skillset.save
+      flash[:notice] = "Skillset created successfully"
       redirect_to new_profile_skill_path(@skill), notice: "Skill has been created!"
     else
       flash.now[:alert] = "Skill wasn't created. Check errors below"
@@ -27,8 +28,11 @@ class SkillsController < ApplicationController
   end
 
   def update
+    # debugger
+    @profile = current_user_profile
     if @skill.update skill_params
-      redirect_to profile_skill_path(@skill), notice: "Skill has been updated!"
+      @skill.skillsets.first.update("proficiency"=>params["skillset"]["proficiency"])
+      redirect_to root_path, notice: "Skill has been updated!"
     else
       flash.now[:alert] = "Skill could not be updated!"
       render :edit
@@ -47,6 +51,9 @@ class SkillsController < ApplicationController
   end
 
   def skill_params
-    skill_params = params.require(:skill).permit([:name, :category_id])
+    # skill_params = params.require(:skill).permit([:name, :category_id, skillsets_attributes:[:id, :proficiency]])
+    params.require(:skill).permit(:name, :category_id, :skillsets_attributes => ["proficiency"])
   end
+
+
 end
