@@ -1,10 +1,23 @@
-<%= simple_form_for @profile do |e| %>
-  <%= e.simple_fields_for :education do |f| %>
-    <%= f.input :school %>
-    <%= f.input :degree %>
-    <%= f.input :description %>
-    <%= f.input :school_url %>
-    <%= f.input :image, as: :file %>
-    <%= f.submit class: "btn btn-primary" %>
-  <% end %>
+<%= form_for [@profile, @education] do |f| %>
+  <div class="form-group">
+    <%= f.label :school %>
+    <%= f.text_field :school %>
+  </div>
+  <div class="form-group">
+    <%= f.label :degree %>
+    <%= f.text_field :degree %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.textarea :description %>
+  </div>
+  <div class="form-group">
+    <%= f.label :school_url %>
+    <%= f.text_field :school_url %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+  <%= f.submit class: "btn btn-primary" %>
 <% end %>

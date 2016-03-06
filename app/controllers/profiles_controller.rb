@@ -2,7 +2,11 @@ class ProfilesController < ApplicationController
   before_action :find_profile, only: [:show, :edit, :update, :destroy]
 
   def index
-    @profiles = Profile.all
+    if params[:available]
+      @profiles = Profile.where(availability: true)
+    else
+      @profiles = Profile.all
+    end
   end
 
   def new
