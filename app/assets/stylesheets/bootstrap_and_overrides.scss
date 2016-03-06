@@ -12,8 +12,7 @@ body {
 
 header {
   background-color: #CB0D0F;
-  padding-top: 15px;
-  padding-bottom: 15px
+  padding-top: 10px;
 }
 header img {
   margin-left: 80px;
@@ -21,23 +20,18 @@ header img {
 }
 
 .navbar {
-  background-color: #CB0D0F;
+  background-color: rgba(#cb0d0f, 1);
 }
+
+.container-fluid {
+  padding: 10px !important;
+}
+.dropdown {
+  padding-right: 30px;
+}
+
 #logo {
  width: 50%
-}
-#signup li {
- list-style-type: none;
- display: inline-block;
- color: #FFF;
- float: right;
- margin-right: 10px;
-}
-nav.hack-rightside {
-  margin-right: 150px;
-}
-.navbar-header, .navbar-default {
-  border: none !important;
 }
 
 #signup li {
@@ -47,12 +41,13 @@ nav.hack-rightside {
  float: right;
  margin-right: 10px;
 }
-nav.hack-rightside {
-  margin-right: 150px;
+
+#coreconnection-navbar{
+  float: right;
+  padding: 10px;
+  padding-right: 50px;
 }
-.navbar-header, .navbar-default {
-  border: none !important;
-}
+
 .navbar-default .navbar-nav>li>a {
   color: white;
   font-weight: 300;
@@ -140,5 +135,5 @@ a div.index-students:hover {
   display: inline-block;
 }
 .tabs-button {
-  
+
 }
