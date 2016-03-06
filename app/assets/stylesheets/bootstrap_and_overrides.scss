@@ -163,7 +163,7 @@ a div.index-students:hover {
     -moz-border-right-colors: none;
     -moz-border-top-colors: none;
     background-color: #fff;
-    border-color: $brand-primary;
+    border-color: #fff;
     border-style: solid;
     border-width: 1px 1px 0px;
     border-radius: 5px 5px 0 0;    /*To affect only top corners*/
@@ -185,7 +185,7 @@ a div.index-students:hover {
     background: #eee;    /*To overwrite jquery-ui.css*/
     border-radius: 5px 5px 0 0;
     border-width: 1px 1px 0px;
-    border-color: #CB0D0F;
+    border-color: #eee;
     border-style: solid;
 }
 
