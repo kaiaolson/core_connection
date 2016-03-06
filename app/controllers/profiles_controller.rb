@@ -1,8 +1,14 @@
 class ProfilesController < ApplicationController
   before_action :find_profile, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user, except: [:index, :show]
+  before_action :authorize_user, only: [:edit, :update, :destroy]
 
   def index
-    @profiles = Profile.all
+    if params[:available]
+      @profiles = Profile.where(availability: true)
+    else
+      @profiles = Profile.all
+    end
   end
 
   def new
@@ -11,6 +17,7 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new profile_params
+    @profile.user = current_user
     if @profile.save
       redirect_to profile_path(@profile), notice: "Profile created"
     else
@@ -44,5 +51,11 @@ class ProfilesController < ApplicationController
 
   def find_profile
     @profile = Profile.find params[:id]
+  end
+
+  def authorize_user
+    unless can? :manage, @profile
+      redirect_to root_path, alert: "ACCESS DENIED!"
+    end
   end
 end

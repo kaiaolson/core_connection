@@ -30,6 +30,8 @@
         <%= link_to "Delete", profile_skill_path(@profile, skill), method: :delete, data: {confirm: "Are you sure?"} %>
       <% end %>
     <% end %>
+    <h3>Add Skill</h3>
+    <%= render "/skills/form" %>
   </div>
   <div id="projects">
     <% @profile.projects.each do |project| %>
@@ -47,6 +49,8 @@
       </div>
       <hr>
     <% end %>
+    <h3>Add Project</h3>
+    <%= render "/projects/form" %>
   </div>
   <div id="education">
     <% @profile.educations.each do |education| %>
@@ -67,6 +71,8 @@
       </div>
       <hr>
     <% end %>
+    <h3>Add Education</h3>
+    <%= render "/educations/form" %>
   </div>
   <div id="experience">
     <% @profile.experiences.each do |experience| %>
@@ -84,5 +90,7 @@
       </div>
       <hr>
     <% end %>
+    <h3>Add Experience</h3>
+    <%= render "/experiences/form" %>
   </div>
 </div>

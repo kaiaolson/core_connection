@@ -50,17 +50,6 @@ ActiveRecord::Schema.define(version: 20160305235801) do
 
   add_index "experiences", ["profile_id"], name: "index_experiences_on_profile_id", using: :btree
 
-  create_table "links", force: :cascade do |t|
-    t.string   "github_url"
-    t.string   "linkedin_url"
-    t.string   "twitter_url"
-    t.integer  "profile_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  add_index "links", ["profile_id"], name: "index_links_on_profile_id", using: :btree
-
   create_table "profiles", force: :cascade do |t|
     t.string   "tagline"
     t.text     "description"
@@ -124,7 +113,6 @@ ActiveRecord::Schema.define(version: 20160305235801) do
 
   add_foreign_key "educations", "profiles"
   add_foreign_key "experiences", "profiles"
-  add_foreign_key "links", "profiles"
   add_foreign_key "profiles", "users"
   add_foreign_key "projects", "profiles"
   add_foreign_key "skills", "categories"
