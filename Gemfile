@@ -41,7 +41,6 @@ gem 'mini_magick'
 gem 'simple_form'
 gem 'jquery-ui-rails'
 gem 'validate_url'
-gem 'cancancan'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
