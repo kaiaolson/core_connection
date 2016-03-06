@@ -5,6 +5,8 @@ class Skill < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true
 
+  accepts_nested_attributes_for :skillsets
+
   def proficiency(profile)
     Skillset.where(skill_id: id, profile_id: profile.id)[0].proficiency
   end
