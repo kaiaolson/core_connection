@@ -12,10 +12,18 @@
       </div>
       <div class="row">
         <div class="col-sm-6">
-          <%= link_to fa_icon("linkedin-square"), @profile.linkedin_url, class: "social-media-links" %>
-          <%= link_to fa_icon("twitter"), @profile.twitter_url, class: "social-media-links" %>
-          <%= link_to fa_icon("github"), @profile.github_url, class: "social-media-links" %>
+          <% unless @profile.linkedin_url.nil? %>
+          <%= link_to fa_icon("linkedin-square"), @profile.linkedin_url, target: "_blank", class: "social-media-links" %>
+          <% end %>
+          <% unless @profile.twitter_url.empty? %>
+          <%= link_to fa_icon("twitter"), @profile.twitter_url, target: "_blank", class: "social-media-links" %>
+          <% end %>
+          <% unless @profile.github_url.empty? %>
+          <%= link_to fa_icon("github"), @profile.github_url, target: "_blank", class: "social-media-links" %>
+          <% end %>
+          <% if @profile.resume_url %>
           <%= link_to fa_icon("download"), @profile.resume_url, class: "social-media-links" %>
+          <% end %>
         </div>
         <div class="col-sm-6 text-right">
           <% if can? :manage, @profile %>
@@ -28,7 +36,7 @@
   </div>
 </div>
 
-<div id="profile-tabs">
+<div id="profile-tabs" class="style-tabs">
   <ul>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#education">Education</a></li>
