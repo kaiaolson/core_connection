@@ -15,7 +15,7 @@
       <p> <%= image_tag profile.photo.url(:thumb) %> </p>
     <% end %>
     <p><%= profile.tagline %></p>
-    <p><%= link_to "View Profile", profile_path(profile), class: "btn btn-primary" %></p>
+    <p><%= link_to "View Profile", profile_path(profile_id: profile), class: "btn btn-primary" %></p>
   </div>
  <% end %>
 </div>
