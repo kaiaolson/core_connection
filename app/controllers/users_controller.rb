@@ -24,7 +24,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find params[:id]
-    # TODO add other models like skills, etc
   end
 
   def edit
@@ -33,15 +32,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find params[:id]
-    # respond_to do |format|
-      if @user.update user_params
-        redirect_to user_path(@user), notice: "Profile updated"
-        # format.js   { render :update_user }
-      else
-        flash[:alert] = "Update failed!"
-                      render :edit
-        # format.js   { render :update_failed }
-      end
+    if @user.update(status: params[:status])
+      redirect_to user_path(@user), notice: "Profile updated successfully."
+    else
+      flash[:notice] = "Profile not updated."
+      print @user.errors.full_messages
+      redirect_to users_path
     end
   end
 
