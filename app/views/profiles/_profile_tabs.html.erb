@@ -1,0 +1,96 @@
+<div id="profile-tabs">
+  <ul>
+    <%# not sure if this is the right method to use to show links if the user is editing their own profile  %>
+    <% if user_signed_in? %>
+    <li><a href="#basic-info">Basic Information</a></li>
+    <li><a href="#links">Links</a></li>
+    <% end %>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+  </ul>
+  <div id="basic-info">
+    <%= render "form" %>
+  </div>
+  <div id="links">
+    <p>LinkedIn: <%= @profile.linkedin_url %></p>
+    <p>Twitter: <%= @profile.twitter_url %></p>
+    <p>GitHub: <%= @profile.github_url %></p>
+    <h3>Add Links</h3>
+    <%= simple_form_for @profile do |f| %>
+      <%= render "link_form", f: f%>
+    <% end %>
+  </div>
+  <div id="skills">
+    <% @profile.skills.each do |skill| %>
+      <p><%= skill.name %>: <%= skill.proficiency(@profile) %></p>
+      <% if user_signed_in? %>
+        <%= link_to "Edit", edit_profile_skill_path(@profile, skill) %>
+        <%= link_to "Delete", profile_skill_path(@profile, skill), method: :delete, data: {confirm: "Are you sure?"} %>
+      <% end %>
+    <% end %>
+    <h3>Add Skill</h3>
+    <%= render "/skills/form" %>
+  </div>
+  <div id="projects">
+    <% @profile.projects.each do |project| %>
+      <div class="col-sm-9">
+        <p><%= project.title %></p>
+        <p><%= project.description %></p>
+      </div>
+      <div class="col-sm-3">
+        <p><%= link_to project.project_url %></p>
+        <p><%= link_to project.github_url %></p>
+        <% if user_signed_in? %>
+          <%= link_to "Edit", edit_profile_project_path(@profile, project) %>
+          <%= link_to "Delete", profile_project_path(@profile, project), method: :delete, data: {confirm: "Are you sure?"} %>
+        <% end %>
+      </div>
+      <hr>
+    <% end %>
+    <h3>Add Project</h3>
+    <%= render "/projects/form" %>
+  </div>
+  <div id="education">
+    <% @profile.educations.each do |education| %>
+      <div class="col-sm-9">
+        <div class="logo-thumb">
+          <%#= image_tag education.image.url(:logo_thumb) %>
+        </div>
+        <p><%= education.school %></p>
+        <p><%= education.degree %></p>
+        <p><%= education.description %></p>
+      </div>
+      <div class="col-sm-3">
+        <p><%= link_to education.school_url %></p>
+        <% if user_signed_in? %>
+          <%= link_to "Edit", edit_profile_education_path(@profile, education) %>
+          <%= link_to "Delete", profile_education_path(@profile, education), method: :delete, data: {confirm: "Are you sure?"} %>
+        <% end %>
+      </div>
+      <hr>
+    <% end %>
+    <h3>Add Education</h3>
+    <%= render "/educations/form" %>
+  </div>
+  <div id="experience">
+    <% @profile.experiences.each do |experience| %>
+      <div class="col-sm-12">
+        <div class="logo-thumb">
+          <%#= image_tag experience.image.url(:logo_thumb) %>
+        </div>
+        <p><%= experience.job_title %> at <%= link_to "#{experience.company_name}", experience.company_url%></p>
+        <p>From: <%= experience.from_date %> to: <%= experience.to_date %></p>
+        <p><%= experience.description %></p>
+        <% if user_signed_in? %>
+          <%= link_to "Edit", edit_profile_experience_path(@profile, experience) %>
+          <%= link_to "Delete", profile_experience_path(@profile, experience), method: :delete, data: {confirm: "Are you sure?"} %>
+        <% end %>
+      </div>
+      <hr>
+    <% end %>
+    <h3>Add Experience</h3>
+    <%= render "/experiences/form" %>
+  </div>
+</div>

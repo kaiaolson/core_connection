@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-sm-4">
+    <div>
+      <!-- need to set up photo sizes in carrierwave -->
+      <%#= image_tag @profile.photo.file.url(:large) %>
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          <!-- need to set up this method in the models -->
+          <h1>YOLO<%#= @profile.user_full_name %></h1>
+          <p><%= @profile.description %></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-10">
+          <%= link_to "Linked In", @profile.linkedin_url %>
+          <%= link_to "Twitter", @profile.twitter_url %>
+          <%= link_to "GitHub", @profile.github_url %>
+          <% if @profile.resume %>
+            <%= link_to "Download Resume", @profile.resume.url %>
+          <% end %>
+        </div>
+        <div class="col-sm-2">
+            <%#= link_to "Contact", contact_profile_path(@profile.id), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <%= render "profile_tabs" %>
+  </div>
+</div>

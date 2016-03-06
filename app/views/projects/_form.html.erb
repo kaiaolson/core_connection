@@ -1,0 +1,9 @@
+<%= simple_form_for @profile do |e| %>
+  <%= e.simple_fields_for :skill do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description, as: :text %>
+    <%= f.input :project_url %>
+    <%= f.input :github_url %>
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+<% end %>
