@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find params[:id]
     if @user.update user_params
-      redirect_to user_path(@user), notice: "Profile updated"
+      redirect_to profile_path(current_user_profile), notice: "Profile updated"
     else
       flash[:alert] = "Update failed!"
       render :edit

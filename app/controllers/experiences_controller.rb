@@ -1,46 +1,43 @@
 class ExperiencesController < ApplicationController
+  before_action :find_experience, only: [:edit, :update, :destroy]
+
   def create
     @experience = Experience.new experience_params
-    @profile = current_user_profile
-    @experience.profile_id = @profile
+    @experience.profile = current_user_profile
 
     if @experience.save
-      redirect_to profile_path(@profile), notice: "Work experience added!"
+      redirect_to edit_profile_path(current_user_profile), notice: "Work experience added!"
     else
       flash[:alert] = "Error adding work experience!"
-      render new_profile_experience(@profile)
+      redirect_to edit_profile_path(current_user_profile)
     end
   end
 
   def edit
-    @profile = current_user_profile
-    @experience = Experience.find params[:id]
   end
 
   def update
-    @profile = current_user_profile
-    @experience = Experience.find params[:id]
-
     if @experience.update experience_params
-      redirect_to profile_path(@profile), notice: "Work experience updated!"
+      redirect_to profile_path(current_user_profile), notice: "Work experience updated!"
     else
       flash[:alert] = "Error updating experience!"
-      render new_profile_experience(@profile)
+      render new_profile_experience(current_user_profile)
     end
   end
 
   def destroy
-    @profile = current_user_profile
-    @experience = params[:id]
-
     @experience.destroy
-    redirect_to profile_path(@profile)
+    redirect_to profile_path(current_user_profile)
   end
 
   private
 
+  def find_experience
+    @experience = Experience.find params[:id]
+  end
+
   def experience_params
-    params.require(:experience).permit(:job_title, :description, :company_url, :image, :from_date, :to_date, :profile_id, :company_name)
+    params.require(:experience).permit(:job_title, :description, :company_url, :image, :from_date, :to_date, :company_name)
   end
 
 end

@@ -2,13 +2,12 @@ class EducationsController < ApplicationController
   def create
     @profile = current_user_profile
     @education = Education.new education_params
-    @education.profile_id = @profile
-
+    @education.profile_id = @profile.id
     if @education.save
       redirect_to profile_path(@profile), notice: "Education added!"
     else
       flash[:alert] = "Error adding education!"
-      render new_profile_education(@profile)
+      render :edit
     end
 
   end
@@ -33,7 +32,7 @@ class EducationsController < ApplicationController
 
   def destroy
     @profile = current_user_profile
-    @education = params[:id]
+    @education = Education.find params[:id]
 
     @education.destroy
     redirect_to profile_path(@profile)

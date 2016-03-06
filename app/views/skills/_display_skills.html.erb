@@ -1,0 +1,9 @@
+<div class="col-sm-12">
+  <% @profile.skills.each do |skill| %>
+    <p><%= skill.name %>: <%= skill.proficiency(@profile) %></p>
+    <% if user_signed_in? %>
+      <%= link_to "Edit", edit_profile_skill_path(@profile, skill) %>
+      <%= link_to "Delete", profile_skill_path(@profile, skill), method: :delete, data: {confirm: "Are you sure?"} %>
+    <% end %>
+  <% end %>
+</div>
