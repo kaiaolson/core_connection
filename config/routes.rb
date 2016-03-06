@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+
   #root # set this to a home page for employers to see on first arrival
 
   root "profiles#index"
@@ -15,6 +17,8 @@ Rails.application.routes.draw do
     resources :educations
     resources :experiences
   end
+
+  resources :password_resets
 
 
 
