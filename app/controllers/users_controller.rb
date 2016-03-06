@@ -33,9 +33,9 @@ class UsersController < ApplicationController
   def update
     @user = User.find params[:id]
     if @user.update(status: params[:status])
-      redirect_to user_path(@user), notice: "Profile updated successfully."
+      redirect_to user_path(@user), notice: "User updated successfully."
     else
-      flash[:notice] = "Profile not updated."
+      flash[:notice] = "User not updated."
       redirect_to users_path
     end
   end

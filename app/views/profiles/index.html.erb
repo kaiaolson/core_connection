@@ -1,12 +1,13 @@
-<h1 class="page-headline">CoreConnection&trade;</h1>
 <div id="home-buttons">
+  <h1 class="page-headline">CoreConnection</h1>
   <div class="col-sm-6 text-center">
-    <%= link_to "Available Students", root_path(available: true), class: "index-students"%>
+    <%= link_to(raw("<div class='index-students filter-students'>Available Students</div>"), root_path(available: true), remote: true, class: "no-underline") %>
   </div>
   <div class="col-sm-6 text-center">
-    <%= link_to "All Students", root_path, class: "index-students" %>
+    <%= link_to(raw("<div class='index-students filter-students'>All Students</div>"), root_path(all: true), remote: true, class: "no-underline") %>
   </div>
 </div>
+
 <div id="profiles">
  <% @profiles.each do |profile| %>
   <div class="col-xs-12 col-sm-6 col-md-3 text-center">
@@ -18,3 +19,7 @@
   </div>
  <% end %>
 </div>
+
+<script>
+  $("#profiles").hide();
+</script>
