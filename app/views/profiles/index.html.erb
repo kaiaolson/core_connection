@@ -7,3 +7,12 @@
     <%= link_to "All Students", root_path %>
   </div>
 </div>
+<div id="profiles">
+ <% @profiles.each do |profile| %>
+  <div class="col-xs-12 col-sm-6 col-md-3">
+    <p><%= image_tag profile.photo.url %></p>
+    <p><%= profile.tagline %></p>
+    <p> <%= link_to "View Profile", profile_path(profile) %></p>
+  </div>
+ <% end %>
+</div>
