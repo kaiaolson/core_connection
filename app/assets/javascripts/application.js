@@ -19,9 +19,11 @@
 
 $(document).ready(function(){
   $(function() {
-    $( "#profile-tabs" ).tabs();
+    $( "#profile-tabs" ).tabs().css({
+       'min-height': '200px',
+       'overflow': 'auto'
+    });
   });
-
   $(".filter-students").click(function(){
     $(".primary-content").fadeOut(500, function(){
       $("#home-buttons").hide();
@@ -29,7 +31,6 @@ $(document).ready(function(){
       $(this).fadeIn(500);
     });
   });
-
   $(".filter-none").click(function(){
     $(".primary-content, #profiles").fadeOut(500, function(){
       $("#profiles").hide();
