@@ -29,7 +29,7 @@ class Profile < ActiveRecord::Base
 
   # Resume & Photo uploaders
   mount_uploader :resume, ResumeUploader
-  mount_uploader :photo, PhotoUploader
+  mount_uploader :photo, ProfilePhotoUploader
 
   # def user_full_name
   #   user.full_name
