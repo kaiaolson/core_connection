@@ -32,7 +32,7 @@ class EducationsController < ApplicationController
 
   def destroy
     @profile = current_user_profile
-    @education = params[:id]
+    @education = Education.find params[:id]
 
     @education.destroy
     redirect_to profile_path(@profile)

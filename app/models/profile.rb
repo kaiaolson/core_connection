@@ -27,8 +27,8 @@ class Profile < ActiveRecord::Base
             :linkedin_url,
             :github_url, uniqueness: true, allow_blank: true, :url => {:allow_blank => true}
 
-  # def user_full_name
-  #   user.full_name
-  # end
+  def user_full_name
+    user.full_name
+  end
 
 end
