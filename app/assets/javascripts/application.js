@@ -17,6 +17,10 @@
 //= require turbolinks
 //= require_tree .
 
-$(function() {
-  $( "#profile-tabs" ).tabs();
+$(document).ready(function(){
+  $(function() {
+    $( "#profile-tabs" ).tabs();
+  });
+
+
 });
