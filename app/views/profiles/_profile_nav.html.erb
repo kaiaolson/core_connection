@@ -17,7 +17,6 @@
       <ul class="nav navbar-nav">
         <% if @profile.id %>
         <li><%= link_to "Basic Information", edit_profile_path(@profile) %></li>
-        <li><%= link_to "Links", profile_links_path(@profile) %></li>
         <li><%= link_to "Projects", profile_projects_path(@profile) %></li>
         <li><%= link_to "Education", profile_educations_path(@profile) %></li>
         <li><%= link_to "Experience", profile_experiences_path(@profile) %></li>
