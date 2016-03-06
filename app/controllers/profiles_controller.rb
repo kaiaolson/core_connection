@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :find_profile, only: [:show, :edit, :update, :destroy]
+  before_action :retrive_profile, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user, except: [:index, :show]
   before_action :authorize_user, only: [:edit, :update, :destroy]
 
@@ -63,7 +63,7 @@ class ProfilesController < ApplicationController
     params.require(:profile).permit(:tagline, :description, :availability, :resume, :photo, :twitter_url, :linkedin_url, :github_url)
   end
 
-  def find_profile
+  def retrive_profile
     @profile = Profile.find params[:id]
   end
 
