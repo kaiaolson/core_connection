@@ -26,6 +26,10 @@ class ProfilesController < ApplicationController
   end
 
   def show
+    @skill = Skill.new
+    @education = Education.new
+    @experience = Experience.new
+    @project = Project.new
   end
 
   def edit
