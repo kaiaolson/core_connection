@@ -8,14 +8,15 @@ class ProfilesController < ApplicationController
       if params[:available]
         format.html { @profiles = Profile.where(availability: true) }
         format.js { @profiles = Profile.where(availability: true)
-                    render :transition_home}
+                    render :home_fadeout}
       elsif params[:all]
         format.html { @profiles = Profile.all }
         format.js { @profiles = Profile.all
-                    render :transition_home }
+                    render :home_fadeout }
       else
         format.html { @profiles = Profile.all }
-        format.js { @profiles = Profile.all }
+        format.js { @profiles = Profile.all
+                    render :home_fadein}
       end
     end
   end
@@ -28,20 +29,20 @@ class ProfilesController < ApplicationController
     @profile = Profile.new profile_params
     @profile.user = current_user
     if @profile.save
-      redirect_to profile_path(@profile), notice: "Profile created"
+      redirect_to edit_profile_path(@profile), notice: "Profile created"
     else
       render :new
     end
   end
 
   def show
+  end
+
+  def edit
     @skill = Skill.new
     @education = Education.new
     @experience = Experience.new
     @project = Project.new
-  end
-
-  def edit
   end
 
   def update

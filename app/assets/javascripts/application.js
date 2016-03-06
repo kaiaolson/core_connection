@@ -22,5 +22,20 @@ $(document).ready(function(){
     $( "#profile-tabs" ).tabs();
   });
 
+  $(".filter-students").click(function(){
+    $(".primary-content").fadeOut(500, function(){
+      $("#home-buttons").hide();
+      $("#profiles").show();
+      $(this).fadeIn(500);
+    });
+  });
+
+  $(".filter-none").click(function(){
+    $(".primary-content, #profiles").fadeOut(500, function(){
+      $("#profiles").hide();
+      $("#home-buttons").show();
+      $(".primary-content, #home-buttons").fadeIn(500);
+    });
+  });
 
 });
