@@ -11,14 +11,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new user_params
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to root_path, notice: "User created" }
-        format.js   { render :create_pending }
-      else
-        format.html { render :new }
-        format.js   { render :create_failure }
-      end
+    if @user.save
+      sign_in(@user)
+      redirect_to new_profile_path(@user), notice: "User created"
+    else
+      render :new
     end
   end
 
