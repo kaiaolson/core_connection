@@ -9,7 +9,7 @@ class EducationsController < ApplicationController
     @education = Education.new education_params
     @education.profile_id = current_user_profile
     if @education.save
-      redirect_to profile_path(current_user_profile), notice: "Education added!"
+      redirect_to edit_profile_path(current_user_profile), notice: "Education added!"
     else
       flash[:alert] = "Error adding education!"
       render :edit
