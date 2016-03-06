@@ -12,5 +12,31 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
+//= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+  $(function() {
+    $( "#profile-tabs" ).tabs().css({
+       'min-height': '200px',
+       'overflow': 'auto'
+    });
+  });
+  $(".filter-students").click(function(){
+    $(".primary-content").fadeOut(500, function(){
+      $("#home-buttons").hide();
+      $("#profiles").show();
+      $(this).fadeIn(500);
+    });
+  });
+  $(".filter-none").click(function(){
+    $(".primary-content, #profiles").fadeOut(500, function(){
+      $("#profiles").hide();
+      $("#home-buttons").show();
+      $(".primary-content, #home-buttons").fadeIn(500);
+    });
+  });
+
+});

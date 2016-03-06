@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-sm-12">
+    <% if @profile.photo %>
+      <div>
+        <%= image_tag @profile.photo.url(:large) %>
+      </div>
+    <% end %>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          <!-- need to set up this method in the models -->
+          <h1 class="get-connected"><%= @profile.user_full_name %></h1>
+          <p><%= @profile.description %></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-10">
+          <%= link_to fa_icon("linkedin-square"), @profile.linkedin_url, class: "social-media-links" %>
+          <%= link_to fa_icon("twitter"), @profile.twitter_url, class: "social-media-links" %>
+          <%= link_to fa_icon("github"), @profile.github_url, class: "social-media-links" %>
+          <% if @profile.resume %>
+            <%= link_to fa_icon("download"), @profile.resume_url %>
+          <% end %>
+        </div>
+        <div class="col-sm-2">
+            <%= link_to "Edit Profile", edit_profile_path(@profile), class: "breadcrumb" %>
+            <%#= link_to "Contact", contact_profile_path(@profile.id), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="profile-tabs">
+  <ul>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+  </ul>
+  <div id="projects">
+    <%= render "/projects/display_projects" %>
+  </div>
+  <div id="education">
+    <%= render "/educations/display_education" %>
+  </div>
+  <div id="experience">
+    <%= render "/experiences/display_experiences" %>
+  </div>
+  <div id="skills">
+    <%= render "/skills/display_skills" %>
+  </div>
+</div>
