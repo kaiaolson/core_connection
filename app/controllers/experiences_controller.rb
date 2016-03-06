@@ -6,7 +6,7 @@ class ExperiencesController < ApplicationController
     @experience.profile = current_user_profile
 
     if @experience.save
-      redirect_to profile_path(current_user_profile), notice: "Work experience added!"
+      redirect_to edit_profile_path(current_user_profile), notice: "Work experience added!"
     else
       flash[:alert] = "Error adding work experience!"
       redirect_to edit_profile_path(current_user_profile)

@@ -20,14 +20,14 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <%= link_to image_tag("codecorelogo.png"), root_path %>
+            <%= link_to image_tag("codecorelogo.png"), root_path, class: "filter-none" %>
           </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="coreconnection-navbar">
             <ul class="nav navbar-nav">
-              <li><%= link_to "Available Students", root_path(available: true) %></li>
-              <li><%= link_to "All Students", root_path(all: true) %></li>
+              <li><%= link_to "Available Students", root_path(available: true), class: "filter-students" %></li>
+              <li><%= link_to "All Students", root_path(all: true), class: "filter-students" %></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <%# checks if user is signed in %>
@@ -37,7 +37,7 @@
                   <% if current_user_profile %>
                     <li><%= link_to "View Profile", profile_path(current_user_profile) %></li>
                   <% else %>
-                    <li><%= link_to "Create Profile", new_profile_path %></li>
+                    <li><%= link_to "Create Profile", new_profile_path%></li>
                   <% end %>
 
                   <li><%= link_to "Log Out", sessions_path, method: :delete, data: {confirm: "Are you sure you want to logout?"} %></li>
@@ -61,7 +61,7 @@
       <% end %>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid primary-content">
       <%= yield %>
     </div>
 

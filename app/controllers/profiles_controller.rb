@@ -8,14 +8,15 @@ class ProfilesController < ApplicationController
       if params[:available]
         format.html { @profiles = Profile.where(availability: true) }
         format.js { @profiles = Profile.where(availability: true)
-                    render :transition_home}
+                    render :home_fadeout}
       elsif params[:all]
         format.html { @profiles = Profile.all }
         format.js { @profiles = Profile.all
-                    render :transition_home }
+                    render :home_fadeout }
       else
         format.html { @profiles = Profile.all }
-        format.js { @profiles = Profile.all }
+        format.js { @profiles = Profile.all
+                    render :home_fadein}
       end
     end
   end
