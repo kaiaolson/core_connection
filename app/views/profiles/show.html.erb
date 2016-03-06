@@ -10,22 +10,22 @@
       <div class="row">
         <div class="col-sm-12">
           <!-- need to set up this method in the models -->
-          <h1>YOLO<%#= @profile.user_full_name %></h1>
+          <h1 class="get-connected">Get Connected!<%#= @profile.user_full_name %></h1>
           <p><%= @profile.description %></p>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-10">
-          <%= link_to "Linked In", @profile.linkedin_url %>
-          <%= link_to "Twitter", @profile.twitter_url %>
-          <%= link_to "GitHub", @profile.github_url %>
+          <%= link_to "LinkedIn", @profile.linkedin_url, class: "social-media-links" %>
+          <%= link_to "Twitter", @profile.twitter_url, class: "social-media-links" %>
+          <%= link_to "GitHub", @profile.github_url, class: "social-media-links" %>
           <% if @profile.resume %>
             <%= link_to "Download Resume", @profile.resume.url %>
           <% end %>
         </div>
         <div class="col-sm-2">
           <%# if can? :manage %>
-            <%= link_to "Edit Profile", edit_profile_path %>
+            <%= link_to "Edit Profile", edit_profile_path, class: "breadcrumb" %>
           <%# else %>
             <%#= link_to "Contact", contact_profile_path(@profile.id), class: "btn btn-primary" %>
           <%# end %>
