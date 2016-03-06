@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :users
+  resources :contacts, only: [:new, :create, :show]
 
   resources :profiles do
     resources :projects

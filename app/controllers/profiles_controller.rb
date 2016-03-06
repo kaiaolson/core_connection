@@ -36,6 +36,8 @@ class ProfilesController < ApplicationController
   end
 
   def show
+    # @skill = Skill.new
+    # @skillset = Skillset.new
   end
 
   def edit
