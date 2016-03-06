@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       sign_in(@user)
-      redirect_to new_profile_path(@user), notice: "User created"
+      redirect_to new_profile_path, notice: "User created"
     else
       render :new
     end
@@ -29,11 +29,11 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find params[:id]
-    if @user.update(status: params[:status])
-      redirect_to user_path(@user), notice: "User updated successfully."
+    if @user.update user_params
+      redirect_to profile_path(current_user_profile), notice: "User updated successfully."
     else
       flash[:notice] = "User not updated."
-      redirect_to users_path
+      render :edit
     end
   end
 
