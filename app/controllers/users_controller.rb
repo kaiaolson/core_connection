@@ -33,21 +33,26 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find params[:id]
-    respond_to do |format|
+    # respond_to do |format|
       if @user.update user_params
-        format.html { redirect_to user_path(@user), notice: "Profile updated" }
-        format.js   { render :update_user }
+        redirect_to user_path(@user), notice: "Profile updated"
+        # format.js   { render :update_user }
       else
-        format.html { flash[:alert] = "Update failed!"
-                      render :edit }
-        format.js   { render :update_failed }
+        flash[:alert] = "Update failed!"
+                      render :edit
+        # format.js   { render :update_failed }
       end
     end
   end
 
-  # Do we need #destroy?
-  # def destroy
-  # end
+
+  def destroy
+    @user = User.find params[:id]
+    dependent_profile = Profile.find_by_user_id(@user)
+    dependent_profile.destroy
+    @user.destroy
+    redirect_to users_path, notice: "User deleted successfully!"
+  end
 
   private
 

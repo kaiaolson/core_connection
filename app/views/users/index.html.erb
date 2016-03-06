@@ -8,7 +8,7 @@
       </div>
       <div class="col-sm-3">
         <%= link_to "Approve", user_path(user, user: {status: true}), remote: true, method: :patch, class: "btn btn-success"  %>
-        <%= link_to "Delete", user_path(user), remote: true, method: :delete, data: {confirm: "Are you sure you want to delete #{user.full_name}?"}, class: "btn btn-primary" %>
+        <%= link_to "Delete", user_path(user), method: :delete, data: {confirm: "Are you sure you want to delete #{user.full_name}?"}, class: "btn btn-primary" %>
       </div>
     </div>
   <% end %>
@@ -23,7 +23,7 @@
         <p><%= user.full_name %><br><%= user.email %></p>
       </div>
       <div class="col-sm-3">
-        <%= link_to "Delete", user_path(user), remote: true, method: :delete, data: {confirm: "Are you sure you want to delete #{user.full_name}?"}, class: "btn btn-primary" %>
+        <%= link_to "Delete", user_path(user), method: :delete, data: {confirm: "Are you sure you want to delete #{user.full_name}?"}, class: "btn btn-primary" %>
       </div>
     </div>
   <% end %>
