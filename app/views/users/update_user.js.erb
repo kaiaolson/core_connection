@@ -1,0 +1,4 @@
+$("#<%= dom_id(@user) %>").fadeOut(400, function(){
+  $("#approved_users").append($(this));
+  // $(this).remove();
+});

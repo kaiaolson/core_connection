@@ -1,5 +1,5 @@
 class ExperiencesController < ApplicationController
-  
+
   before_action :find_experience, only: [:edit, :update, :destroy]
   before_action :find_profile, only: [:edit, :update, :destroy]
   before_action :authenticate_user
@@ -24,13 +24,13 @@ class ExperiencesController < ApplicationController
       redirect_to profile_path(current_user_profile), notice: "Work experience updated!"
     else
       flash[:alert] = "Error updating experience!"
-      render new_profile_experience(current_user_profile)
+      render new_profile_experience(@profile)
     end
   end
 
   def destroy
     @experience.destroy
-    redirect_to profile_path(current_user_profile)
+    redirect_to profile_path(@profile)
   end
 
   private
@@ -43,8 +43,12 @@ class ExperiencesController < ApplicationController
     params.require(:experience).permit(:job_title, :description, :company_url, :image, :from_date, :to_date, :company_name)
   end
 
+  def user_from_request
+    Profile.find_by_id(params[:profile_id]).user
+  end
+
   def authorize_user
-    if !(can? :manage, @education) || !((user_from_request == current_user) || (current_user.admin))
+    if !(can? :manage, @experience) || !((user_from_request == current_user) || (current_user.admin))
       redirect_to root_path, alert: "ACCESS DENIED"
     end
   end
