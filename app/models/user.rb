@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_secure_password
 
+  has_one :profile
+
   validates :password, length: {minimum:6}
   validates :first_name, presence: true
   validates :last_name, presence: true
