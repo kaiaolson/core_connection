@@ -8,7 +8,7 @@ class ExperiencesController < ApplicationController
       redirect_to profile_path(@profile), notice: "Work experience added!"
     else
       flash[:alert] = "Error adding work experience!"
-      render new_profile_link(@profile)
+      render new_profile_experience(@profile)
     end
   end
 
@@ -25,7 +25,7 @@ class ExperiencesController < ApplicationController
       redirect_to profile_path(@profile), notice: "Work experience updated!"
     else
       flash[:alert] = "Error updating experience!"
-      render new_profile_link(@profile)
+      render new_profile_experience(@profile)
     end
   end
 
