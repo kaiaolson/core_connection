@@ -1,5 +1,10 @@
 class ProjectsController < ApplicationController
+
   before_action :find_project, only: [:edit, :update, :destroy]
+  before_action :find_profile, only: [:edit, :update, :destroy]
+  before_action :authenticate_user
+  before_action :authorize_user, only: [:edit, :update, :destroy]
+
 
   def create
     @project = Project.new project_params
@@ -35,6 +40,12 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:title, :description, :project_url, :github_url)
+  end
+
+  def authorize_user
+    if !(can? :manage, @education) || !((user_from_request == current_user) || (current_user.admin))
+      redirect_to root_path, alert: "ACCESS DENIED"
+    end
   end
 
 end
