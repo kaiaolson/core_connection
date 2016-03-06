@@ -14,9 +14,6 @@ class Profile < ActiveRecord::Base
   # associations for education
   has_many :educations, dependent: :destroy
 
-  # associations for links (a profile can have more than 1 set of links right??)
-  # has_many :links, dependent: :destroy
-
 
   # MODEL VALIDATIONS
   # limit max to 140 characters for tag_line
@@ -25,12 +22,13 @@ class Profile < ActiveRecord::Base
   validates :description, presence: true, length: {maximum: 500}
   validates_inclusion_of :availability, in: [true, false]
 
+  # Social media link validations
+  validates :twitter_url,
+            :linkedin_url,
+            :github_url, uniqueness: true, allow_blank: true, :url => {:allow_blank => true}
+
   # def user_full_name
   #   user.full_name
   # end
-
-  def links
-    Link.where(profile_id: id)[0]
-  end
 
 end

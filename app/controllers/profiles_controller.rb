@@ -39,7 +39,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:tagline, :description, :availability, :resume, :photo)
+    params.require(:profile).permit(:tagline, :description, :availability, :resume, :photo, :twitter_url, :linkedin_url, :github_url)
   end
 
   def find_profile

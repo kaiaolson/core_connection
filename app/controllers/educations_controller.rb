@@ -8,7 +8,7 @@ class EducationsController < ApplicationController
       redirect_to profile_path(@profile), notice: "Education added!"
     else
       flash[:alert] = "Error adding education!"
-      render new_profile_link(@profile)
+      render new_profile_education(@profile)
     end
 
   end
@@ -26,7 +26,7 @@ class EducationsController < ApplicationController
       redirect_to profile_path(@profile), notice: "Education updated!"
     else
       flash[:alert] = "Error updating education!"
-      render new_profile_link(@profile)
+      render new_profile_education(@profile)
     end
 
   end

@@ -27,10 +27,6 @@
 #                            tagline:      Faker::Hipster.sentences(1),
 #                            description:  Faker::Hipster.paragraph,
 #                            availability: [true,false].sample)
-#   Link.create(profile_id:   profile.id,
-#               linkedin_url: Faker::Internet.url('linkedin.com'),
-#               twitter_url:  Faker::Internet.url('twitter.com'),
-#               github_url:   Faker::Internet.url('github.com'))
 #   4.times do
 #     Skillset.create(profile_id: profile.id,
 #                     skill_id: Skill.all.sample.id,
@@ -63,4 +59,4 @@ Profile.all.each do |profile|
   end
 end
 
-Skillset.create(profile_id: 23, skill_id: Skill.all.sample.id, proficiency: (1..10).to_a.sample)
+# Skillset.create(profile_id: 23, skill_id: Skill.all.sample.id, proficiency: (1..10).to_a.sample)

@@ -16,13 +16,11 @@
       </div>
       <div class="row">
         <div class="col-sm-10">
-          <% if @profile.links %>
-          <%= link_to "Linked In", @profile.links.linkedin_url %>
-          <%= link_to "Twitter", @profile.links.twitter_url %>
-          <%= link_to "GitHub", @profile.links.github_url %>
-          <% end %>
+          <%= link_to "Linked In", @profile.linkedin_url %>
+          <%= link_to "Twitter", @profile.twitter_url %>
+          <%= link_to "GitHub", @profile.github_url %>
           <% if @profile.resume %>
-          <%= link_to "Download Resume", @profile.resume.url %>
+            <%= link_to "Download Resume", @profile.resume.url %>
           <% end %>
         </div>
         <div class="col-sm-2">
