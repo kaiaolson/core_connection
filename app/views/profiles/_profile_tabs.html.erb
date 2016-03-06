@@ -34,6 +34,7 @@
       <p><%= link_to "Edit Link", edit_profile_link_path(@profile, @profile.links) %></p>
     </div>
     <% end %>
+    <%#= render "/links/form" %>
   </div>
   <div id="skills">
     <% @profile.skills.each do |skill| %>
