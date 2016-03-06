@@ -1,0 +1,6 @@
+<h1>List of all Skill Categories</h1>
+<br />
+<% @categories.each do |category|%>
+  <p><%= link_to category.name, category_path(category) %></p>
+  <hr />
+<% end %>

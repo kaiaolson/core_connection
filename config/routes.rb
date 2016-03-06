@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :contacts, only: [:new, :create, :show]
+  resources :categories
 
   resources :profiles do
     resources :projects
