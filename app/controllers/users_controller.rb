@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.all
+    @pending_users = User.where(status: false)
+    @approved_users = User.where(status: true)
   end
 
   def new
@@ -23,7 +24,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find params[:id]
-    # TODO add other models like skills, etc
   end
 
   def edit
@@ -32,17 +32,22 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find params[:id]
-    if @user.update user_params
-      redirect_to profile_path(current_user_profile), notice: "Profile updated"
+    if @user.update(status: params[:status])
+      redirect_to user_path(@user), notice: "User updated successfully."
     else
-      flash[:alert] = "Update failed!"
-      render :edit
+      flash[:notice] = "User not updated."
+      redirect_to users_path
     end
   end
 
-  # Do we need #destroy?
-  # def destroy
-  # end
+
+  def destroy
+    @user = User.find params[:id]
+    dependent_profile = Profile.find_by_user_id(@user)
+    dependent_profile.destroy
+    @user.destroy
+    redirect_to users_path, notice: "User deleted successfully!"
+  end
 
   private
 
