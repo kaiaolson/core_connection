@@ -2,22 +2,15 @@ $brand-primary: darken(#CB0D0F, 6.5%);
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-header {
-  background-color: #CB0D0F;
-  padding-top: 15px;
-  padding-bottom: 15px
-}
-header img {
-  margin-left: 80px;
-  height: 45px;
+body {
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-size: 1.4em;
+  line-height: 1.5em;
+  color: #333;
+  background-color: #fff
 }
 
-.navbar {
-  background-color: #CB0D0F;
-}
-#logo {
- width: 50%
-}header {
+header {
   background-color: #CB0D0F;
   padding-top: 15px;
   padding-bottom: 15px
@@ -62,13 +55,16 @@ nav.hack-rightside {
 }
 .navbar-default .navbar-nav>li>a {
   color: white;
-  font-weight: bold;
+  font-weight: 300;
+  font-size: .9em;
+}
+.navbar-default .navbar-nav>li>a:hover {
+  color: white;
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
   background-color: transparent;
   color: #fff;
-  font-weight: bold;
 }
 
 .no-padding {
@@ -79,34 +75,48 @@ nav.hack-rightside {
 /*****************************************************************
       Headlines for multiple pages
 ******************************************************************/
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  color:#CB0D0F;
+  font-size: 3em;
+  font-weight: 700;
+}
 .page-headline {
   text-align: center;
-  font-family: 'Righteous', cursive;
-    color:#CB0D0F;
-    font-size: 700%;
-    margin-top: 12%;
-}
-.get-connected {
-  text-align: left;
-  font-family: 'Righteous', cursive;
-    color:#CB0D0F;
-    font-size: 40px;
-    // margin-top: 12%;
+  font-size: 5em;
+  margin: 5% 0px 8%;
 }
 .navbar-default .navbar-brand {
   color: #FFF;
-  font-weight: bold;
+}
+.text-upcase {
+  text-transform: uppercase;
 }
 /*****************************************************************
     Index Styling
 ******************************************************************/
-.index-students {
+a div.index-students {
+  text-transform: uppercase;
+  font-size: 25px;
   text-decoration: none;
-  color: black;
-  font-weight: bold;
-  font-family: 'Righteous', cursive;
-  font-size: 25px
-  }
+  border: 2px solid #CB0D0F;
+  padding: 30px;
+  width: 400px;
+  margin:0 auto;
+  transition: color 0.5s, background-color 0.5s;
+  -webkit-transition: color 0.5s, background-color 0.5s;
+}
+a div.index-students:hover {
+  background-color: #CB0D0F;
+  color: #fff ;
+  text-decoration: none !important;
+}
+.no-underline {
+  text-decoration: none;
+}
+.no-underline:hover {
+  text-decoration: none;
+}
 .breadcrumb {
   display: inline-block;
   font-weight: bold;
@@ -116,7 +126,8 @@ nav.hack-rightside {
     Social-media-link
 ******************************************************************/
 .social-media-links {
-    display: list-item;
+    display: inline-block;
     list-style-type: none;
     background-color: #F5F5F5;
+    font-size: 1em;
 }

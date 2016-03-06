@@ -14,11 +14,11 @@
       </div>
       <div class="row">
         <div class="col-sm-10">
-          <%= link_to "LinkedIn", @profile.linkedin_url, class: "social-media-links" %>
-          <%= link_to "Twitter", @profile.twitter_url, class: "social-media-links" %>
-          <%= link_to "GitHub", @profile.github_url, class: "social-media-links" %>
+          <%= link_to fa_icon("linkedin-square"), @profile.linkedin_url, class: "social-media-links" %>
+          <%= link_to fa_icon("twitter"), @profile.twitter_url, class: "social-media-links" %>
+          <%= link_to fa_icon("github"), @profile.github_url, class: "social-media-links" %>
           <% if @profile.resume %>
-            <%= link_to "Download Resume", @profile.resume.url %>
+            <%= link_to fa_icon("download"), @profile.resume.url %>
           <% end %>
         </div>
         <div class="col-sm-2">
