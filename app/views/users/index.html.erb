@@ -1,1 +1,30 @@
-<h1>WELCOME MIGHTY ADMIN!</h1>
+<h1>Welcome to the Admin Control Panel!</h1>
+
+<div id="pending_users">
+  <% @pending_users.each do |user| %>
+    <div id="<%= dom_id(user) %>">
+      <div class="col-sm-9">
+        <p><%= user.full_name %><br><%= user.email %></p>
+      </div>
+      <div class="col-sm-3">
+        <%= link_to "Approve", user_path(user, user: {status: true}), remote: true, method: :patch, class: "btn btn-success"  %>
+        <%= link_to "Delete", user_path(user), remote: true, method: :delete, data: {confirm: "Are you sure you want to delete #{user.full_name}?"}, class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="row"><p>-------------------------------------------------</p></div>
+
+<div id="approved_users">
+  <% @approved_users.each do |user| %>
+    <div id="<%= dom_id(user) %>">
+      <div class="col-sm-9">
+        <p><%= user.full_name %><br><%= user.email %></p>
+      </div>
+      <div class="col-sm-3">
+        <%= link_to "Delete", user_path(user), remote: true, method: :delete, data: {confirm: "Are you sure you want to delete #{user.full_name}?"}, class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

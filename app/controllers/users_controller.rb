@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.all
+    @pending_users = User.where(status: false)
+    @approved_users = User.where(status: true)
   end
 
   def new
@@ -32,11 +33,15 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find params[:id]
-    if @user.update user_params
-      redirect_to user_path(@user), notice: "Profile updated"
-    else
-      flash[:alert] = "Update failed!"
-      render :edit
+    respond_to do |format|
+      if @user.update user_params
+        format.html { redirect_to user_path(@user), notice: "Profile updated" }
+        format.js   { render :update_user }
+      else
+        format.html { flash[:alert] = "Update failed!"
+                      render :edit }
+        format.js   { render :update_failed }
+      end
     end
   end
 
