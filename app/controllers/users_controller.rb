@@ -36,7 +36,6 @@ class UsersController < ApplicationController
       redirect_to user_path(@user), notice: "Profile updated successfully."
     else
       flash[:notice] = "Profile not updated."
-      print @user.errors.full_messages
       redirect_to users_path
     end
   end
