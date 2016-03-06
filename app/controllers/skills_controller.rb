@@ -16,7 +16,7 @@ class SkillsController < ApplicationController
       @skillset = Skillset.new(profile_id: @profile.id, skill_id: @skill.id, proficiency: @proficiency)
       @skillset.save
       flash[:notice] = "Skillset created successfully"
-      redirect_to profile_path(current_user_profile), notice: "Skill has been created!"
+      redirect_to edit_profile_path(current_user_profile), notice: "Skill has been created!"
     else
       flash.now[:alert] = "Skill wasn't created. Check errors below"
       render :new
