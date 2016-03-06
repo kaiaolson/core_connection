@@ -18,7 +18,7 @@
           <%= link_to fa_icon("twitter"), @profile.twitter_url, class: "social-media-links" %>
           <%= link_to fa_icon("github"), @profile.github_url, class: "social-media-links" %>
           <% if @profile.resume %>
-            <%= link_to fa_icon("download"), @profile.resume.url %>
+            <%= link_to fa_icon("download"), @profile.resume_url %>
           <% end %>
         </div>
         <div class="col-sm-2">
