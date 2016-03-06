@@ -32,8 +32,7 @@ $(document).ready(function(){
     });
   });
   $(".filter-none").click(function(){
-    $(".primary-content, #profiles").fadeOut(500, function(){
-      $("#profiles").hide();
+    $(".primary-content").fadeOut(500, function(){
       $("#home-buttons").show();
       $(".primary-content, #home-buttons").fadeIn(500);
     });
