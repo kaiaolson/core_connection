@@ -32,21 +32,23 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-sm-3">
-    <h4 align="center">Projects</h4>
+<div id="profile-tabs">
+  <ul>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+  </ul>
+  <div id="projects">
     <%= render "/projects/display_projects" %>
   </div>
-  <div class="col-sm-3">
-    <h4 align="center">Education</h4>
+  <div id="education">
     <%= render "/educations/display_education" %>
   </div>
-  <div class="col-sm-3">
-    <h4 align="center">Experience</h4>
+  <div id="experience">
     <%= render "/experiences/display_experiences" %>
   </div>
-  <div class="col-sm-3">
-    <h4 align="center">Skills</h4>
+  <div id="skills">
     <%= render "/skills/display_skills" %>
   </div>
 </div>

@@ -35,4 +35,9 @@ class Profile < ActiveRecord::Base
     user.full_name
   end
 
+  def approved
+    Profile.all.each do |profile|
+      profile if profile.user.status
+    end
+  end
 end
