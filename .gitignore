@@ -76,3 +76,6 @@ bower.json
 
 # Ignore appkeys file
 /config/initializers/app_keys.rb
+
+# Ignore uploaded profile photos & resumes
+public/uploads/
