@@ -14,25 +14,12 @@
     <%= render "form" %>
   </div>
   <div id="links">
-    <% if @profile.links %>
-    <div class="col-sm-9">
-      <p><%= @profile.links.linkedin_url%></p>
-    </div>
-    <div class="col-sm-3">
-      <p><%= link_to "Edit Link", edit_profile_link_path(@profile, @profile.links) %></p>
-    </div>
-    <div class="col-sm-9">
-      <p><%= @profile.links.twitter_url%></p>
-    </div>
-    <div class="col-sm-3">
-      <p><%= link_to "Edit Link", edit_profile_link_path(@profile, @profile.links) %></p>
-    </div>
-    <div class="col-sm-9">
-      <p><%= @profile.links.github_url%></p>
-    </div>
-    <div class="col-sm-3">
-      <p><%= link_to "Edit Link", edit_profile_link_path(@profile, @profile.links) %></p>
-    </div>
+    <p>LinkedIn: <%= @profile.linkedin_url %></p>
+    <p>Twitter: <%= @profile.twitter_url %></p>
+    <p>GitHub: <%= @profile.github_url %></p>
+    <h3>Add Links</h3>
+    <%= simple_form_for @profile do |f| %>
+      <%= render "link_form", f: f%>
     <% end %>
   </div>
   <div id="skills">
@@ -43,6 +30,8 @@
         <%= link_to "Delete", profile_skill_path(@profile, skill), method: :delete, data: {confirm: "Are you sure?"} %>
       <% end %>
     <% end %>
+    <h3>Add Skill</h3>
+    <%= render "/skills/form" %>
   </div>
   <div id="projects">
     <% @profile.projects.each do |project| %>
@@ -60,6 +49,8 @@
       </div>
       <hr>
     <% end %>
+    <h3>Add Project</h3>
+    <%= render "/projects/form" %>
   </div>
   <div id="education">
     <% @profile.educations.each do |education| %>
@@ -80,6 +71,8 @@
       </div>
       <hr>
     <% end %>
+    <h3>Add Education</h3>
+    <%= render "/educations/form" %>
   </div>
   <div id="experience">
     <% @profile.experiences.each do |experience| %>
@@ -97,5 +90,7 @@
       </div>
       <hr>
     <% end %>
+    <h3>Add Experience</h3>
+    <%= render "/experiences/form" %>
   </div>
 </div>

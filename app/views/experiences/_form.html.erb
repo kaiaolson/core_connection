@@ -1,10 +1,39 @@
-<%= simple_form_for [current_user_profile, @experience] do |f| %>
-  <%= f.input :job_title %>
-  <%= f.input :company_name %>
-  <%= f.input :description %>
-  <%= f.input :from_date %>
-  <%= f.input :to_date %>
-  <%= f.input :company_url %>
-  <%= f.input :image, as: :file %>
+<% if @experience %>
+<ul>
+  <% @experience.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= form_for [current_user_profile, @experience] do |f| %>
+  <div class="form-group">
+    <%= f.label :job_title %>
+    <%= f.text_field :job_title, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :company_name %>
+    <%= f.text_field :company_name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :company_url %>
+    <%= f.text_field :company_url, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :from_date %>
+    <%= f.date_field :from_date, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :to_date %>
+    <%= f.date_field :to_date, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, multiple: true,  class: "form-control" %>
+  </div>
   <%= f.submit class: "btn btn-primary" %>
 <% end %>

@@ -1,8 +1,24 @@
 class ProfilesController < ApplicationController
   before_action :find_profile, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user, except: [:index, :show]
+  before_action :authorize_user, only: [:edit, :update, :destroy]
 
   def index
-    @profiles = Profile.all
+    respond_to do |format|
+      if params[:available]
+        format.html { @profiles = Profile.where(availability: true) }
+        format.js { @profiles = Profile.where(availability: true)
+                    render :home_fadeout}
+      elsif params[:all]
+        format.html { @profiles = Profile.all }
+        format.js { @profiles = Profile.all
+                    render :home_fadeout }
+      else
+        format.html { @profiles = Profile.all }
+        format.js { @profiles = Profile.all
+                    render :home_fadein}
+      end
+    end
   end
 
   def new
@@ -11,8 +27,9 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new profile_params
+    @profile.user = current_user
     if @profile.save
-      redirect_to profile_path(@profile), notice: "Profile created"
+      redirect_to edit_profile_path(@profile), notice: "Profile created"
     else
       render :new
     end
@@ -22,6 +39,10 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+    @skill = Skill.new
+    @education = Education.new
+    @experience = Experience.new
+    @project = Project.new
   end
 
   def update
@@ -39,10 +60,16 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:tagline, :description, :availability, :resume, :photo)
+    params.require(:profile).permit(:tagline, :description, :availability, :resume, :photo, :twitter_url, :linkedin_url, :github_url)
   end
 
   def find_profile
     @profile = Profile.find params[:id]
+  end
+
+  def authorize_user
+    unless can? :manage, @profile
+      redirect_to root_path, alert: "ACCESS DENIED!"
+    end
   end
 end
