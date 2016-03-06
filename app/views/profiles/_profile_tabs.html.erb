@@ -14,7 +14,13 @@
     <%= render "form" %>
   </div>
   <div id="links">
-    <%= render "link_form" %>
+    <p>LinkedIn: <%= @profile.linkedin_url %></p>
+    <p>Twitter: <%= @profile.twitter_url %></p>
+    <p>GitHub: <%= @profile.github_url %></p>
+    <h3>Add Links</h3>
+    <%= simple_form_for @profile do |f| %>
+      <%= render "link_form", f: f%>
+    <% end %>
   </div>
   <div id="skills">
     <% @profile.skills.each do |skill| %>
