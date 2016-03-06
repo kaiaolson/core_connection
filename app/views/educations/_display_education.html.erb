@@ -1,0 +1,22 @@
+<div class="col-sm-12">
+  <% @profile.educations.each do |education| %>
+    <div class="col-sm-9">
+      <% if education.image %>
+        <div class="logo-thumb">
+          <%= image_tag education.image.url(:logo_thumb) %>
+        </div>
+      <% end %>
+      <p><%= education.school %></p>
+      <p><%= education.degree %></p>
+      <p><%= education.description %></p>
+    </div>
+    <div class="col-sm-3">
+      <p><%= link_to education.school_url %></p>
+      <% if user_signed_in? %>
+        <%= link_to "Edit", edit_profile_education_path(@profile, education) %>
+        <%= link_to "Delete", profile_education_path(@profile, education), method: :delete, data: {confirm: "Are you sure?"} %>
+      <% end %>
+    </div>
+    <hr>
+  <% end %>
+</div>

@@ -19,20 +19,20 @@ class ProfilesController < ApplicationController
     @profile = Profile.new profile_params
     @profile.user = current_user
     if @profile.save
-      redirect_to profile_path(@profile), notice: "Profile created"
+      redirect_to edit_profile_path(@profile), notice: "Profile created"
     else
       render :new
     end
   end
 
   def show
+  end
+
+  def edit
     @skill = Skill.new
     @education = Education.new
     @experience = Experience.new
     @project = Project.new
-  end
-
-  def edit
   end
 
   def update
