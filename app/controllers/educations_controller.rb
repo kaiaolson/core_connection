@@ -17,11 +17,9 @@ class EducationsController < ApplicationController
   end
 
   def edit
-    byebug
   end
 
   def update
-    byebug
     if @education.update education_params
       redirect_to profile_path(@profile), notice: "Education updated!"
     else
@@ -50,13 +48,13 @@ class EducationsController < ApplicationController
     Profile.find_by_id(params[:profile_id]).user
   end
 
-  def find_profile
-    if current_user.admin
-      @profile = Profile.find params[:profile_id]
-    else
-      @profile = current_user_profile
-    end
-  end
+  # def find_profile
+  #   if current_user.admin
+  #     @profile = Profile.find params[:profile_id]
+  #   else
+  #     @profile = current_user_profile
+  #   end
+  # end
 
   def authorize_user
     if !(can? :manage, @education) || !((user_from_request == current_user) || (current_user.admin))

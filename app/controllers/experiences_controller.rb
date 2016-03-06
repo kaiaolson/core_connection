@@ -1,10 +1,13 @@
 class ExperiencesController < ApplicationController
+  
   before_action :find_experience, only: [:edit, :update, :destroy]
+  before_action :find_profile, only: [:edit, :update, :destroy]
+  before_action :authenticate_user
+  before_action :authorize_user
 
   def create
     @experience = Experience.new experience_params
     @experience.profile = current_user_profile
-
     if @experience.save
       redirect_to edit_profile_path(current_user_profile), notice: "Work experience added!"
     else
@@ -38,6 +41,12 @@ class ExperiencesController < ApplicationController
 
   def experience_params
     params.require(:experience).permit(:job_title, :description, :company_url, :image, :from_date, :to_date, :company_name)
+  end
+
+  def authorize_user
+    if !(can? :manage, @education) || !((user_from_request == current_user) || (current_user.admin))
+      redirect_to root_path, alert: "ACCESS DENIED"
+    end
   end
 
 end
