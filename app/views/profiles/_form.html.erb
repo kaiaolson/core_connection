@@ -6,6 +6,6 @@
   <%= f.input :twitter_url, label: fa_icon("twitter"), label_html: {class: "form-link-icon"} %>
   <%= f.input :github_url, label: fa_icon("github"), label_html: {class: "form-link-icon"} %>
   <%= f.input :photo, as: :file, multiple: true, hint: 'JPG, JPEG, GIF, PNG' %>
-  <%= f.input :resume, as: :file, hint: 'Must be a PDF.' %>
+  <%= f.input :resume, as: :file, hint: 'PDF, DOC, TXT, HTML, ODF' %>
   <%= f.submit class: "btn btn-primary" %>
 <% end %>
