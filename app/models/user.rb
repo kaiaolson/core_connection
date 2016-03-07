@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_secure_password
 
+  attr_accessor :current_password
+
   has_one :profile
 
   validates :password, length: {minimum:6}, on: :create
@@ -9,6 +11,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true,
                     uniqueness: true,
                     format: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+  validates :password, presence: true, if: :changing_password?
+  validates :password_confirmation, presence: true, if: :changing_password?
 
   def full_name
     "#{first_name} #{last_name}".titleize
@@ -26,5 +30,11 @@ class User < ActiveRecord::Base
       self[column] = SecureRandom.urlsafe_base64
     end while User.exists?(column => self[column])
   end
+
+  private
+
+ def changing_password?
+   current_password.present?
+ end
 
 end

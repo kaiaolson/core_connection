@@ -50,10 +50,29 @@ class UsersController < ApplicationController
     redirect_to users_path, notice: "User deleted successfully!"
   end
 
+  def edit_password
+    @user = User.find params[:id]
+  end
+
+  def update_password
+     @user = User.find params[:id]
+  if @user.authenticate(user_params[:current_password]) && @user.update(edit_password_params)
+    redirect_to root_path, notice: "You have changed your password"
+  else
+    flash.now[:alert] = "make sure password is correct"
+    render :edit_password
+  end
+end
+
   private
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :password, :password_confirmation, :status, :admin)
+    params.require(:user).permit(:email, :first_name, :last_name, :password, :password_confirmation, :status, :admin, :current_password)
   end
+
+  def edit_password_params
+    params.require(:user).permit([:current_password, :password, :password_confirmation])
+  end
+
 
 end
