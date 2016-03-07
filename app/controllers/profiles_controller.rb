@@ -5,9 +5,9 @@ class ProfilesController < ApplicationController
 
   def index
     if params[:available]
-      @profiles = Profile.where(availability: true)
+      @profiles = Profile.where(availability: true).page(params[:page]).per(8)
     else
-      @profiles = Profile.all
+      @profiles = Profile.all.page(params[:page]).per(8)
     end
   end
 
