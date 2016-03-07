@@ -12,16 +12,16 @@
       </div>
       <div class="row">
         <div class="col-sm-6">
-          <% unless @profile.linkedin_url.nil? %>
+          <% unless @profile.linkedin_url.empty? %>
           <%= link_to fa_icon("linkedin-square"), @profile.linkedin_url, target: "_blank", class: "social-media-links" %>
           <% end %>
-          <% if @profile.twitter_url%>
+          <% unless @profile.twitter_url.empty? %>
           <%= link_to fa_icon("twitter"), @profile.twitter_url, target: "_blank", class: "social-media-links" %>
           <% end %>
-          <% if @profile.github_url %>
+          <% unless @profile.github_url.empty? %>
           <%= link_to fa_icon("github"), @profile.github_url, target: "_blank", class: "social-media-links" %>
           <% end %>
-          <% if @profile.resume_url %>
+          <% unless @profile.resume_url.nil? %>
           <%= link_to fa_icon("download"), @profile.resume_url, target: "_blank", class: "social-media-links" %>
           <% end %>
         </div>
@@ -29,7 +29,7 @@
           <% if can? :manage, @profile %>
             <%= link_to "Edit Profile", edit_profile_path(@profile), class: "btn btn-primary" %>
           <% end %>
-          <%= link_to "Contact #{@profile.user_full_name}", new_contact_path, class: "btn btn-info" %>
+          <%= link_to "Contact #{@profile.user_full_name}", new_profile_contact_path(@profile), class: "btn btn-info" %>
         </div>
       </div>
     </div>
