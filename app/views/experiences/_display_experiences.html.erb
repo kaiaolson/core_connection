@@ -1,18 +1,22 @@
 <div class="col-sm-12">
   <% @profile.experiences.each do |experience| %>
-    <div class="col-sm-12">
-      <% if experience.image %>
-        <div class="logo-thumb">
-          <%= image_tag experience.image.url(:logo_thumb) %>
-        </div>
-      <% end %>
-      <p><%= experience.job_title %> at <%= link_to "#{experience.company_name}", experience.company_url%></p>
-      <p>From: <%= experience.from_date %> to: <%= experience.to_date %></p>
-      <p><%= experience.description %></p>
-      <% if can? :manage, @profile %>
-        <%= link_to "Edit", edit_profile_experience_path(@profile, experience) %>
-        <%= link_to "Delete", profile_experience_path(@profile, experience), method: :delete, data: {confirm: "Are you sure?"} %>
-      <% end %>
+    <div class="row">
+      <div class="col-sm-9">
+        <% if experience.image %>
+          <p class="logo-thumb">
+            <%= image_tag experience.image.url(:logo_thumb) %>
+          </p>
+        <% end %>
+        <h3><%= experience.job_title %> at <%= link_to "#{experience.company_name}", experience.company_url%></h3>
+        <p>From: <%= experience.from_date %> to: <%= experience.to_date %></p>
+        <p><%= experience.description %></p>
+      </div>
+      <div class="col-sm-3">
+        <% if can? :manage, @profile %>
+          <%= link_to "Edit", edit_profile_experience_path(@profile, experience), class: "btn btn-warning" %>
+          <%= link_to "Delete", profile_experience_path(@profile, experience), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-primary" %>
+        <% end %>
+      </div>
     </div>
     <hr>
   <% end %>
