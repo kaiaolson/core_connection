@@ -1,5 +1,5 @@
 <%= simple_form_for @profile do |f| %>
-  <%= f.input :tagline %>
+  <%= f.input :tagline, label: "Headline" %>
   <%= f.input :description %>
   <%= f.input :availability %>
   <%= f.input :linkedin_url, label: fa_icon("linkedin"), label_html: {class: "form-link-icon"} %>
