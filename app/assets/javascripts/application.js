@@ -20,32 +20,8 @@
 //= require_tree .
 
 $(document).ready(function(){
-  // $(".filter-students").click(function(){
-  //   $(".primary-content").fadeOut(500, function(){
-  //     $("#home-buttons").hide();
-  //     $("#profiles").show();
-  //     $(this).fadeIn(500);
-  //   });
-  // });
-  // $(".filter-none").click(function(){
-  //   $(".primary-content").fadeOut(500, function(){
-  //     $("#home-buttons").show();
-  //     $(".primary-content, #home-buttons").fadeIn(500);
-  //   });
-  // });
 
   jQuery(".best_in_place").best_in_place();
-
-  $("#skills").click(function() {
-    $('.progress_bar').each(function() {
-      var progressvalue = $(this).attr('value');
-      $(this).progressbar({
-        value: progressvalue
-      });
-      console.log(progressvalue);
-    });
-
-  });
 
 });
 
