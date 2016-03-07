@@ -1,0 +1,7 @@
+
+<%= simple_form_for @user, :url => {:action => "update_password"} do |f| %>
+  <%= f.input :current_password %>
+  <%= f.input :password  %>
+  <%= f.input :password_confirmation  %>
+  <%= f.button :submit, class: "btn btn-primary"  %>
+  <% end %>
