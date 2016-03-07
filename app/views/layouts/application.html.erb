@@ -80,19 +80,20 @@
 
     </header>
 
-    <div class="container-fluid">
-      <% if notice %>
-        <div class="alert alert-success"><%= notice %></div>
-      <% end %>
-      <% if alert %>
-        <div class="alert alert-danger"><%= alert %></div>
-      <% end %>
-    </div>
+  <div class="container-main-content">
+      <div class="container-fluid">
+        <% if notice %>
+          <div class="alert alert-success"><%= notice %></div>
+        <% end %>
+        <% if alert %>
+          <div class="alert alert-danger"><%= alert %></div>
+        <% end %>
+      </div>
 
-    <div class="container-fluid primary-content">
-      <%= yield %>
+      <div class="container-fluid primary-content">
+        <%= yield %>
+      </div>
     </div>
-
   </div>
 </body>
 </html>
