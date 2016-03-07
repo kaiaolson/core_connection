@@ -1,9 +1,9 @@
 <div class="splash-page container-fluid">
-  <div id="home-buttons">
-    <div class="col-sm-6 text-center">
+  <div id="home-buttons" class="full-height">
+    <div class="col-sm-6 text-center full-height">
       <%= link_to(raw("<button class='index-students filter-students'>Available Students</button>"), profiles_path(available: true), class: "no-underline") %>
     </div>
-    <div class="col-sm-6 text-center">
+    <div class="col-sm-6 text-center full-height">
       <%= link_to(raw("<button class='index-students filter-students'>All Students</button>"), profiles_path, class: "no-underline") %>
     </div>
   </div>

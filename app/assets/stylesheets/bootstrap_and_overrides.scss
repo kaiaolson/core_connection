@@ -3,12 +3,20 @@ $primary-color: darken(#CB0D0F, 6.5%);
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-size: 1.4em;
   line-height: 1.5em;
   color: #333;
-  min-height: 500px;
+  margin-bottom: 300px;
+}
+.container-main-content {
+  min-height: 600px;
 }
 
 .splash-page {
@@ -17,9 +25,18 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  min-height: 600px;
 }
 
-a img{
+.full-height {
+  height: 600px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+a.filter-none img{
   margin-left: 80px;
   height: 45px;
 }
@@ -70,11 +87,11 @@ span.dropdown-toggle {
 
 .container-main-content{
   margin-top: 66px;
-  padding-top: 20px;
 }
 
  /*------------------------------------------------------------------------------------*/
  /* Dropdown hover over */
+ /*------------------------------------------------------------------------------------*/
 
 .sidebar-nav {
     padding: 9px 0;
@@ -117,6 +134,12 @@ span.dropdown-toggle {
     top: 11px;
     left: -6px;
 }
+
+/*------------------------------------------------------------------------------------*/
+/* Pagination */
+/*------------------------------------------------------------------------------------*/
+
+
 /*****************************************************************
       Headlines for multiple pages
 ******************************************************************/
@@ -155,16 +178,18 @@ a button.index-students {
   text-transform: uppercase;
   font-size: 25px;
   text-decoration: none;
-  background-color: #fff;
-  border: 2px solid #CB0D0F;
+  color: #fff;
+  background-color: transparent;
+  border: 2px solid #fff;
   padding: 30px;
   width: 400px;
-  transition: color 0.5s, background-color 0.5s;
-  -webkit-transition: color 0.5s, background-color 0.5s;
-  margin-top: 20%;
+  transition: color 0.5s, background-color 0.5s, border 0.5s;
+  -webkit-transition: color 0.5s, background-color 0.5s, border 0.5s;
+  vertical-align: middle;
 }
 a button.index-students:hover {
   background-color: #CB0D0F;
+  border: 2px solid #CB0D0F;
   color: #fff ;
   text-decoration: none !important;
 }
@@ -194,6 +219,7 @@ a button.index-students:hover {
 .logo-thumb {
   float: left;
   display: inline-block;
+  margin-right: 20px;
 }
 .tabs-button {
 
@@ -205,14 +231,15 @@ a button.index-students:hover {
 
 footer {
   // border-top: 1px solid;
-  padding-top: 20px;
   background-color: #F5F5F5;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .footer-bottom {
   background: none repeat scroll 0 0 #2A2A2A;
-  padding: 40px;
-
+  padding: 60px;
 }
 
 .container {
