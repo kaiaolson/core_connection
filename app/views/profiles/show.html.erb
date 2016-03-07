@@ -37,7 +37,7 @@
 </div>
 
 <div id="profile-tabs" class="style-tabs">
-  <ul>
+  <ul class="ui-tabs">
     <li><a href="#projects">Projects</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#experience">Experience</a></li>
@@ -56,3 +56,10 @@
     <%= render "/skills/display_skills" %>
   </div>
 </div>
+
+<script>
+  $( "#profile-tabs" ).tabs().css({
+     'min-height': '200px',
+     'overflow': 'auto'
+  });
+</script>

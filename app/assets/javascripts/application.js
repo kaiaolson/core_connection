@@ -18,12 +18,6 @@
 //= require_tree .
 
 $(document).ready(function(){
-  $(function() {
-    $( "#profile-tabs" ).tabs().css({
-       'min-height': '200px',
-       'overflow': 'auto'
-    });
-  });
   $(".filter-students").click(function(){
     $(".primary-content").fadeOut(500, function(){
       $("#home-buttons").hide();
