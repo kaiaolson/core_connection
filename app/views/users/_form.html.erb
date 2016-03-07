@@ -8,3 +8,5 @@
   <% end %>
   <%= f.button :submit, class: "btn btn-primary"  %>
 <% end %>
+<br>
+<%= link_to "Change Password", edit_password_path(current_user) if user_signed_in? %>

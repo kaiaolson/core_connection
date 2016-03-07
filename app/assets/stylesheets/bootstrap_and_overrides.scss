@@ -42,6 +42,9 @@ body {
 .cc-messages {
   padding-top: 10px;
 }
+.alert {
+  margin-bottom: 0px !important;
+}
 
 span.dropdown-toggle {
   padding: 10px;
@@ -62,6 +65,10 @@ span.dropdown-toggle {
 
 .dropdown {
   padding-right: 10px;
+}
+
+a.logo img {
+  height: 60px;
 }
 
 #logo {
@@ -329,7 +336,8 @@ footer {
 
 .footer-bottom {
   background: none repeat scroll 0 0 #2A2A2A;
-  padding: 60px;
+  padding: 20px;
+  height: 175px;
 }
 
 .container {
@@ -376,7 +384,7 @@ p {
 }
 
 .pctia {
-  width: 100px;
+  width: 60px;
 }
 
 @media (max-width: 768px) {
