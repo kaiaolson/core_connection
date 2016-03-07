@@ -33,10 +33,9 @@
                 <div class="dropdown">
                 <span class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                   <% if user_signed_in? && current_user_profile%>
-                    <% unless current_user_profile.photo.empty? %>
-                     <%= image_tag current_user_profile.photo.url(:menu_icon), class: "user-icon"%>
+                    <% unless current_user_profile.photo.nil? %>
+                      <%= image_tag current_user_profile.photo.url(:menu_icon), class: "user-icon"%>
                     <% end %>
-                    Account
                   <% else %>
                     Account
                   <% end %>
