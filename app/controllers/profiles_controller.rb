@@ -4,28 +4,11 @@ class ProfilesController < ApplicationController
   before_action :authorize_user, only: [:edit, :update, :destroy]
 
   def index
-    respond_to do |format|
-      if params[:available]
-        format.html { @profiles = Profile.where(availability: true) }
-        format.js   { @profiles = Profile.where(availability: true)
-                      render :home_fadeout }
-      elsif !(params[:available])
-        format.html { @profiles = Profile.all }
-        format.js   { @profiles = Profile.all
-                      render :home_fadeout }
-      else
-        format.html { @profiles = Profile.all }
-        format.js   { @profiles = Profile.all
-                      render :home_fadein}
-      end
+    if params[:available]
+      @profiles = Profile.where(availability: true)
+    else
+      @profiles = Profile.all
     end
-    # if params[:available]
-    #   @profiles = Profile.where(availability: true)
-    # elsif params[:all]
-    #   @profiles = Profile.all
-    # else
-    #   @profiles = Profile.all
-    # end
   end
 
   def new

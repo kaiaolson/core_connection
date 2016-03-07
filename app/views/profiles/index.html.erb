@@ -4,6 +4,7 @@
     <% if profile.photo %>
       <p class="profile-img"><%= image_tag profile.photo.url(:thumb) %> </p>
     <% end %>
+    <h3><%= profile.user_full_name %></h3>
     <p><%= profile.tagline %></p>
     <p><%= link_to "View Profile", profile_path(profile), class: "btn btn-primary" %></p>
   </div>
