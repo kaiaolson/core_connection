@@ -8,10 +8,10 @@ class ProfilesController < ApplicationController
       if params[:available]
         format.html { @profiles = Profile.where(availability: true) }
         format.js   { @profiles = Profile.where(availability: true)
-                      render :home_fadeout}
-      elsif params[:all]
-        format.html { @profiles = Profile.where(all: true) }
-        format.js   { @profiles = Profile.where(all: true)
+                      render :home_fadeout }
+      elsif !(params[:available])
+        format.html { @profiles = Profile.all }
+        format.js   { @profiles = Profile.all
                       render :home_fadeout }
       else
         format.html { @profiles = Profile.all }
@@ -19,6 +19,13 @@ class ProfilesController < ApplicationController
                       render :home_fadein}
       end
     end
+    # if params[:available]
+    #   @profiles = Profile.where(availability: true)
+    # elsif params[:all]
+    #   @profiles = Profile.all
+    # else
+    #   @profiles = Profile.all
+    # end
   end
 
   def new
