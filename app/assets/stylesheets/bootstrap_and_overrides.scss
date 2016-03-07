@@ -13,7 +13,7 @@ body {
   font-size: 1.4em;
   line-height: 1.5em;
   color: #333;
-  margin-bottom: 300px;
+  margin-bottom: 175px;
 }
 .container-main-content {
   min-height: 600px;
@@ -25,7 +25,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  min-height: 600px;
+  min-height: 690px;
 }
 
 .full-height {
@@ -37,8 +37,8 @@ body {
 }
 
 a.filter-none img{
-  margin-left: 80px;
-  height: 45px;
+  margin-left: 35px;
+  height: 40px;
 }
 
 span.dropdown-toggle {
@@ -244,7 +244,8 @@ footer {
 
 .footer-bottom {
   background: none repeat scroll 0 0 #2A2A2A;
-  padding: 60px;
+  padding: 20px;
+  height: 175px;
 }
 
 .container {
@@ -291,7 +292,7 @@ p {
 }
 
 .pctia {
-  width: 100px;
+  width: 60px;
 }
 
 @media (max-width: 768px) {
