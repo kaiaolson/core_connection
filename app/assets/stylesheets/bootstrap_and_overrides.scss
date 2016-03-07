@@ -1,5 +1,6 @@
 $brand-primary: #CB0D0F;
 $primary-color: #CB0D0F;
+$brand-dark: darken(#CB0D0F, 6.5%);
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -288,8 +289,7 @@ a button.index-students:hover {
     // background: none;
 }
 .style-tabs .ui-tabs-anchor{
-    color: $brand-primary !important;                  /*To overwrite jquery-ui.css*/
-    // background: #eee;    /*To overwrite jquery-ui.css*/
+    color: $brand-dark !important;                  /*To overwrite jquery-ui.css*/
     border-radius: 5px 5px 0 0;
     border-width: 1px 1px 0px;
     border-color: #eee;
