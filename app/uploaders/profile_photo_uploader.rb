@@ -44,6 +44,11 @@ class ProfilePhotoUploader < CarrierWave::Uploader::Base
     process :resize_to_limit => [150, 150]
   end
 
+  version :menu_icon do
+    process :resize_to_limit => [25, 25]
+  end
+
+
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list
