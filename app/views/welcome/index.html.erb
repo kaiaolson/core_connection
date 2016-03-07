@@ -1,0 +1,8 @@
+<div id="home-buttons">
+  <div class="col-sm-6 text-center">
+    <%= link_to(raw("<button class='index-students filter-students'>Available Students</button>"), profiles_path(available: true), remote: true, class: "no-underline") %>
+  </div>
+  <div class="col-sm-6 text-center">
+    <%= link_to(raw("<button class='index-students filter-students'>All Students</button>"), profiles_path(available: false), remote: true, class: "no-underline") %>
+  </div>
+</div>
