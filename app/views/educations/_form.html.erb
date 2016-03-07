@@ -4,7 +4,7 @@
   <% end %>
 </ul>
 
-<%= form_for [@profile, @education] do |f| %>
+<%= form_for [@profile, @education], html: {multiple: true} do |f| %>
   <div class="form-group">
     <%= f.label :school %>
     <%= f.text_field :school, class: "form-control" %>
@@ -23,7 +23,8 @@
   </div>
   <div class="form-group">
     <%= f.label :image %>
-    <%= f.file_field :image, multiple: true  %>
+    <!-- <%= f.file_field :image, multiple: true  %> -->
+    <%= f.file_field :image %>
     <small>JPG, JPEG, GIF, PNG only.</small>
   </div>
   <%= f.submit class: "btn btn-primary" %>
