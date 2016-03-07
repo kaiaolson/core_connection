@@ -6,16 +6,16 @@ class ProfilesController < ApplicationController
   def index
     respond_to do |format|
       if params[:available]
-        format.html { @profiles = Profile.where(availability: true).page(params[:page]).per(2) }
-        format.js   { @profiles = Profile.where(availability: true).page(params[:page]).per(2)
+        format.html { @profiles = Profile.where(availability: true).page(params[:page]).per(8) }
+        format.js   { @profiles = Profile.where(availability: true).page(params[:page]).per(8)
                       render :home_fadeout}
       elsif params[:all]
-        format.html { @profiles = Profile.where(all: true).page(params[:page]).per(2) }
-        format.js   { @profiles = Profile.where(all: true).page(params[:page]).per(2)
+        format.html { @profiles = Profile.where(all: true).page(params[:page]).per(8) }
+        format.js   { @profiles = Profile.where(all: true).page(params[:page]).per(8)
                       render :home_fadeout }
       else
-        format.html { @profiles = Profile.all.page(params[:page]).per(2) }
-        format.js   { @profiles = Profile.all.page(params[:page]).per(2)
+        format.html { @profiles = Profile.all.page(params[:page]).per(8) }
+        format.js   { @profiles = Profile.all.page(params[:page]).per(8)
                       render :home_fadein}
       end
     end
