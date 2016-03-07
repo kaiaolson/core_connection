@@ -12,8 +12,10 @@ class Education < ActiveRecord::Base
   protected
 
   def smart_add_url_protocol
-    unless self.school_url[/\^http:\/\//] || self.school_url[/\^https:\/\//]
-      self.school_url = "http://#{self.school_url}"
+    unless self.school_url.empty?
+      unless self.school_url[/\^http:\/\//] || self.school_url[/\^https:\/\//]
+        self.school_url = "http://#{self.school_url}"
+      end
     end
   end
 

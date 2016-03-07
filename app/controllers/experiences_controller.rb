@@ -8,11 +8,14 @@ class ExperiencesController < ApplicationController
   def create
     @experience = Experience.new experience_params
     @experience.profile = current_user_profile
+    # this stores an instance variable of profile just in case it needs to
+    # be passed through when rendering the new page on error
+    @profile = current_user_profile
     if @experience.save
       redirect_to edit_profile_path(current_user_profile), notice: "Work experience added!"
     else
       flash[:alert] = "Error adding work experience!"
-      redirect_to edit_profile_path(current_user_profile)
+      render :new
     end
   end
 

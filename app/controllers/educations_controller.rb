@@ -8,11 +8,14 @@ class EducationsController < ApplicationController
   def create
     @education = Education.new education_params
     @education.profile = current_user_profile
+    # this stores an instance variable of profile just in case it needs to
+    # be passed through when rendering the new page on error
+    @profile = current_user_profile
     if @education.save
       redirect_to edit_profile_path(current_user_profile), notice: "Education added!"
     else
       flash[:alert] = "Error adding education!"
-      redirect_to edit_profile_path(current_user_profile)
+      render :new
     end
   end
 

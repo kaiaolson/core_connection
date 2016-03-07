@@ -13,7 +13,7 @@ body {
   font-size: 1.4em;
   line-height: 1.5em;
   color: #333;
-  margin-bottom: 150px;
+  margin-bottom: 120px;
 }
 .container-main-content {
   min-height: 90vh;
@@ -36,14 +36,10 @@ body {
 }
 
 .content-body {
-  padding-top:30px;
+  padding-top:0px;
 }
-
 .cc-messages {
-  position: absolute;
-  top: 75px;
-  z-index: 10;
-  width: 100%;
+  padding-top: 10px;
 }
 
 span.dropdown-toggle {

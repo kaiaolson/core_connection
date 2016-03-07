@@ -13,8 +13,10 @@ class Experience < ActiveRecord::Base
   protected
 
   def smart_add_url_protocol
-    unless self.company_url[/\^http:\/\//] || self.company_url[/\^https:\/\//]
-      self.company_url = "http://#{self.company_url}"
+    unless self.company_url.empty?
+      unless self.company_url[/\^http:\/\//] || self.company_url[/\^https:\/\//]
+        self.company_url = "http://#{self.company_url}"
+      end
     end
   end
 
