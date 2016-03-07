@@ -16,7 +16,6 @@
           <!-- Dropdown buttons on right side-->
           <div class="collapse navbar-collapse" id="coreconnection-navbar">
             <ul class="nav navbar-nav navbar-right">
-
               <!-- Dropdown button for students list -->
               <li>
                 <div class="dropdown">
@@ -85,12 +84,12 @@
     </header>
 
   <div class="container-main-content">
-      <div class="container-fluid no-padding">
+      <div class="container-fluid no-padding cc-messages">
         <% if notice %>
-          <div class="alert alert-success"><%= notice %></div>
+          <div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><%= notice %></div>
         <% end %>
         <% if alert %>
-          <div class="alert alert-danger"><%= alert %></div>
+          <div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><%= alert %></div>
         <% end %>
       </div>
 

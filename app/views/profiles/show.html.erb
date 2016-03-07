@@ -1,3 +1,4 @@
+<div class="container content-body">
 <div class="row">
   <div class="col-sm-3 text-center">
     <%= image_tag @profile.photo.url(:large) %>
@@ -36,24 +37,25 @@
   </div>
 </div>
 
-<div id="profile-tabs" class="style-tabs">
-  <ul class="ui-tabs">
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#skills">Skills</a></li>
-  </ul>
-  <div id="projects">
-    <%= render "/projects/display_projects" %>
-  </div>
-  <div id="education">
-    <%= render "/educations/display_education" %>
-  </div>
-  <div id="experience">
-    <%= render "/experiences/display_experiences" %>
-  </div>
-  <div id="skills">
-    <%= render "/skills/display_skills" %>
+  <div id="profile-tabs" class="style-tabs">
+    <ul class="ui-tabs">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+    </ul>
+    <div id="projects">
+      <%= render "/projects/display_projects" %>
+    </div>
+    <div id="education">
+      <%= render "/educations/display_education" %>
+    </div>
+    <div id="experience">
+      <%= render "/experiences/display_experiences" %>
+    </div>
+    <div id="skills">
+      <%= render "/skills/display_skills" %>
+    </div>
   </div>
 </div>
 
