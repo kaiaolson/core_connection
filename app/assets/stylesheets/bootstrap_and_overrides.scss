@@ -1,5 +1,6 @@
-$brand-primary: darken(#CB0D0F, 6.5%);
-$primary-color: darken(#CB0D0F, 6.5%);
+$brand-primary: #CB0D0F;
+$primary-color: #CB0D0F;
+$brand-dark: darken(#CB0D0F, 6.5%);
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -13,10 +14,10 @@ body {
   font-size: 1.4em;
   line-height: 1.5em;
   color: #333;
-  margin-bottom: 175px;
+  margin-bottom: 120px;
 }
 .container-main-content {
-  min-height: 600px;
+  min-height: 90vh;
 }
 
 .splash-page {
@@ -25,20 +26,24 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  min-height: 690px;
 }
 
 .full-height {
-  height: 600px;
+  height: 90vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
-a.filter-none img{
-  margin-left: 35px;
-  height: 40px;
+.content-body {
+  padding:20px;
+}
+.cc-messages {
+  padding-top: 10px;
+}
+.alert {
+  margin-bottom: 0px !important;
 }
 
 span.dropdown-toggle {
@@ -60,6 +65,10 @@ span.dropdown-toggle {
 
 .dropdown {
   padding-right: 10px;
+}
+
+a.logo img {
+  height: 60px;
 }
 
 #logo {
@@ -87,6 +96,21 @@ span.dropdown-toggle {
 
 .container-main-content{
   margin-top: 66px;
+}
+
+.btn {
+  transition: background 0.4s, color 0.4s, border 0.4s;
+}
+
+.btn-default {
+  border-color: $brand-primary;
+  background: transparent;
+  color: $brand-primary;
+}
+.btn-default:hover {
+  border-color: $brand-primary;
+  background: $brand-primary;
+  color: #fff;
 }
 
  /*------------------------------------------------------------------------------------*/
@@ -226,8 +250,74 @@ a button.index-students:hover {
   display: inline-block;
   margin-right: 20px;
 }
-.tabs-button {
+.profile-actions {
+  margin-top: 20px;
+}
+.style-tabs {
+    padding: 0px;
+    // background: none;
+    border-width: 1px;
+    margin-top: 20px;
+}
+.style-tabs.ui-widget-content {
+  border:2px solid $brand-primary;
+  // background-color: #fff !important;
+  color: black !important;
+}
+.style-tabs .ui-tabs-nav {
+    padding-left: 0px;
+    // background: $brand-primary;
+    border-width: 0px 0px 13px 0px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+}
+.style-tabs .ui-tabs-active a {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    // background-color: #fff;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 1px 1px 0px;
+    border-radius: 5px 5px 0 0;    /*To affect only top corners*/
+    color: $brand-primary !important;
+    position: relative;
+    z-index: 5;
+    text-decoration: none !important;     /*To overwrite jquery-ui.css*/
+}
 
+.style-tabs .ui-tabs .ui-tabs-nav li {
+    position: relative;    /*To overwrite jquery-ui.css*/
+    top: -10px !important;  /*To overwrite jquery-ui.css*/
+    border: none;
+    margin: 0 0 -5px 0;
+    // background: none;
+}
+.style-tabs .ui-tabs-anchor{
+    color: $brand-dark !important;                  /*To overwrite jquery-ui.css*/
+    border-radius: 5px 5px 0 0;
+    border-width: 1px 1px 0px;
+    border-color: #eee;
+    border-style: solid;
+}
+
+.style-tabs .ui-state-default, .style-tabs .ui-widget-content .ui-state-default, .style-tabs .ui-widget-header .ui-state-default {
+  border: none !important;
+  // background:none !important;
+}
+.style-tabs .ui-widget-content a,
+.style-tabs .ui-widget-content a:hover,
+.style-tabs .ui-widget-content a:visited,
+.style-tabs .ui-widget-content a:active {
+  color: $brand-primary;
+}
+.style-tabs .ui-widget-content a.btn,
+.style-tabs .ui-widget-content a.btn:hover,
+.style-tabs .ui-widget-content a.btn:visited,
+.style-tabs .ui-widget-content a.btn:active {
+  color: #fff;
 }
 
 /*****************************************************************
@@ -236,10 +326,12 @@ a button.index-students:hover {
 
 footer {
   // border-top: 1px solid;
-  background-color: #F5F5F5;
+  background-color: transparent;
   position: absolute;
   bottom: 0;
   width: 100%;
+  height: 150px;
+  padding-top: 30px;
 }
 
 .footer-bottom {
@@ -306,64 +398,11 @@ p {
     text-align: right;
   }
 }
-.style-tabs {
-    padding: 0px;
-    background: none;
-    border-width: 1px;
-    margin-top: 20px;
-}
-.style-tabs.ui-widget-content {
-  border:2px solid $brand-primary;
-  background-color: #fff !important;
-  color: black !important;
-}
-.style-tabs .ui-tabs-nav {
-    padding-left: 0px;
-    background: $brand-primary;
-    border-width: 0px 0px 13px 0px;
-    -moz-border-radius: 0px;
-    -webkit-border-radius: 0px;
-    border-radius: 0px;
-}
-.style-tabs .ui-tabs-active a {
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
-    background-color: #fff;
-    border-color: #fff;
-    border-style: solid;
-    border-width: 1px 1px 0px;
-    border-radius: 5px 5px 0 0;    /*To affect only top corners*/
-    color: $brand-primary !important;
-    position: relative;
-    z-index: 5;
-    text-decoration: none !important;     /*To overwrite jquery-ui.css*/
-}
 
-.style-tabs .ui-tabs .ui-tabs-nav li {
-    position: relative;    /*To overwrite jquery-ui.css*/
-    top: -10px !important;  /*To overwrite jquery-ui.css*/
-    border: none;
-    margin: 0 0 -5px 0;
-    background: none;
-}
-.style-tabs .ui-tabs-anchor{
-    color: $brand-primary !important;                  /*To overwrite jquery-ui.css*/
-    background: #eee;    /*To overwrite jquery-ui.css*/
-    border-radius: 5px 5px 0 0;
-    border-width: 1px 1px 0px;
-    border-color: #eee;
-    border-style: solid;
-}
-
-.style-tabs .ui-state-default, .style-tabs .ui-widget-content .ui-state-default, .style-tabs .ui-widget-header .ui-state-default {
-  border: none !important;
-  background:none !important;
-}
-.style-tabs .ui-widget-content a,
-.style-tabs .ui-widget-content a:hover,
-.style-tabs .ui-widget-content a:visited,
-.style-tabs .ui-widget-content a:active {
-  color: #fff;
+/*****************************************************************
+Skill progress bar
+******************************************************************/
+.skills-progress .ui-progressbar-value.ui-widget-header.ui-corner-left {
+  border-color: $brand-dark;
+  background: $brand-dark !important;
 }
