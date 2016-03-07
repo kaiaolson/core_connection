@@ -2,9 +2,9 @@
   <%= f.input :tagline %>
   <%= f.input :description %>
   <%= f.input :availability %>
-  <%= f.input :linkedin_url, label: fa_icon("linkedin"), wrapper_html: {class: "form-link-icon"} %>
-  <%= f.input :twitter_url, label: fa_icon("twitter"), wrapper_html: {class: "form-link-icon"} %>
-  <%= f.input :github_url, label: fa_icon("github"), wrapper_html: {class: "form-link-icon"} %>
+  <%= f.input :linkedin_url, label: fa_icon("linkedin"), label_html: {class: "form-link-icon"} %>
+  <%= f.input :twitter_url, label: fa_icon("twitter"), label_html: {class: "form-link-icon"} %>
+  <%= f.input :github_url, label: fa_icon("github"), label_html: {class: "form-link-icon"} %>
   <%= f.input :photo, as: :file, multiple: true, hint: 'JPG, JPEG, GIF, PNG' %>
   <%= f.input :resume, as: :file, hint: 'Must be a PDF.' %>
   <%= f.submit class: "btn btn-primary" %>
