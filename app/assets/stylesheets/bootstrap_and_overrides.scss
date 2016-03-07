@@ -390,3 +390,11 @@ p {
     text-align: right;
   }
 }
+
+/*****************************************************************
+Skill progress bar
+******************************************************************/
+.skills-progress .ui-progressbar-value.ui-widget-header.ui-corner-left {
+  border-color: $brand-dark;
+  background: $brand-dark !important;
+}

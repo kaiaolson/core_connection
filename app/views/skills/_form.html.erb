@@ -2,7 +2,7 @@
   <%= f.input :name %>
   <%= f.input :category_id, collection: Category.order("name"), default: 1 %>
   <%= simple_fields_for :skillset do |g| %>
-    <%=g.input :proficiency%>
+    <%=g.input :proficiency, hint: "From 0 to 10."%>
   <%end%>
 
   <%= f.submit class: "btn btn-primary" %>

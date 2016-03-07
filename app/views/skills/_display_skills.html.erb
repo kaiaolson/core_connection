@@ -1,8 +1,8 @@
 <div class="col-sm-12" id="profile-skills">
-  <% @profile.skills.each do |skill| %>
+  <% @profile.skills.order("proficiency DESC").each do |skill| %>
     <div class="row">
-      <div class="col-sm-9">
-      <p><%= skill.name %>: <%= skill.proficiency(@profile) %></p>
+      <div class="col-sm-9 skills-progress">
+      <p><%= skill.name %></p>
       <div class="progress_bar" value ="<%= (skill.proficiency(@profile).to_i) * 10 %>"></div>
     </div>
     <div class="col-sm-3 text-right">
@@ -16,3 +16,12 @@
   <hr>
   <% end %>
 </div>
+
+<script>
+  $(".progress_bar").each(function(){
+    var progressValue = parseInt($(this).attr("value"));
+    $(this).progressbar({
+      value: progressValue
+    });
+  });
+</script>
