@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  before_save :smart_add_project_url_protocol, :smart_add_github_url_protocol
+  before_validation :smart_add_project_url_protocol, :smart_add_github_url_protocol
   belongs_to :profile
 
   # MODEL VALIDATIONS
