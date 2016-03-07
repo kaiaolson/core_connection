@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require best_in_place
 //= require jquery-ui
+//= require best_in_place.jquery-ui
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
@@ -38,5 +40,5 @@ $(document).ready(function(){
       $(".primary-content, #home-buttons").fadeIn(500);
     });
   });
-
+  jQuery(".best_in_place").best_in_place();
 });

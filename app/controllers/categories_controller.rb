@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
     @category = Category.new category_params
     if @category.save
       flash[:notice] = "Category Saved Successfully"
-      redirect_to new_category_path(@category)
+      redirect_to categories_path
     else
       flash[:alert] = "Category could not be saved"
       render :new
@@ -20,6 +20,7 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.order("created_at DESC")
+    @category = Category.new
   end
 
   def edit
@@ -27,12 +28,15 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    if @category.update category_params
-      flash[:notice] = "Category updated Successfully"
-      redirect_to category_path(@category)
-    else
-      flash[:alert] = "Category could not be Updated"
-      render :edit
+    respond_to do |format|
+      if @category.update category_params
+        format.html{redirect_to category_path(@category), notice: "Category updated Successfully"}
+        format.json {respond_with_bip(@category)}
+      else
+        # flash[:alert] = "Category could not be Updated"
+        format.json {respond_with_bip(@category)}
+        format.html{render :edit}
+      end
     end
   end
 
