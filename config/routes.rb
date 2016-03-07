@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :skills
     resources :educations
     resources :experiences
+    resources :contacts, only: [:new, :create, :show]
   end
 
   resources :password_resets

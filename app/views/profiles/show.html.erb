@@ -29,7 +29,7 @@
           <% if can? :manage, @profile %>
             <%= link_to "Edit Profile", edit_profile_path(@profile), class: "btn btn-primary" %>
           <% end %>
-          <%= link_to "Contact #{@profile.user_full_name}", new_contact_path, class: "btn btn-info" %>
+          <%= link_to "Contact #{@profile.user_full_name}", new_profile_contact_path(@profile), class: "btn btn-info" %>
         </div>
       </div>
     </div>
