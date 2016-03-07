@@ -6,16 +6,20 @@
   <div class="col-sm-9">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-7">
           <h1 class="get-connected"><%= @profile.user_full_name %></h1>
-          <p><%= @profile.description %></p>
         </div>
-        <div class="col-sm-4 text-right">
+        <div class="col-sm-5 text-right">
           <p class="profile-actions"></p>
           <% if can? :manage, @profile %>
           <%= link_to "Edit Profile", edit_profile_path(@profile), class: "btn btn-primary" %>
           <% end %>
           <%= link_to "Contact #{@profile.user_full_name}", new_profile_contact_path(@profile), class: "btn btn-default" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <p><%= @profile.description %></p>
         </div>
       </div>
       <div class="row">
