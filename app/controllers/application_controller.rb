@@ -33,5 +33,5 @@ class ApplicationController < ActionController::Base
       @profile = current_user_profile
     end
   end
-  
+  helper_method :find_profile
 end
