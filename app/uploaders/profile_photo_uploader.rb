@@ -45,7 +45,7 @@ class ProfilePhotoUploader < CarrierWave::Uploader::Base
   end
 
   version :menu_icon do
-    process :resize_to_limit => [20, 20]
+    process :resize_to_limit => [25, 25]
   end
 
 

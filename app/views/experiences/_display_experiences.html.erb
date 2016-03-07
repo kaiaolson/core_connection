@@ -9,7 +9,7 @@
       <p><%= experience.job_title %> at <%= link_to "#{experience.company_name}", experience.company_url%></p>
       <p>From: <%= experience.from_date %> to: <%= experience.to_date %></p>
       <p><%= experience.description %></p>
-      <% if user_signed_in? %>
+      <% if can? :manage, @profile %>
         <%= link_to "Edit", edit_profile_experience_path(@profile, experience) %>
         <%= link_to "Delete", profile_experience_path(@profile, experience), method: :delete, data: {confirm: "Are you sure?"} %>
       <% end %>

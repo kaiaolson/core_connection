@@ -10,28 +10,34 @@ body {
   background-color: #fff
 }
 
-header {
-  background-color: #CB0D0F;
-  padding-top: 10px;
-}
-header img {
+a img{
   margin-left: 80px;
   height: 45px;
 }
 
-.navbar {
-  background-color: rgba(#cb0d0f, 1);
+span.dropdown-toggle {
+  padding: 10px;
 }
 
-.container-fluid {
-  padding: 10px !important;
+.user-icon{
+  border-radius: 50px;
 }
+.navbar {
+  background-color: rgba(#cb0d0f, 1);
+  padding: 10px;
+}
+
+.navbar-nav > li  {
+    color:#fff;
+    font-weight: bold;
+}
+
 .dropdown {
-  padding-right: 30px;
+  padding-right: 10px;
 }
 
 #logo {
- width: 50%
+ width: 50%;
 }
 
 #signup li {
@@ -46,20 +52,6 @@ header img {
   float: right;
   padding: 10px;
   padding-right: 50px;
-}
-
-.navbar-default .navbar-nav>li>a {
-  color: white;
-  font-weight: 300;
-  font-size: .9em;
-}
-.navbar-default .navbar-nav>li>a:hover {
-  color: white;
-}
-
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
-  background-color: transparent;
-  color: #fff;
 }
 
 .no-padding {
@@ -123,8 +115,7 @@ a div.index-students:hover {
 .social-media-links {
     display: inline-block;
     list-style-type: none;
-    background-color: #F5F5F5;
-    font-size: 1em;
+    font-size: 3em;
 }
 
 /*****************************************************************
@@ -133,7 +124,4 @@ a div.index-students:hover {
 .logo-thumb {
   float: left;
   display: inline-block;
-}
-.tabs-button {
-
 }

@@ -11,7 +11,7 @@
   <div class="container-fluid no-padding">
     <header>
       <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
+        <div class="container-fluid-nav">
           <!-- Dropdown buttons on right side-->
           <div class="collapse navbar-collapse" id="coreconnection-navbar">
             <ul class="nav navbar-nav navbar-right">
@@ -19,7 +19,7 @@
               <!-- Dropdown button for students list -->
               <li>
                 <div class="dropdown">
-                <span class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Student<span class="caret"></span></span>
+                <span class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View Students<span class="caret"></span></span>
                   <ul class="dropdown-menu">
                     <li><%= link_to "Available Students", root_path(available: true), class: "filter-students text-upcase" %></li>
                     <li role="separator" class="divider"></li>
@@ -33,7 +33,7 @@
                 <div class="dropdown">
                 <span class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                   <% if user_signed_in? %>
-                     <%= image_tag @profile.photo.url(:menu_icon) %>
+                     <%= image_tag @profile.photo.url(:menu_icon), class: "user-icon"%>
                   <% else %>
                     Account
                   <% end %>
@@ -42,14 +42,17 @@
                     <li>
                       <%# checks if user is signed in %>
                       <% if user_signed_in? %>
-                        <%= link_to "Welcome #{current_user.full_name}", edit_user_path(current_user), class: "text-upcase" %>
+                        <li><%= link_to "User Settings", edit_user_path(current_user), class: "text-upcase" %></li>
+                        <li role="separator" class="divider"></li>
                         <%# checks if user has already created a profile  %>
                         <% if current_user_profile %>
-                          <%= link_to "View Profile", profile_path(current_user_profile), class: "text-upcase" %>
+                          <li><%= link_to "View Profile", profile_path(current_user_profile), class: "text-upcase" %></li>
+                          <li role="separator" class="divider"></li>
                         <% else %>
-                          <%= link_to "Create Profile", new_profile_path, class: "text-upcase"%>
+                          <li><%= link_to "Create Profile", new_profile_path, class: "text-upcase"%></li>
+
                         <% end %>
-                        <%= link_to "Log Out", sessions_path, method: :delete, data: {confirm: "Are you sure you want to logout?"}, class: "text-upcase" %>
+                        <li><%= link_to "Log Out", sessions_path, method: :delete, data: {confirm: "Are you sure you want to logout?"}, class: "text-upcase" %></li>
                       <% else %>
                         <li><%= link_to "Log In", new_session_path, class: "text-upcase" %></li>
                         <li role="separator" class="divider"></li>

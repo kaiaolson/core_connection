@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "core-connection@codecore.ca"
+  default from: "admin@coreconnections.com"
   layout 'mailer'
 end
