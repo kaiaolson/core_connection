@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :users
+  resources :contacts, only: [:new, :create, :show]
 
   resources :profiles do
     resources :projects
@@ -20,6 +21,10 @@ Rails.application.routes.draw do
 
   resources :password_resets
 
+  resources :contacts, only: [:new, :create]
+
+  get "users/:id/edit_password" => "users#edit_password", as: :edit_password
+  patch "users/:id/update_password" => "users#update_password"
 
 
   # The priority is based upon order of creation: first created -> highest priority.

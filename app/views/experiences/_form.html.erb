@@ -16,7 +16,7 @@
     <%= f.text_field :company_name, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :company_url %>
+    <%= f.label :company_url, "Company Website" %>
     <%= f.text_field :company_url, class: "form-control" %>
   </div>
   <div class="form-group">
@@ -33,7 +33,8 @@
   </div>
   <div class="form-group">
     <%= f.label :image %>
-    <%= f.file_field :image, multiple: true,  class: "form-control" %>
+    <%= f.file_field :image, multiple: true %>
+    <small>JPG, JPEG, GIF, PNG only.</small>
   </div>
   <%= f.submit class: "btn btn-primary" %>
 <% end %>

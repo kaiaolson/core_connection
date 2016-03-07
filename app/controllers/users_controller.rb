@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
   def index
-    @pending_users = User.where(status: false)
-    @approved_users = User.where(status: true)
+    @pending_users = User.where(status: false, admin: false)
+    @approved_users = User.where(status: true, admin: false)
   end
 
   def new
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       sign_in(@user)
-      redirect_to new_profile_path(@user), notice: "User created"
+      redirect_to new_profile_path, notice: "User created"
     else
       render :new
     end
@@ -29,11 +29,11 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find params[:id]
-    if @user.update(status: params[:status])
-      redirect_to user_path(@user), notice: "User updated successfully."
+    if @user.update user_params
+      redirect_to profile_path(current_user_profile), notice: "User updated successfully."
     else
       flash[:notice] = "User not updated."
-      redirect_to users_path
+      render :edit
     end
   end
 
@@ -46,10 +46,29 @@ class UsersController < ApplicationController
     redirect_to users_path, notice: "User deleted successfully!"
   end
 
+  def edit_password
+    @user = User.find params[:id]
+  end
+
+  def update_password
+     @user = User.find params[:id]
+  if @user.authenticate(user_params[:current_password]) && @user.update(edit_password_params)
+    redirect_to root_path, notice: "You have changed your password"
+  else
+    flash.now[:alert] = "make sure password is correct"
+    render :edit_password
+  end
+end
+
   private
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :password, :password_confirmation, :status, :admin)
+    params.require(:user).permit(:email, :first_name, :last_name, :password, :password_confirmation, :status, :admin, :current_password)
   end
+
+  def edit_password_params
+    params.require(:user).permit([:current_password, :password, :password_confirmation])
+  end
+
 
 end

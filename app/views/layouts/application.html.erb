@@ -6,14 +6,70 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.ico' %>
 </head>
 <body>
   <div class="container-fluid no-padding">
     <header>
-      <nav class="navbar navbar-default hack-rightside">
-        <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid-nav">
+          <!-- Dropdown buttons on right side-->
+          <div class="collapse navbar-collapse" id="coreconnection-navbar">
+            <ul class="nav navbar-nav navbar-right">
+
+              <!-- Dropdown button for students list -->
+              <li>
+                <div class="dropdown">
+                <span class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View Students<span class="caret"></span></span>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to "Available Students", root_path(available: true), remote: true, class: "filter-students text-upcase" %></li>
+                    <li role="separator" class="divider"></li>
+                    <li><%= link_to "All Students", root_path(all: true), remote: true, class: "filter-students text-upcase" %></li>
+                  </ul>
+                </div>
+              </li>
+
+              <!-- Create a dropdown button for all the user options -->
+              <li>
+                <div class="dropdown">
+                <span class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <% if user_signed_in? && current_user_profile%>
+                    <% unless current_user_profile.photo.nil? %>
+                      <%= image_tag current_user_profile.photo.url(:menu_icon), class: "user-icon"%>
+                    <% end %>
+                  <% else %>
+                    Account
+                  <% end %>
+                  <span class="caret"></span></span>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <%# checks if user is signed in %>
+                      <% if user_signed_in? %>
+                        <li><%= link_to "User Settings", edit_user_path(current_user), class: "text-upcase" %></li>
+                        <li role="separator" class="divider"></li>
+                        <%# checks if user has already created a profile  %>
+                        <% if current_user_profile %>
+                          <li><%= link_to "View Profile", profile_path(current_user_profile), class: "text-upcase" %></li>
+                          <li role="separator" class="divider"></li>
+                        <% else %>
+                          <li><%= link_to "Create Profile", new_profile_path, class: "text-upcase"%></li>
+
+                        <% end %>
+                        <li><%= link_to "Log Out", sessions_path, method: :delete, data: {confirm: "Are you sure you want to logout?"}, class: "text-upcase" %></li>
+                      <% else %>
+                        <li><%= link_to "Log In", new_session_path, class: "text-upcase" %></li>
+                        <li role="separator" class="divider"></li>
+                        <li><%= link_to "Sign Up", new_user_path, class: "text-upcase" %></li>
+                      <% end %>
+                    </li>
+                  </ul>
+                </div>
+              </li> <!-- end of li for user options -->
+            </ul> <!-- end of ul for right side navbar -->
+          </div> <!-- end of div for dropdowns -->
+
+          <!-- Brand and toggle get grouped for better mobile display  DO NOT REMOVE!!-->
+          <ul class="nav navbar-nav navbar-left">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#coreconnection-navbar" aria-expanded="false">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
@@ -21,50 +77,94 @@
               <span class="icon-bar"></span>
             </button>
             <%= link_to image_tag("codecorelogo.png"), root_path, class: "filter-none" %>
-          </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="coreconnection-navbar">
-            <ul class="nav navbar-nav">
-              <li><%= link_to "Available Students", root_path(available: true), class: "filter-students text-upcase" %></li>
-              <li><%= link_to "All Students", root_path(all: true), class: "filter-students text-upcase" %></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <%# checks if user is signed in %>
-                <% if user_signed_in? %>
-                  <li><%= link_to "Welcome #{current_user.full_name}", edit_user_path(current_user), class: "text-upcase" %></li>
-                  <%# checks if user has already created a profile  %>
-                  <% if current_user_profile %>
-                    <li><%= link_to "View Profile", profile_path(current_user_profile), class: "text-upcase" %></li>
-                  <% else %>
-                    <li><%= link_to "Create Profile", new_profile_path, class: "text-upcase"%></li>
-                  <% end %>
-
-                  <li><%= link_to "Log Out", sessions_path, method: :delete, data: {confirm: "Are you sure you want to logout?"}, class: "text-upcase" %></li>
-                <% else %>
-                  <li><%= link_to "Log In", new_session_path, class: "text-upcase" %></li>
-                  <li><%= link_to "Sign Up", new_user_path, class: "text-upcase" %></li>
-                <% end %>
-              </li>
-            </ul>
-          </div><!-- /.navbar-collapse -->
+          </ul>
         </div><!-- /.container-fluid -->
       </nav>
+
     </header>
 
-    <div class="container-fluid">
-      <% if notice %>
-        <div class="alert alert-success"><%= notice %></div>
-      <% end %>
-      <% if alert %>
-        <div class="alert alert-danger"><%= alert %></div>
-      <% end %>
-    </div>
+  <div class="container-main-content">
+      <div class="container-fluid">
+        <% if notice %>
+          <div class="alert alert-success"><%= notice %></div>
+        <% end %>
+        <% if alert %>
+          <div class="alert alert-danger"><%= alert %></div>
+        <% end %>
+      </div>
 
-    <div class="container-fluid primary-content">
-      <%= yield %>
+      <div class="container-fluid primary-content">
+        <%= yield %>
+      </div>
     </div>
 
   </div>
+  <footer class="mastfoot" id="mastfoot">
+    <section class="inner-section footer-bottom">
+      <section class="container">
+        <div class="row">
+          <article class="col-md-6 text-left">
+            <ul class="footer-social">
+              <li>
+                <a href="http://twitter.com/CodeCoreYVR">
+                  <img alt="CodeCore" class="footer-icon" src="https://d3qliqblr8knlc.cloudfront.net/images/footer/twitter.png" title>
+                </a>
+              </li>
+              <li>
+                <a href="http://www.facebook.com/pages/Codecore-Bootcamp/1407977206086598">
+                  <img alt="CodeCore" class="footer-icon" src="https://d3qliqblr8knlc.cloudfront.net/images/footer/facebook.png" title>
+                </a>
+              </li>
+              <li>
+                <a href="http://linkedin.com/company/codecore-bootcamp">
+                  <img alt="CodeCore" class="footer-icon" src="https://d3qliqblr8knlc.cloudfront.net/images/footer/linkedin.png" title>
+                </a>
+              </li>
+              <li>
+                <a href="http://pinterest.com/codecoreyvr">
+                  <img alt="CodeCore" class="footer-icon" src="https://d3qliqblr8knlc.cloudfront.net/images/footer/pinterest.png" title>
+                </a>
+              </li>
+              <li>
+                <a href="http://instagram.com/codecoreyvr">
+                  <img alt="CodeCore" class="footer-icon" src="https://d3qliqblr8knlc.cloudfront.net/images/footer/instagram.png" title>
+                </a>
+              </li>
+              <li>
+                <a href="http://plus.google.com/116007489763415648305/about">
+                  <img alt="CodeCore" class="footer-icon" src="https://d3qliqblr8knlc.cloudfront.net/images/footer/googleplus.png" title>
+                </a>
+              </li>
+              <li>
+                <a href="http://github.com/orgs/CodeCoreYVR">
+                  <img alt="CodeCore" class="footer-icon" src="https://d3qliqblr8knlc.cloudfront.net/images/footer/github.png" title>
+                </a>
+              </li>
+              <li>
+                <a href="http://www.youtube.com/CodeCoreYVR">
+                  <img alt="CodeCore" class="footer-icon" src="https://d3qliqblr8knlc.cloudfront.net/images/footer/youtube.png" title>
+                </a>
+              </li>
+            </ul>
+          </article>
+
+          <article class="col-md-6 cc-footer">
+            <div class="credits">
+              <p>142 W Hastings St. // Vancouver, BC // Canada // (604) 559-CODE (2633)
+              <br>
+              <a href="https://www.codecore.ca/policies">policies</a>
+              </p>
+            </div>
+          </article>
+
+          <article class="col-md-6 cc-footer">
+            <a href="http://www.pctia.bc.ca/listings/accredited" target="_blank">
+              <%= image_tag("PCTIA-accredited-Logo.JPG", class: "pctia" ) %>
+            </a>
+          </article>
+        </div>
+      </section>
+    </section>
+  </footer>
 </body>
 </html>
