@@ -33,5 +33,4 @@ class ApplicationController < ActionController::Base
       @profile = current_user_profile
     end
   end
-  
 end
