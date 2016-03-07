@@ -10,13 +10,14 @@ Rails.application.routes.draw do
   end
 
   resources :users
-  resources :contacts, only: [:new, :create, :show]
+
 
   resources :profiles do
     resources :projects
     resources :skills
     resources :educations
     resources :experiences
+    resources :contacts, only: [:new, :create, :show]
   end
 
   resources :password_resets
