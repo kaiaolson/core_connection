@@ -54,7 +54,7 @@
                           <li role="separator" class="divider"></li>
                         <% else %>
                           <li><%= link_to "Create Profile", new_profile_path, class: "text-upcase"%></li>
-
+                          <li role="separator" class="divider"></li>
                         <% end %>
                         <li><%= link_to "Log Out", sessions_path, method: :delete, data: {confirm: "Are you sure you want to logout?"}, class: "text-upcase" %></li>
                       <% else %>
