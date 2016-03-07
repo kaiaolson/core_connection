@@ -15,7 +15,7 @@
           <% unless @profile.linkedin_url.nil? %>
           <%= link_to fa_icon("linkedin-square"), @profile.linkedin_url, target: "_blank", class: "social-media-links" %>
           <% end %>
-          <% if @profile.twitter_url && !(@profile.twitter_url.empty?)%>
+          <% if @profile.twitter_url%>
           <%= link_to fa_icon("twitter"), @profile.twitter_url, target: "_blank", class: "social-media-links" %>
           <% end %>
           <% if @profile.github_url %>
