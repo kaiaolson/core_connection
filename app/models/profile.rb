@@ -1,5 +1,5 @@
 class Profile < ActiveRecord::Base
-  before_save :smart_add_twitter_url_protocol, :smart_add_github_url_protocol, :smart_add_linkedin_url_protocol
+  before_validation :smart_add_twitter_url_protocol, :smart_add_github_url_protocol, :smart_add_linkedin_url_protocol
   belongs_to :user
 
   # associations for skillset
