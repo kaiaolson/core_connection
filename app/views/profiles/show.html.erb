@@ -1,10 +1,8 @@
 <div class="row">
-  <div class="col-sm-4">
-    <div>
-      <%= image_tag @profile.photo.url(:large) %>
-    </div>
+  <div class="col-sm-3 text-center">
+    <%= image_tag @profile.photo.url(:large) %>
   </div>
-  <div class="col-sm-8">
+  <div class="col-sm-9">
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12">
@@ -13,23 +11,33 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-10">
-          <%= link_to fa_icon("linkedin-square"), @profile.linkedin_url, class: "social-media-links" %>
-          <%= link_to fa_icon("twitter"), @profile.twitter_url, class: "social-media-links" %>
-          <%= link_to fa_icon("github"), @profile.github_url, class: "social-media-links" %>
-          <%= link_to fa_icon("download"), @profile.resume_url %>
+        <div class="col-sm-6">
+          <% unless @profile.linkedin_url.empty? %>
+          <%= link_to fa_icon("linkedin-square"), @profile.linkedin_url, target: "_blank", class: "social-media-links" %>
+          <% end %>
+          <% unless @profile.twitter_url.empty? %>
+          <%= link_to fa_icon("twitter"), @profile.twitter_url, target: "_blank", class: "social-media-links" %>
+          <% end %>
+          <% unless @profile.github_url.empty? %>
+          <%= link_to fa_icon("github"), @profile.github_url, target: "_blank", class: "social-media-links" %>
+          <% end %>
+          <% unless @profile.resume_url.nil? %>
+          <%= link_to fa_icon("download"), @profile.resume_url, target: "_blank", class: "social-media-links" %>
+          <% end %>
         </div>
-        <div class="col-sm-2">
-          <%= link_to "Edit Profile", edit_profile_path(@profile), class: "btn btn-primary" %>
-          <%= link_to "Contact", contact_profile_path(@profile.id), class: "btn btn-info" %>
+        <div class="col-sm-6 text-right">
+          <% if can? :manage, @profile %>
+            <%= link_to "Edit Profile", edit_profile_path(@profile), class: "btn btn-primary" %>
+          <% end %>
+          <%= link_to "Contact #{@profile.user_full_name}", new_contact_path, class: "btn btn-info" %>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div id="profile-tabs">
-  <ul>
+<div id="profile-tabs" class="style-tabs">
+  <ul class="ui-tabs">
     <li><a href="#projects">Projects</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#experience">Experience</a></li>
@@ -48,3 +56,10 @@
     <%= render "/skills/display_skills" %>
   </div>
 </div>
+
+<script>
+  $( "#profile-tabs" ).tabs().css({
+     'min-height': '200px',
+     'overflow': 'auto'
+  });
+</script>

@@ -1,4 +1,5 @@
 $brand-primary: darken(#CB0D0F, 6.5%);
+$primary-color: darken(#CB0D0F, 6.5%);
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -10,34 +11,34 @@ body {
   background-color: #fff
 }
 
-header {
-  background-color: #CB0D0F;
-  padding-top: 15px;
-  padding-bottom: 15px
-}
-header img {
+a img{
   margin-left: 80px;
   height: 45px;
 }
 
+span.dropdown-toggle {
+  padding: 10px;
+}
+
+.user-icon{
+  border-radius: 50px;
+}
 .navbar {
-  background-color: #CB0D0F;
+  background-color: rgba(#cb0d0f, 1);
+  padding: 10px;
 }
+
+.navbar-nav > li  {
+    color:#fff;
+    font-weight: bold;
+}
+
+.dropdown {
+  padding-right: 10px;
+}
+
 #logo {
- width: 50%
-}
-#signup li {
- list-style-type: none;
- display: inline-block;
- color: #FFF;
- float: right;
- margin-right: 10px;
-}
-nav.hack-rightside {
-  margin-right: 150px;
-}
-.navbar-header, .navbar-default {
-  border: none !important;
+ width: 50%;
 }
 
 #signup li {
@@ -47,24 +48,11 @@ nav.hack-rightside {
  float: right;
  margin-right: 10px;
 }
-nav.hack-rightside {
-  margin-right: 150px;
-}
-.navbar-header, .navbar-default {
-  border: none !important;
-}
-.navbar-default .navbar-nav>li>a {
-  color: white;
-  font-weight: 300;
-  font-size: .9em;
-}
-.navbar-default .navbar-nav>li>a:hover {
-  color: white;
-}
 
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
-  background-color: transparent;
-  color: #fff;
+#coreconnection-navbar{
+  float: right;
+  padding: 10px;
+  padding-right: 50px;
 }
 
 .no-padding {
@@ -72,6 +60,55 @@ nav.hack-rightside {
   padding-right:0px;
 }
 
+.container-main-content{
+  margin-top: 66px;
+  padding-top: 20px;
+}
+
+ /*------------------------------------------------------------------------------------*/
+ /* Dropdown hover over */
+
+.sidebar-nav {
+    padding: 9px 0;
+}
+
+.dropdown-menu .sub-menu {
+    left: 100%;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    margin-top: -1px;
+}
+
+.dropdown-menu li:hover .sub-menu {
+    visibility: visible;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.nav-tabs .dropdown-menu, .nav-pills .dropdown-menu, .navbar .dropdown-menu {
+    margin-top: 0;
+}
+
+.navbar .sub-menu:before {
+    border-bottom: 7px solid transparent;
+    border-left: none;
+    border-right: 7px solid rgba(0, 0, 0, 0.2);
+    border-top: 7px solid transparent;
+    left: -7px;
+    top: 10px;
+}
+.navbar .sub-menu:after {
+    border-top: 6px solid transparent;
+    border-left: none;
+    border-right: 6px solid #fff;
+    border-bottom: 6px solid transparent;
+    left: 10px;
+    top: 11px;
+    left: -6px;
+}
 /*****************************************************************
       Headlines for multiple pages
 ******************************************************************/
@@ -92,21 +129,33 @@ h1 {
 .text-upcase {
   text-transform: uppercase;
 }
+
+/*****************************************************************
+    Form styling
+******************************************************************/
+
+input, textarea, select {
+  max-width: 400px;
+}
+.form-link-icon {
+  font-size: 2em !important;
+}
 /*****************************************************************
     Index Styling
 ******************************************************************/
-a div.index-students {
+a button.index-students {
   text-transform: uppercase;
   font-size: 25px;
   text-decoration: none;
+  background-color: #fff;
   border: 2px solid #CB0D0F;
   padding: 30px;
   width: 400px;
-  margin:0 auto;
   transition: color 0.5s, background-color 0.5s;
   -webkit-transition: color 0.5s, background-color 0.5s;
+  margin-top: 20%;
 }
-a div.index-students:hover {
+a button.index-students:hover {
   background-color: #CB0D0F;
   color: #fff ;
   text-decoration: none !important;
@@ -128,8 +177,7 @@ a div.index-students:hover {
 .social-media-links {
     display: inline-block;
     list-style-type: none;
-    background-color: #F5F5F5;
-    font-size: 1em;
+    font-size: 3em;
 }
 
 /*****************************************************************
@@ -140,5 +188,142 @@ a div.index-students:hover {
   display: inline-block;
 }
 .tabs-button {
-  
+
+}
+
+/*****************************************************************
+    Footer
+******************************************************************/
+
+footer {
+  // border-top: 1px solid;
+  padding-top: 20px;
+  background-color: #F5F5F5;
+  margin-top: 300px;
+
+}
+
+.footer-bottom {
+  background: none repeat scroll 0 0 #2A2A2A;
+  padding: 40px;
+
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.footer-social li>a>img {
+  width: 50px;
+  opacity: .3;
+  margin-bottom: 5px;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.footer-social {
+  list-style: none outside none;
+  margin: 0;
+  padding: 0;
+
+}
+
+.footer-social li {
+  display: inline-block;
+  line-height: 28px;
+}
+
+.credits>p {
+  font-family: 'Open Sans', Verdana, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 200;
+  line-height: 19px;
+}
+
+p {
+  color: #707070;
+  font-style: normal;
+  font-variant: normal;
+}
+
+.pctia {
+  width: 100px;
+}
+
+@media (max-width: 768px) {
+  .cc-footer {
+    text-align: center;
+  }
+}
+
+@media (min-width: 769px) {
+  .cc-footer {
+    text-align: right;
+  }
+}
+.style-tabs {
+    padding: 0px;
+    background: none;
+    border-width: 1px;
+}
+.style-tabs.ui-widget-content {
+  border:2px solid $brand-primary;
+  background-color: #fff !important;
+  color: black !important;
+}
+.style-tabs .ui-tabs-nav {
+    padding-left: 0px;
+    background: $brand-primary;
+    border-width: 0px 0px 13px 0px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+}
+.style-tabs .ui-tabs-active a {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #fff;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 1px 1px 0px;
+    border-radius: 5px 5px 0 0;    /*To affect only top corners*/
+    color: $brand-primary !important;
+    position: relative;
+    z-index: 5;
+    text-decoration: none !important;     /*To overwrite jquery-ui.css*/
+}
+
+.style-tabs .ui-tabs .ui-tabs-nav li {
+    position: relative;    /*To overwrite jquery-ui.css*/
+    top: -10px !important;  /*To overwrite jquery-ui.css*/
+    border: none;
+    margin: 0 0 -5px 0;
+    background: none;
+}
+.style-tabs .ui-tabs-anchor{
+    color: $brand-primary !important;                  /*To overwrite jquery-ui.css*/
+    background: #eee;    /*To overwrite jquery-ui.css*/
+    border-radius: 5px 5px 0 0;
+    border-width: 1px 1px 0px;
+    border-color: #eee;
+    border-style: solid;
+}
+
+.style-tabs .ui-state-default, .style-tabs .ui-widget-content .ui-state-default, .style-tabs .ui-widget-header .ui-state-default {
+  border: none !important;
+  background:none !important;
+}
+.style-tabs .ui-widget-content a,
+.style-tabs .ui-widget-content a:hover,
+.style-tabs .ui-widget-content a:visited,
+.style-tabs .ui-widget-content a:active {
+  color: #fff;
 }

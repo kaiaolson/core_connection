@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   get 'password_resets/new'
 
   #root # set this to a home page for employers to see on first arrival
-
-  root "profiles#index"
+  get "/home" => "welcome#index"
+  root "welcome#index"
 
   resources :sessions, only: [:new, :create, :destroy] do
     delete :destroy, on: :collection
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   resources :password_resets
 
+  resources :contacts, only: [:new, :create]
 
 
   # The priority is based upon order of creation: first created -> highest priority.

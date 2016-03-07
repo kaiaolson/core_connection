@@ -1,24 +1,42 @@
 <h1>Edit Profile</h1>
+<p class="text-right"><%= link_to "View Profile", profile_path(@profile), class: "btn btn-primary" %></p>
 
-<h2>Basic Information</h2>
-<%= render "form" %>
+<div id="profile-tabs" class="style-tabs">
+  <ul class="ui-tabs">
+    <li><a href="#basic-info">Basic Information</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+  </ul>
+  <div id="basic-info">
+    <%= render "form" %>
+  </div>
+  <div id="projects">
+    <%= render "/projects/display_projects" %>
+    <hr>
+    <%= render "/projects/form" %>
+  </div>
+  <div id="education">
+    <%= render "/educations/display_education" %>
+    <hr>
+    <%= render "/educations/form" %>
+  </div>
+  <div id="experience">
+    <%= render "/experiences/display_experiences" %>
+    <hr>
+    <%= render "/experiences/form" %>
+  </div>
+  <div id="skills">
+    <%= render "/skills/display_skills" %>
+    <hr>
+    <%= render "/skills/form" %>
+  </div>
+</div>
 
-<h2>Projects</h2>
-<%= render "/projects/display_projects" %>
-<hr>
-<%= render "/projects/form" %>
-
-<h2>Education</h2>
-<%= render "/educations/display_education" %>
-<hr>
-<%= render "/educations/form" %>
-
-<h2>Experience</h2>
-<%= render "/experiences/display_experiences" %>
-<hr>
-<%= render "/experiences/form" %>
-
-<h2>Skills</h2>
-<%= render "/skills/display_skills" %>
-<hr>
-<%= render "/skills/form" %>
+<script>
+  $( "#profile-tabs" ).tabs().css({
+     'min-height': '200px',
+     'overflow': 'auto'
+  });
+</script>

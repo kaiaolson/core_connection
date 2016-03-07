@@ -1,8 +1,8 @@
-<ul>
-  <% @project.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-  <% end %>
-</ul>
+  <ul>
+    <% @project.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
 
 <%= form_for [@profile, @project] do |f| %>
   <div class="form-group">
@@ -14,11 +14,11 @@
     <%= f.text_area :description, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :project_url %>
+    <%= f.label :project_url, "Project Website" %>
     <%= f.text_field :project_url, class: "form-control" %>
   </div>
   <div class="form-group">
-    <%= f.label :github_url %>
+    <%= f.label :github_url, fa_icon("github"), class: "form-link-icon" %>
     <%= f.text_field :github_url, class: "form-control" %>
   </div>
   <%= f.submit class: "btn btn-primary" %>
