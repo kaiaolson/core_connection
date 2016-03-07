@@ -62,6 +62,7 @@ span.dropdown-toggle {
 
 .container-main-content{
   margin-top: 66px;
+  padding-top: 20px;
 }
 
  /*------------------------------------------------------------------------------------*/
@@ -159,6 +160,7 @@ a button.index-students {
   width: 400px;
   transition: color 0.5s, background-color 0.5s;
   -webkit-transition: color 0.5s, background-color 0.5s;
+  margin-top: 20%;
 }
 a button.index-students:hover {
   background-color: #CB0D0F;
@@ -191,6 +193,7 @@ a button.index-students:hover {
 .logo-thumb {
   float: left;
   display: inline-block;
+  margin-right: 20px;
 }
 .tabs-button {
 

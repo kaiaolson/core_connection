@@ -19,6 +19,13 @@ class ProfilesController < ApplicationController
                       render :home_fadein}
       end
     end
+    # if params[:available]
+    #   @profiles = Profile.where(availability: true)
+    # elsif params[:all]
+    #   @profiles = Profile.all
+    # else
+    #   @profiles = Profile.all
+    # end
   end
 
   def new
@@ -50,7 +57,8 @@ class ProfilesController < ApplicationController
     if @profile.update profile_params
       redirect_to profile_path(@profile), notice: "Profile updated."
     else
-      render :edit
+      puts @profile.errors.full_messages
+      redirect_to edit_profile_path(@profile), notice: "Profile not updated!"
     end
   end
 
