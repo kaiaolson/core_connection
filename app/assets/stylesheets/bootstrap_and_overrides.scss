@@ -37,7 +37,7 @@ body {
 }
 
 .content-body {
-  padding:20px;
+  padding:50px;
 }
 .cc-messages {
   padding-top: 10px;
@@ -53,6 +53,11 @@ span.dropdown-toggle {
 .user-icon{
   border-radius: 50px;
 }
+
+.nav{
+  padding-left: 50px !important;
+}
+
 .navbar {
   background-color: rgba(#cb0d0f, 1);
   padding: 10px;
@@ -86,6 +91,7 @@ a.logo img {
 #coreconnection-navbar{
   float: right;
   padding: 10px;
+  padding-top: 17px;
   padding-right: 50px;
 }
 
@@ -164,9 +170,10 @@ a.logo img {
 /*------------------------------------------------------------------------------------*/
 
 .pagination-container{
-  width: 300px;
+  width: 185px;
   margin: 0px auto;
-  padding-top: 100px;
+  margin-top: 50px;
+  padding-top: 550px;
 }
 
 /*****************************************************************
@@ -178,6 +185,7 @@ h1 {
   font-size: 3em;
   font-weight: 700;
 }
+
 .page-headline {
   text-align: center;
   font-size: 5em;

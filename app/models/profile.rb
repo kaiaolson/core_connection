@@ -46,7 +46,7 @@ class Profile < ActiveRecord::Base
 
   def smart_add_twitter_url_protocol
     unless self.twitter_url.empty?
-      unless self.twitter_url[/\^http:\/\//] || self.twitter_url[/\^https:\/\//]
+      unless self.twitter_url[/^http:\/\//] || self.twitter_url[/^https:\/\//]
         self.twitter_url = "http://#{self.twitter_url}"
       end
     end
@@ -54,7 +54,7 @@ class Profile < ActiveRecord::Base
 
   def smart_add_linkedin_url_protocol
     unless self.linkedin_url.empty?
-      unless self.linkedin_url[/\^http:\/\//] || self.linkedin_url[/\^https:\/\//]
+      unless self.linkedin_url[/^http:\/\//] || self.linkedin_url[/^https:\/\//]
         self.linkedin_url = "http://#{self.linkedin_url}"
       end
     end
@@ -62,7 +62,7 @@ class Profile < ActiveRecord::Base
 
   def smart_add_github_url_protocol
     unless self.github_url.empty?
-      unless self.github_url[/\^http:\/\//] || self.github_url[/\^https:\/\//]
+      unless self.github_url[/^http:\/\//] || self.github_url[/^https:\/\//]
         self.github_url = "http://#{self.github_url}"
       end
     end
