@@ -21,9 +21,9 @@
                 <div class="dropdown">
                 <span class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View Students<span class="caret"></span></span>
                   <ul class="dropdown-menu">
-                    <li><%= link_to "Available Students", root_path(available: true), class: "filter-students text-upcase" %></li>
+                    <li><%= link_to "Available Students", profiles_path(available: true), remote: true, class: "filter-students text-upcase" %></li>
                     <li role="separator" class="divider"></li>
-                    <li><%= link_to "All Students", root_path(all: true), class: "filter-students text-upcase" %></li>
+                    <li><%= link_to "All Students", profiles_path(all: true), remote: true, class: "filter-students text-upcase" %></li>
                   </ul>
                 </div>
               </li>
@@ -32,8 +32,11 @@
               <li>
                 <div class="dropdown">
                 <span class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                  <% if user_signed_in? && current_user_profile.photo %>
+                  <% if user_signed_in? && current_user_profile%>
+                    <% unless current_user_profile.photo.empty? %>
                      <%= image_tag current_user_profile.photo.url(:menu_icon), class: "user-icon"%>
+                    <% end %>
+                    Account
                   <% else %>
                     Account
                   <% end %>

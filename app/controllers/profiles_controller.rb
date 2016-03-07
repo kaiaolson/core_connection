@@ -7,16 +7,16 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       if params[:available]
         format.html { @profiles = Profile.where(availability: true) }
-        format.js { @profiles = Profile.where(availability: true)
-                    render :home_fadeout}
+        format.js   { @profiles = Profile.where(availability: true)
+                      render :home_fadeout}
       elsif params[:all]
-        format.html { @profiles = Profile.all }
-        format.js { @profiles = Profile.all
-                    render :home_fadeout }
+        format.html { @profiles = Profile.where(all: true) }
+        format.js   { @profiles = Profile.where(all: true)
+                      render :home_fadeout }
       else
         format.html { @profiles = Profile.all }
-        format.js { @profiles = Profile.all
-                    render :home_fadein}
+        format.js   { @profiles = Profile.all
+                      render :home_fadein}
       end
     end
   end
