@@ -1,4 +1,5 @@
 $brand-primary: darken(#CB0D0F, 6.5%);
+$primary-color: darken(#CB0D0F, 6.5%);
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -127,21 +128,32 @@ h1 {
 .text-upcase {
   text-transform: uppercase;
 }
+
+/*****************************************************************
+    Form styling
+******************************************************************/
+
+input, textarea, select {
+  max-width: 400px;
+}
+.form-link-icon {
+  font-size: 2em !important;
+}
 /*****************************************************************
     Index Styling
 ******************************************************************/
-a div.index-students {
+a button.index-students {
   text-transform: uppercase;
   font-size: 25px;
   text-decoration: none;
+  background-color: #fff;
   border: 2px solid #CB0D0F;
   padding: 30px;
   width: 400px;
-  margin:0 auto;
   transition: color 0.5s, background-color 0.5s;
   -webkit-transition: color 0.5s, background-color 0.5s;
 }
-a div.index-students:hover {
+a button.index-students:hover {
   background-color: #CB0D0F;
   color: #fff ;
   text-decoration: none !important;
@@ -172,4 +184,144 @@ a div.index-students:hover {
 .logo-thumb {
   float: left;
   display: inline-block;
+}
+.tabs-button {
+
+}
+
+/*****************************************************************
+    Footer
+******************************************************************/
+
+footer {
+  // border-top: 1px solid;
+  padding-top: 20px;
+  background-color: #F5F5F5;
+  margin-top: 300px;
+
+}
+
+.footer-bottom {
+  background: none repeat scroll 0 0 #2A2A2A;
+  padding: 40px;
+
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.footer-social li>a>img {
+  width: 50px;
+  opacity: .3;
+  margin-bottom: 5px;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.footer-social {
+  list-style: none outside none;
+  margin: 0;
+  padding: 0;
+
+}
+
+.footer-social li {
+  display: inline-block;
+  line-height: 28px;
+}
+
+.credits>p {
+  font-family: 'Open Sans', Verdana, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 200;
+  line-height: 19px;
+}
+
+p {
+  color: #707070;
+  font-style: normal;
+  font-variant: normal;
+}
+
+.pctia {
+  width: 100px;
+}
+
+@media (max-width: 768px) {
+  .cc-footer {
+    text-align: center;
+  }
+}
+
+@media (min-width: 769px) {
+  .cc-footer {
+    text-align: right;
+  }
+}
+.style-tabs {
+    padding: 0px;
+    background: none;
+    border-width: 1px;
+}
+.style-tabs.ui-widget-content {
+  border:2px solid $brand-primary;
+  background-color: #fff !important;
+  color: black !important;
+}
+.style-tabs .ui-tabs-nav {
+    padding-left: 0px;
+    background: $brand-primary;
+    border-width: 0px 0px 13px 0px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+}
+.style-tabs .ui-tabs-active a {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #fff;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 1px 1px 0px;
+    border-radius: 5px 5px 0 0;    /*To affect only top corners*/
+    color: $brand-primary !important;
+    position: relative;
+    z-index: 5;
+    text-decoration: none !important;     /*To overwrite jquery-ui.css*/
+}
+
+.style-tabs .ui-tabs .ui-tabs-nav li {
+    position: relative;    /*To overwrite jquery-ui.css*/
+    top: -10px !important;  /*To overwrite jquery-ui.css*/
+    border: none;
+    margin: 0 0 -5px 0;
+    background: none;
+}
+.style-tabs .ui-tabs-anchor{
+    color: $brand-primary !important;                  /*To overwrite jquery-ui.css*/
+    background: #eee;    /*To overwrite jquery-ui.css*/
+    border-radius: 5px 5px 0 0;
+    border-width: 1px 1px 0px;
+    border-color: #eee;
+    border-style: solid;
+}
+
+.style-tabs .ui-state-default, .style-tabs .ui-widget-content .ui-state-default, .style-tabs .ui-widget-header .ui-state-default {
+  border: none !important;
+  background:none !important;
+}
+.style-tabs .ui-widget-content a,
+.style-tabs .ui-widget-content a:hover,
+.style-tabs .ui-widget-content a:visited,
+.style-tabs .ui-widget-content a:active {
+  color: #fff;
 }

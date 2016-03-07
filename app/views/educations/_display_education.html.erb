@@ -1,21 +1,23 @@
 <div class="col-sm-12">
   <% @profile.educations.each do |education| %>
-    <div class="col-sm-9">
-      <% if education.image %>
-        <div class="logo-thumb">
-          <%= image_tag education.image.url(:logo_thumb) %>
-        </div>
-      <% end %>
-      <p><%= education.school %></p>
-      <p><%= education.degree %></p>
-      <p><%= education.description %></p>
-    </div>
-    <div class="col-sm-3">
-      <p><%= link_to "Visit School", education.school_url, class: "btn btn-primary tabs-button" %></p>
-      <% if can? :manage, @profile %>
-        <%= link_to "Edit", edit_profile_education_path(@profile, education) %>
-        <%= link_to "Delete", profile_education_path(@profile, education), method: :delete, data: {confirm: "Are you sure?"} %>
-      <% end %>
+    <div class="row">
+      <div class="col-sm-9">
+        <% if education.image %>
+          <div class="logo-thumb">
+            <%= image_tag education.image.url(:logo_thumb) %>
+          </div>
+        <% end %>
+        <h3><%= education.school %></h3>
+        <p><strong><%= education.degree %></strong></p>
+        <p><%= education.description %></p>
+      </div>
+      <div class="col-sm-3">
+        <p><%= link_to "Visit School", education.school_url, target: "_blank", class: "btn btn-info" %></p>
+        <% if can? :manage, @profile %>
+          <%= link_to "Edit", edit_profile_education_path(@profile, education), class: "btn btn-warning" %>
+          <%= link_to "Delete", profile_education_path(@profile, education), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-primary" %>
+        <% end %>
+      </div>
     </div>
     <hr>
   <% end %>
