@@ -1,10 +1,10 @@
 <div id="home-buttons">
   <h1 class="page-headline">CoreConnection</h1>
   <div class="col-sm-6 text-center">
-    <%= link_to(raw("<div class='index-students filter-students'>Available Students</div>"), root_path(available: true), remote: true, class: "no-underline") %>
+    <%= link_to(raw("<button class='index-students filter-students'>Available Students</button>"), root_path(available: true), remote: true, class: "no-underline") %>
   </div>
   <div class="col-sm-6 text-center">
-    <%= link_to(raw("<div class='index-students filter-students'>All Students</div>"), root_path(all: true), remote: true, class: "no-underline") %>
+    <%= link_to(raw("<button class='index-students filter-students'>All Students</button>"), root_path(all: true), remote: true, class: "no-underline") %>
   </div>
 </div>
 

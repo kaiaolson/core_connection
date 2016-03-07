@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
   def index
-    @pending_users = User.where(status: false)
-    @approved_users = User.where(status: true)
+    @pending_users = User.where(status: false, admin: false)
+    @approved_users = User.where(status: true, admin: false)
   end
 
   def new
