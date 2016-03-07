@@ -40,7 +40,7 @@ body {
   padding:50px;
 }
 .cc-messages {
-  padding-top: 10px;
+  padding-top: 0px;
 }
 .alert {
   margin-bottom: 0px !important;
@@ -62,6 +62,9 @@ span.dropdown-toggle {
   background-color: rgba(#cb0d0f, 1);
   padding: 10px;
 }
+.navbar-default {
+  border: none;
+}
 
 .navbar-nav > li  {
     color:#fff;
@@ -73,11 +76,9 @@ span.dropdown-toggle {
 }
 
 a.logo img {
-  height: 60px;
-}
-
-#logo {
- width: 50%;
+  height: 35px;
+  padding-left: 40px;
+  margin-top: 10px;
 }
 
 #signup li {
