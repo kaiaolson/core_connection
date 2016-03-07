@@ -1,8 +1,8 @@
 class UsersApprovalMailer < ApplicationMailer
-  def notify_admin(user, name, message)
+
+  def send_approval(user)
     @user = user
-    @name = name
-    @message = message
-    mail(to: @user.email, subject: "#{@user.full_name} : New message from #{name}")
+    mail(to: @user.email, subject: "Profile approved!")
   end
+
 end

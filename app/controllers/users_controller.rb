@@ -31,6 +31,7 @@ class UsersController < ApplicationController
     @user = User.find params[:id]
     if @user.update user_params
       if current_user.admin
+        UsersApprovalMailer.send_approval(@user).deliver_now
         redirect_to users_path, notice: "User approved"
       else
         redirect_to profile_path(current_user_profile), notice: "User updated successfully."
