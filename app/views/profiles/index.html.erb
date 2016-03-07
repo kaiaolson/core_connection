@@ -1,24 +1,25 @@
-<div id="home-buttons">
-  <div class="col-sm-6 text-center">
-    <%= link_to(raw("<button class='index-students filter-students'>Available Students</button>"), root_path(available: true), remote: true, class: "no-underline") %>
-  </div>
-  <div class="col-sm-6 text-center">
-    <%= link_to(raw("<button class='index-students filter-students'>All Students</button>"), root_path(all: true), remote: true, class: "no-underline") %>
-  </div>
-</div>
-
 <div id="profiles">
  <% @profiles.each do |profile| %>
-  <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+  <div class="col-xs-12 col-sm-6 col-md-3 text-center profile">
     <% if profile.photo %>
-      <p> <%= image_tag profile.photo.url(:thumb) %> </p>
+      <p class="profile-img"><%= image_tag profile.photo.url(:thumb) %> </p>
     <% end %>
+    <h3><%= profile.user_full_name %></h3>
     <p><%= profile.tagline %></p>
     <p><%= link_to "View Profile", profile_path(profile), class: "btn btn-primary" %></p>
   </div>
  <% end %>
+
+<div class="pagination-container">
+   <%= paginate @profiles, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-sm pagination-centered" %>
+ </div>
+
 </div>
 
+
 <script>
-  $("#profiles").hide();
+  $(function() {
+      $('.profile').matchHeight();
+      $('.profile-img').matchHeight();
+  });
 </script>

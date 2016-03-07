@@ -6,7 +6,7 @@
 </ul>
 <% end %>
 
-<%= form_for [@profile, @experience] do |f| %>
+<%= form_for [@profile, @experience], html: {multiple: true} do |f| %>
   <div class="form-group">
     <%= f.label :job_title %>
     <%= f.text_field :job_title, class: "form-control" %>
@@ -33,7 +33,7 @@
   </div>
   <div class="form-group">
     <%= f.label :image %>
-    <%= f.file_field :image, multiple: true %>
+    <%= f.file_field :image %>
     <small>JPG, JPEG, GIF, PNG only.</small>
   </div>
   <%= f.submit class: "btn btn-primary" %>

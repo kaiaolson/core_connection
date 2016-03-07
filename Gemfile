@@ -42,7 +42,7 @@ gem 'simple_form'
 gem 'jquery-ui-rails'
 gem 'validate_url'
 gem 'quiet_assets'
-
+gem 'best_in_place', '~> 3.0.1'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
