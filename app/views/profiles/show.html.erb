@@ -6,13 +6,20 @@
   <div class="col-sm-9">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-8">
           <h1 class="get-connected"><%= @profile.user_full_name %></h1>
           <p><%= @profile.description %></p>
         </div>
+        <div class="col-sm-4 text-right">
+          <p class="profile-actions"></p>
+          <% if can? :manage, @profile %>
+          <%= link_to "Edit Profile", edit_profile_path(@profile), class: "btn btn-primary" %>
+          <% end %>
+          <%= link_to "Contact #{@profile.user_full_name}", new_profile_contact_path(@profile), class: "btn btn-default" %>
+        </div>
       </div>
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
           <% unless @profile.linkedin_url.empty? %>
           <%= link_to fa_icon("linkedin-square"), @profile.linkedin_url, target: "_blank", class: "social-media-links" %>
           <% end %>
@@ -25,12 +32,6 @@
           <% unless @profile.resume_url.nil? %>
           <%= link_to fa_icon("download"), @profile.resume_url, target: "_blank", class: "social-media-links" %>
           <% end %>
-        </div>
-        <div class="col-sm-6 text-right">
-          <% if can? :manage, @profile %>
-            <%= link_to "Edit Profile", edit_profile_path(@profile), class: "btn btn-primary" %>
-          <% end %>
-          <%= link_to "Contact #{@profile.user_full_name}", new_profile_contact_path(@profile), class: "btn btn-info" %>
         </div>
       </div>
     </div>
