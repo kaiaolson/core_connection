@@ -1,4 +1,5 @@
 $brand-primary: darken(#CB0D0F, 6.5%);
+$primary-color: darken(#CB0D0F, 6.5%);
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -92,6 +93,14 @@ h1 {
 .text-upcase {
   text-transform: uppercase;
 }
+
+/*****************************************************************
+    Form styling
+******************************************************************/
+
+input, textarea, select {
+  max-width: 400px;
+}
 /*****************************************************************
     Index Styling
 ******************************************************************/
@@ -128,8 +137,7 @@ a div.index-students:hover {
 .social-media-links {
     display: inline-block;
     list-style-type: none;
-    background-color: #F5F5F5;
-    font-size: 1em;
+    font-size: 3em;
 }
 
 /*****************************************************************
@@ -139,6 +147,63 @@ a div.index-students:hover {
   float: left;
   display: inline-block;
 }
-.tabs-button {
-  
+.style-tabs {
+    padding: 0px;
+    background: none;
+    border-width: 1px;
+}
+.style-tabs.ui-widget-content {
+  border:2px solid $brand-primary;
+  background-color: #fff !important;
+  color: black !important;
+}
+.style-tabs .ui-tabs-nav {
+    padding-left: 0px;
+    background: $brand-primary;
+    border-width: 0px 0px 13px 0px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+}
+.style-tabs .ui-tabs-active a {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #fff;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 1px 1px 0px;
+    border-radius: 5px 5px 0 0;    /*To affect only top corners*/
+    color: $brand-primary !important;
+    position: relative;
+    z-index: 5;
+    text-decoration: none !important;     /*To overwrite jquery-ui.css*/
+}
+
+.style-tabs .ui-tabs .ui-tabs-nav li {
+    position: relative;    /*To overwrite jquery-ui.css*/
+    top: -10px !important;  /*To overwrite jquery-ui.css*/
+    border: none;
+    margin: 0 0 -5px 0;
+    background: none;
+}
+.style-tabs .ui-tabs-anchor{
+    color: $brand-primary !important;                  /*To overwrite jquery-ui.css*/
+    background: #eee;    /*To overwrite jquery-ui.css*/
+    border-radius: 5px 5px 0 0;
+    border-width: 1px 1px 0px;
+    border-color: #eee;
+    border-style: solid;
+}
+
+.style-tabs .ui-state-default, .style-tabs .ui-widget-content .ui-state-default, .style-tabs .ui-widget-header .ui-state-default {
+  border: none !important;
+  background:none !important;
+}
+.style-tabs .ui-widget-content a,
+.style-tabs .ui-widget-content a:hover,
+.style-tabs .ui-widget-content a:visited,
+.style-tabs .ui-widget-content a:active {
+  color: #fff;
 }

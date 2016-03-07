@@ -7,7 +7,7 @@
     <div class="col-sm-3">
       <p><%= link_to project.project_url %></p>
       <p><%= link_to project.github_url %></p>
-      <% if user_signed_in? %>
+      <% if can? :manage, @profile %>
         <%= link_to "Edit", edit_profile_project_path(@profile, project) %>
         <%= link_to "Delete", profile_project_path(@profile, project), method: :delete, data: {confirm: "Are you sure?"} %>
       <% end %>
