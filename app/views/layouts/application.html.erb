@@ -6,25 +6,24 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <%= favicon_link_tag 'favicon.ico' %>
+  <%= favicon_link_tag 'favicon_core.ico' %>
 </head>
 <body>
-  <div class="container-fluid no-padding">
+  <div class="container-fluid no-padding primary-content">
     <header>
       <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid-nav">
           <!-- Dropdown buttons on right side-->
           <div class="collapse navbar-collapse" id="coreconnection-navbar">
             <ul class="nav navbar-nav navbar-right">
-
               <!-- Dropdown button for students list -->
               <li>
                 <div class="dropdown">
                 <span class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View Students<span class="caret"></span></span>
                   <ul class="dropdown-menu">
-                    <li><%= link_to "Available Students", root_path(available: true), remote: true, class: "filter-students text-upcase" %></li>
+                    <li><%= link_to "All Students", profiles_path, class: "filter-students text-upcase" %></li>
                     <li role="separator" class="divider"></li>
-                    <li><%= link_to "All Students", root_path(all: true), remote: true, class: "filter-students text-upcase" %></li>
+                    <li><%= link_to "Available Students", profiles_path(available: true), class: "filter-students text-upcase" %></li>
                   </ul>
                 </div>
               </li>
@@ -33,10 +32,11 @@
               <li>
                 <div class="dropdown">
                 <span class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                  <% if user_signed_in? && current_user_profile%>
-                    <% unless current_user_profile.photo.nil? %>
+                  <% if user_signed_in? && current_user_profile && current_user_profile.photo %>
+                    <%# unless current_user_profile.photo.nil? %>
                       <%= image_tag current_user_profile.photo.url(:menu_icon), class: "user-icon"%>
-                    <% end %>
+                      <!-- <%= image_tag current_user_profile.photo.url(:menu_icon)%> -->
+                    <%# end %>
                   <% else %>
                     Account
                   <% end %>
@@ -48,12 +48,23 @@
                         <li><%= link_to "User Settings", edit_user_path(current_user), class: "text-upcase" %></li>
                         <li role="separator" class="divider"></li>
                         <%# checks if user has already created a profile  %>
-                        <% if current_user_profile %>
-                          <li><%= link_to "View Profile", profile_path(current_user_profile), class: "text-upcase" %></li>
-                          <li role="separator" class="divider"></li>
+                        <% if current_user.admin %>
+                          <li><%= link_to "Approve Users", users_path, class: "text-upcase"%></li>
+                          <li><%= link_to "Create Category", categories_path, class: "text-upcase"%></li>
+                          <% if current_user_profile %>
+                            <li><%= link_to "View Profile", profile_path(current_user_profile), class: "text-upcase" %></li>
+                            <li role="separator" class="divider"></li>
+                          <% else %>
+                            <li><%= link_to "Create Profile", new_profile_path, class: "text-upcase"%></li>
+                          <% end %>
                         <% else %>
-                          <li><%= link_to "Create Profile", new_profile_path, class: "text-upcase"%></li>
-
+                          <% if current_user_profile %>
+                            <li><%= link_to "View Profile", profile_path(current_user_profile), class: "text-upcase" %></li>
+                            <li role="separator" class="divider"></li>
+                          <% else %>
+                            <li><%= link_to "Create Profile", new_profile_path, class: "text-upcase"%></li>
+                          <% end %>
+                          <li role="separator" class="divider"></li>
                         <% end %>
                         <li><%= link_to "Log Out", sessions_path, method: :delete, data: {confirm: "Are you sure you want to logout?"}, class: "text-upcase" %></li>
                       <% else %>
@@ -76,7 +87,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <%= link_to image_tag("codecorelogo.png"), root_path, class: "filter-none" %>
+            <%= link_to image_tag("corelogo.png"), root_path, class: "logo"%>
           </ul>
         </div><!-- /.container-fluid -->
       </nav>
@@ -84,87 +95,89 @@
     </header>
 
   <div class="container-main-content">
-      <div class="container-fluid">
+      <div class="container-fluid no-padding cc-messages">
         <% if notice %>
-          <div class="alert alert-success"><%= notice %></div>
+          <div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><%= notice %></div>
         <% end %>
         <% if alert %>
-          <div class="alert alert-danger"><%= alert %></div>
+          <div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><%= alert %></div>
         <% end %>
       </div>
 
-      <div class="container-fluid primary-content">
+      <div class="container-fluid no-padding">
         <%= yield %>
       </div>
     </div>
 
-  </div>
-  <footer class="mastfoot" id="mastfoot">
-    <section class="inner-section footer-bottom">
-      <section class="container">
-        <div class="row">
-          <article class="col-md-6 text-left">
-            <ul class="footer-social">
-              <li>
-                <a href="http://twitter.com/CodeCoreYVR">
-                  <img alt="CodeCore" class="footer-icon" src="https://d3qliqblr8knlc.cloudfront.net/images/footer/twitter.png" title>
-                </a>
-              </li>
-              <li>
-                <a href="http://www.facebook.com/pages/Codecore-Bootcamp/1407977206086598">
-                  <img alt="CodeCore" class="footer-icon" src="https://d3qliqblr8knlc.cloudfront.net/images/footer/facebook.png" title>
-                </a>
-              </li>
-              <li>
-                <a href="http://linkedin.com/company/codecore-bootcamp">
-                  <img alt="CodeCore" class="footer-icon" src="https://d3qliqblr8knlc.cloudfront.net/images/footer/linkedin.png" title>
-                </a>
-              </li>
-              <li>
-                <a href="http://pinterest.com/codecoreyvr">
-                  <img alt="CodeCore" class="footer-icon" src="https://d3qliqblr8knlc.cloudfront.net/images/footer/pinterest.png" title>
-                </a>
-              </li>
-              <li>
-                <a href="http://instagram.com/codecoreyvr">
-                  <img alt="CodeCore" class="footer-icon" src="https://d3qliqblr8knlc.cloudfront.net/images/footer/instagram.png" title>
-                </a>
-              </li>
-              <li>
-                <a href="http://plus.google.com/116007489763415648305/about">
-                  <img alt="CodeCore" class="footer-icon" src="https://d3qliqblr8knlc.cloudfront.net/images/footer/googleplus.png" title>
-                </a>
-              </li>
-              <li>
-                <a href="http://github.com/orgs/CodeCoreYVR">
-                  <img alt="CodeCore" class="footer-icon" src="https://d3qliqblr8knlc.cloudfront.net/images/footer/github.png" title>
-                </a>
-              </li>
-              <li>
-                <a href="http://www.youtube.com/CodeCoreYVR">
-                  <img alt="CodeCore" class="footer-icon" src="https://d3qliqblr8knlc.cloudfront.net/images/footer/youtube.png" title>
-                </a>
-              </li>
-            </ul>
-          </article>
+    <footer class="mastfoot" id="mastfoot">
+      <section class="inner-section footer-bottom">
+        <section class="container">
+          <div class="row">
+            <article class="col-md-6 text-left">
+              <ul class="footer-social">
+                <li>
+                  <a href="http://twitter.com/CodeCoreYVR">
+                    <img alt="CodeCore" class="footer-icon" src="https://d3qliqblr8knlc.cloudfront.net/images/footer/twitter.png" title>
+                  </a>
+                </li>
+                <li>
+                  <a href="http://www.facebook.com/pages/Codecore-Bootcamp/1407977206086598">
+                    <img alt="CodeCore" class="footer-icon" src="https://d3qliqblr8knlc.cloudfront.net/images/footer/facebook.png" title>
+                  </a>
+                </li>
+                <li>
+                  <a href="http://linkedin.com/company/codecore-bootcamp">
+                    <img alt="CodeCore" class="footer-icon" src="https://d3qliqblr8knlc.cloudfront.net/images/footer/linkedin.png" title>
+                  </a>
+                </li>
+                <li>
+                  <a href="http://pinterest.com/codecoreyvr">
+                    <img alt="CodeCore" class="footer-icon" src="https://d3qliqblr8knlc.cloudfront.net/images/footer/pinterest.png" title>
+                  </a>
+                </li>
+                <li>
+                  <a href="http://instagram.com/codecoreyvr">
+                    <img alt="CodeCore" class="footer-icon" src="https://d3qliqblr8knlc.cloudfront.net/images/footer/instagram.png" title>
+                  </a>
+                </li>
+                <li>
+                  <a href="http://plus.google.com/116007489763415648305/about">
+                    <img alt="CodeCore" class="footer-icon" src="https://d3qliqblr8knlc.cloudfront.net/images/footer/googleplus.png" title>
+                  </a>
+                </li>
+                <li>
+                  <a href="http://github.com/orgs/CodeCoreYVR">
+                    <img alt="CodeCore" class="footer-icon" src="https://d3qliqblr8knlc.cloudfront.net/images/footer/github.png" title>
+                  </a>
+                </li>
+                <li>
+                  <a href="http://www.youtube.com/CodeCoreYVR">
+                    <img alt="CodeCore" class="footer-icon" src="https://d3qliqblr8knlc.cloudfront.net/images/footer/youtube.png" title>
+                  </a>
+                </li>
+              </ul>
+            </article>
 
-          <article class="col-md-6 cc-footer">
-            <div class="credits">
-              <p>142 W Hastings St. // Vancouver, BC // Canada // (604) 559-CODE (2633)
-              <br>
-              <a href="https://www.codecore.ca/policies">policies</a>
-              </p>
-            </div>
-          </article>
+            <article class="col-md-6 cc-footer">
+              <div class="credits">
+                <p>142 W Hastings St. // Vancouver, BC // Canada // (604) 559-CODE (2633)
+                <br>
+                <a href="https://www.codecore.ca/policies">policies</a>
+                </p>
+              </div>
+            </article>
 
-          <article class="col-md-6 cc-footer">
-            <a href="http://www.pctia.bc.ca/listings/accredited" target="_blank">
-              <%= image_tag("PCTIA-accredited-Logo.JPG", class: "pctia" ) %>
-            </a>
-          </article>
-        </div>
+            <article class="col-md-6 cc-footer">
+              <a href="http://www.pctia.bc.ca/listings/accredited" target="_blank">
+                <%= image_tag("PCTIA-accredited-Logo.JPG", class: "pctia" ) %>
+              </a>
+            </article>
+          </div>
+        </section>
       </section>
-    </section>
-  </footer>
+    </footer>
+
+  </div>
+
 </body>
 </html>

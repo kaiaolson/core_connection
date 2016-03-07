@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       sign_in(user)
       # if the user is an admin redirect to the user show page
-      if user.admin
+      if user.admin?
         redirect_to users_path, notice: "Welcome back mighty admin!"
       # else they are just a regular use and redirect to the normal homepage
       else

@@ -7,12 +7,15 @@ class EducationsController < ApplicationController
 
   def create
     @education = Education.new education_params
-    @education.profile_id = current_user_profile
+    @education.profile = current_user_profile
+    # this stores an instance variable of profile just in case it needs to
+    # be passed through when rendering the new page on error
+    @profile = current_user_profile
     if @education.save
       redirect_to edit_profile_path(current_user_profile), notice: "Education added!"
     else
       flash[:alert] = "Error adding education!"
-      render :edit
+      render :new
     end
   end
 
@@ -21,7 +24,7 @@ class EducationsController < ApplicationController
 
   def update
     if @education.update education_params
-      redirect_to profile_path(@profile), notice: "Education updated!"
+      redirect_to profile_path(current_user_profile), notice: "Education updated!"
     else
       flash[:alert] = "Error updating education!"
       render new_profile_education(@profile)

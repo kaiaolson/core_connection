@@ -4,20 +4,10 @@ class ProfilesController < ApplicationController
   before_action :authorize_user, only: [:edit, :update, :destroy]
 
   def index
-    respond_to do |format|
-      if params[:available]
-        format.html { @profiles = Profile.where(availability: true) }
-        format.js   { @profiles = Profile.where(availability: true)
-                      render :home_fadeout}
-      elsif params[:all]
-        format.html { @profiles = Profile.where(all: true) }
-        format.js   { @profiles = Profile.where(all: true)
-                      render :home_fadeout }
-      else
-        format.html { @profiles = Profile.all }
-        format.js   { @profiles = Profile.all
-                      render :home_fadein}
-      end
+    if params[:available]
+      @profiles = Profile.where(availability: true).page(params[:page]).per(8)
+    else
+      @profiles = Profile.all.page(params[:page]).per(8)
     end
   end
 
@@ -50,7 +40,8 @@ class ProfilesController < ApplicationController
     if @profile.update profile_params
       redirect_to profile_path(@profile), notice: "Profile updated."
     else
-      render :edit
+      puts @profile.errors.full_messages
+      redirect_to edit_profile_path(@profile), notice: "Profile not updated!"
     end
   end
 
