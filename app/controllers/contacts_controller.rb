@@ -8,7 +8,7 @@ class ContactsController < ApplicationController
     name = params[:name]
     message = params[:message]
     @profile = Profile.find params[:profile_id]
-    ContactsMailer.notify_student(@profile.user, name, message).deliver_now
+    ContactsMailer.notify_student(@profile.user, name, message).deliver_later
     redirect_to root_url, notice: "Email has been sent to the student."
   end
 

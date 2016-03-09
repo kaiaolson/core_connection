@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160306181400) do
+ActiveRecord::Schema.define(version: 20160309041732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,22 @@ ActiveRecord::Schema.define(version: 20160306181400) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "educations", force: :cascade do |t|
     t.string   "school"
@@ -49,17 +65,6 @@ ActiveRecord::Schema.define(version: 20160306181400) do
   end
 
   add_index "experiences", ["profile_id"], name: "index_experiences_on_profile_id", using: :btree
-
-  create_table "links", force: :cascade do |t|
-    t.string   "github_url"
-    t.string   "linkedin_url"
-    t.string   "twitter_url"
-    t.integer  "profile_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  add_index "links", ["profile_id"], name: "index_links_on_profile_id", using: :btree
 
   create_table "profiles", force: :cascade do |t|
     t.string   "tagline"
@@ -127,7 +132,6 @@ ActiveRecord::Schema.define(version: 20160306181400) do
 
   add_foreign_key "educations", "profiles"
   add_foreign_key "experiences", "profiles"
-  add_foreign_key "links", "profiles"
   add_foreign_key "profiles", "users"
   add_foreign_key "projects", "profiles"
   add_foreign_key "skills", "categories"
