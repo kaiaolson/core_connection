@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :current_password
 
-  has_one :profile
+  has_one :profile, dependent: :destroy
 
   validates :password, length: {minimum:6}, on: :create
   validates :first_name, presence: true
