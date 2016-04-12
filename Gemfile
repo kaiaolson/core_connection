@@ -43,6 +43,8 @@ gem 'jquery-ui-rails'
 gem 'validate_url'
 gem 'quiet_assets'
 gem 'best_in_place', '~> 3.0.1'
+gem "fog"
+gem "fog-aws"
 
 # Use Unicorn as the app server
 # gem 'unicorn'
