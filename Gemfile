@@ -1,5 +1,22 @@
 source 'https://rubygems.org'
 
+gem 'best_in_place', '~> 3.0.1'
+gem 'bootstrap-kaminari-views', '~> 0.0.5'
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+gem 'cancancan', '~> 1.15'
+gem 'carrierwave', '~> 1.0'
+gem 'delayed_job_active_record', '~> 4.1', '>= 4.1.1'
+gem 'delayed_job_web', '~> 1.2', '>= 1.2.10'
+gem 'fog-aws', '~> 1.1'
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.1'
+gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
+gem 'kaminari', '~> 1.0'
+gem 'mini_magick', '~> 4.6'
+gem 'quiet_assets', '~> 1.1'
+gem 'simple_form', '~> 3.4'
+gem 'validate_url', '~> 1.0', '>= 1.0.2'
+
+gem 'rails_12factor', group: :production
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
@@ -10,7 +27,7 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+# gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -25,26 +42,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem 'cancancan'
-gem 'bootstrap-sass'
-gem 'awesome_print'
-gem 'interactive_editor'
-gem 'hirb'
-gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
-gem 'faker'
-gem 'font-awesome-rails'
-gem 'delayed_job_active_record'
-gem 'delayed_job_web'
-gem 'kaminari'
-gem 'bootstrap-kaminari-views'
-gem 'mini_magick'
-gem 'simple_form'
-gem 'jquery-ui-rails'
-gem 'validate_url'
-gem 'quiet_assets'
-gem 'best_in_place', '~> 3.0.1'
-gem "fog"
-gem "fog-aws"
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -52,12 +49,15 @@ gem "fog-aws"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'rails_12factor', group: :production
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-  gem 'pry'
+  gem 'awesome_print', '~> 1.7'
+  # gem 'byebug'
+  gem 'faker', '~> 1.7', '>= 1.7.2'
+  gem 'hirb', '~> 0.7.3'
+  gem 'interactive_editor', '~> 0.0.10'
+  gem 'pry', '~> 0.10.4'
 end
 
 group :development do
