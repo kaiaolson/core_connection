@@ -1,0 +1,11 @@
+version: '2'
+services:
+  web:
+    build: .
+    command: bundle exec puma -C config/puma.rb
+    depends_on: [pg]
+    env_file: .env
+    ports: ["3000:3000"]
+    volumes: [".:/srv/core_connection"]
+  pg:
+    image: postgres:9.6.1
