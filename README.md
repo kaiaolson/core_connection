@@ -17,7 +17,11 @@ Or best offer.
 ### Required environment variables
 
 ```shell
-# Amazon S3 to store profile files
+# Puma webserver
+RACK_ENV
+PORT
+
+# Amazon S3 to store profile photos, resumes, etc
 S3_KEY
 S3_SECRET
 S3_REGION

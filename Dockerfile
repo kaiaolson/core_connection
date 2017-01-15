@@ -15,4 +15,4 @@ COPY . ${SOURCE_DIR}/
 RUN useradd -m core_connection_user
 USER core_connection_user
 
-CMD rails server --bind 0.0.0.0 --port ${PORT:-3000}
+CMD bundle exec puma -C config/puma.rb
